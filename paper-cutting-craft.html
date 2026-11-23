@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>剪韵 · 识匠艺｜三台剪纸</title>
+  <link rel="stylesheet" href="paper-cutting-craft.css">
+  <script src="paper-cutting-craft.js" defer></script>
+  <link rel="stylesheet" href="paper-meanings.css">
+  <link rel="stylesheet" href="paper-ending.css">
+  <style>
+    .paper-ending-story {
+      --paper: #f8f4eb; --ink: #39785c; --teal: #357f70; --rule: #a2c1b3; --gold: #ab8539;
+      --gutter: clamp(20px, 6vw, 100px); --content: min(1200px, calc(100% - 2 * var(--gutter)));
+      --heading-size: clamp(28px, 3vw, 46px); --copy-size: clamp(17px, 1.24vw, 20px);
+      max-width: none;
+      display: grid;
+      align-content: center;
+      min-height: calc(100vw / 3);
+      background: var(--paper) url("assets/paper-cutting/meanings/ending-landscape.webp") center bottom / 100% auto no-repeat;
+    }
+    .paper-ending-story::before { content: none; }
+    .paper-end-footer {--rule:#a2c1b3; border:0}
+    .paper-end-footer button,.craft-credits button {font:inherit; cursor:pointer}
+    .craft-credits {width:min(90%,460px); padding:28px; color:var(--ink); border:1px solid #a5b7a6; background:#faf7ef}
+    .craft-credits::backdrop {background:#273e3366}
+    .craft-credits p {margin:14px 0; line-height:1.75}
+    .craft-credits a {text-decoration:underline; text-underline-offset:3px}
+    .craft-credits button {background:#315e4d;color:#fff9eb;border:0;padding:8px 20px}
+  </style>
+  <style>
+    @media screen and (prefers-reduced-motion: no-preference) {
+      :root { --cut-ease: cubic-bezier(.18,.76,.23,1); --cut-rise: 30px; }
+      @keyframes cut-rise {
+        from { opacity: .15; transform: translateY(var(--cut-rise)); }
+        to { opacity: 1; transform: none; }
+      }
+      @keyframes cut-unroll {
+        from { clip-path: inset(0 94% 0 0); transform: scale(.97); }
+        to { clip-path: inset(0); transform: none; }
+      }
+      @keyframes cut-turn {
+        from { opacity: .2; transform: perspective(800px) rotateY(-48deg) rotateZ(-5deg) scale(.93); }
+        to { opacity: 1; transform: none; }
+      }
+
+      .heading.cut-entered .crumb, .heading.cut-entered h1, .heading.cut-entered > p,
+      .kit-head.cut-entered, .motifs-head.cut-entered, .lineage-rail.cut-entered,
+      .lineage-people.cut-entered, .paper-next.cut-entered > * {
+        animation: cut-rise .74s var(--cut-ease) backwards;
+      }
+      .heading.cut-entered h1, .paper-next.cut-entered p { animation-delay: .10s; }
+      .heading.cut-entered > p, .paper-next.cut-entered .paper-craft-link { animation-delay: .20s; }
+      .paper-next.cut-entered .paper-observe-link { animation-delay: .27s; }
+      .phases a { transition: color .16s, background-color .16s; }
+
+      .stages.cut-entered .stage:not([hidden]) .scene img,
+      .kit-view.cut-entered .kit-plate > img {
+        animation: cut-unroll .85s var(--cut-ease) backwards;
+      }
+      .stages.cut-entered .stage:not([hidden]) .method,
+      .kit-view.cut-entered .kit-plate figcaption {
+        animation: cut-rise .64s .10s var(--cut-ease) backwards;
+      }
+      .stages.cut-entered .stage:not([hidden]) .detail,
+      .kit-view.cut-entered .kit-notes {
+        animation: cut-rise .68s .20s var(--cut-ease) backwards;
+      }
+
+      .motif-card.cut-entered .motif-mat, .motif-reading.cut-entered .motif-lens .motif-art {
+        animation: cut-turn .76s var(--card-delay, 0s) var(--cut-ease) backwards;
+      }
+      .motif-card.cut-entered strong {
+        animation: cut-rise .50s calc(var(--card-delay, 0s) + .12s) var(--cut-ease) backwards;
+      }
+      .lineage-strip.cut-entered a { animation: cut-rise .58s var(--cut-ease) backwards; }
+      .lineage-strip.cut-entered a:nth-child(2) { animation-delay: .10s; }
+      .lineage-strip.cut-entered a:nth-child(3) { animation-delay: .20s; }
+      dialog[open] { --cut-rise: 12px; animation: cut-rise .26s var(--cut-ease); }
+
+      /* Use both halves of the same illustration so the crease meets when flat. */
+      .stages.cut-entered #step-5 .scene { position: relative; }
+      .stages.cut-entered #step-5 .scene img {
+        animation: cut-left-half .86s linear;
+      }
+      .stages.cut-entered #step-5 .scene::after {
+        content: ""; position: absolute; inset: 0 0 0 50%;
+        background: url("assets/paper-cutting/intro/craft-step-05.webp") right center / 200% 100% no-repeat;
+        transform-origin: left center; opacity: 0; pointer-events: none;
+        animation: cut-fold-open .86s var(--cut-ease);
+      }
+      @keyframes cut-left-half {
+        from, to { clip-path: inset(0 50% 0 0); }
+      }
+      @keyframes cut-fold-open {
+        from { opacity: 1; transform: perspective(850px) rotateY(-84deg); filter: brightness(.72); }
+        to { opacity: 1; transform: none; filter: brightness(1); }
+      }
+      @media (hover: hover) and (pointer: fine) {
+        .motif-card .motif-art { transition: translate .3s; }
+        .motif-card:hover .motif-art { translate: 0 -4px; }
+      }
+
+      @media (min-width: 701px) {
+        .motif-card:nth-child(3n + 2) { --card-delay: .10s; }
+        .motif-card:nth-child(3n) { --card-delay: .20s; }
+      }
+      @supports (animation-timeline: view()) {
+        .paper-ending-story { view-timeline-name: --cut-ending; overflow: clip; background-image: none; }
+        .paper-ending-story::before {
+          content: ""; inset: -4% 0; height: auto; aspect-ratio: auto; mask-image: none;
+          background-size: 100% auto; pointer-events: none;
+          animation: cut-landscape auto linear both;
+          animation-timeline: --cut-ending;
+        }
+        @keyframes cut-landscape { from { transform: translateY(-2%); } to { transform: translateY(2%); } }
+      }
+      @media (max-width: 700px) {
+        :root { --cut-rise: 14px; }
+        .stages.cut-entered .stage:not([hidden]) .detail { animation-delay: .12s; }
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="project-typeface.css?v=20261119-1">
+  
+
+  <link rel="stylesheet" href="project-home-button.css?v=20261123-top-left-1">
+  <link rel="stylesheet" href="project-home-toolbar.css?v=20261123-top-left-1">
+</head>
+<body class="project-has-home-toolbar">
+  <div class="project-home-toolbar"><a class="project-home-button project-home-return" href="index.html" aria-label="返回蜀间拾艺主页"><svg class="project-home-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5M5.5 9v11h5v-6h3v6h5V9"/></svg><span>返回主页</span></a></div>
+
+  <main>
+    <div class="heading">
+      <div><nav class="crumb" aria-label="当前位置"><a href="paper-cutting-intro.html">三台剪纸</a>　/　制作工序</nav>
+      <h1>剪韵<span>·</span>识匠艺</h1></div>
+      <p>跟着一张方纸，剪一朵八瓣团花。</p>
+    </div>
+    <nav class="phases" aria-label="折剪团花的五道工序">
+      <a href="#step-1"><i>01</i><span>备纸裁方</span></a>
+      <a href="#step-2"><i>02</i><span>对角折纸</span></a>
+      <a href="#step-3"><i>03</i><span>描画纹样</span></a>
+      <a href="#step-4"><i>04</i><span>循线剪花</span></a>
+      <a href="#step-5"><i>05</i><span>展纸成花</span></a>
+    </nav>
+    <div class="stages">
+      <article class="stage" id="step-1" aria-labelledby="title-1">
+        <section class="method">
+          <div class="chapter"><i>01</i><span>／ 05</span></div>
+          <h2 id="title-1">裁一张方纸</h2>
+          <p class="tools">薄纸、直尺、剪刀</p>
+          <dl><dt>齐边</dt><dd>把两条相邻的纸边叠齐，折出一个直角三角形。</dd><dt>裁方</dt><dd>压住折好的纸，剪去三角形外多出的一条纸边。</dd></dl>
+        </section>
+        <figure class="scene"><img src="assets/paper-cutting/intro/craft-step-01.webp" alt="匠人在木案前裁一张方纸" width="1278" height="1230"></figure>
+        <aside class="detail">
+          <h3>纸角对齐了吗？</h3>
+          <img src="assets/paper-cutting/intro/craft-detail-01.webp" alt="备纸裁方时的手部和纸面局部" width="560" height="270">
+          <p>把纸打开，再沿另一条对角线合一次。两个角恰好重合，就可以开始折了。</p>
+          <a class="action" href="#step-2">下一步 · 对角折纸 <span>→</span></a>
+        </aside>
+      </article>
+      <article class="stage" id="step-2" aria-labelledby="title-2">
+        <section class="method">
+          <div class="chapter"><i>02</i><span>／ 05</span></div>
+          <h2 id="title-2">折出一瓣</h2>
+          <p class="tools">方纸</p>
+          <dl><dt>对角合拢</dt><dd>方纸对角折成三角形，再把底边两角合在一起。</dd><dt>收成八层</dt><dd>再对折一次，压实折痕。将对应方纸中心的尖角朝向自己。</dd></dl>
+        </section>
+        <figure class="scene"><img src="assets/paper-cutting/intro/craft-step-02.webp" alt="匠人在木案前折出一瓣" width="1278" height="1230"></figure>
+        <aside class="detail">
+          <h3>花心藏在哪里？</h3>
+          <img src="assets/paper-cutting/intro/craft-detail-02.webp" alt="对角折纸时的手部和纸面局部" width="560" height="270">
+          <p>轻轻打开一层，沿折痕往回找。几条折线相遇的地方，就是展开后的花心。</p>
+          <a class="action" href="#step-3">下一步 · 描画纹样 <span>→</span></a>
+        </aside>
+      </article>
+      <article class="stage" id="step-3" aria-labelledby="title-3">
+        <section class="method">
+          <div class="chapter"><i>03</i><span>／ 05</span></div>
+          <h2 id="title-3">画出花瓣与透孔</h2>
+          <p class="tools">折好的纸、铅笔</p>
+          <dl><dt>定外形</dt><dd>在远离花心的一端画弧线，定下花瓣顶端的轮廓。</dd><dt>留连接</dt><dd>在折边画一弯小月牙，让它与外轮廓之间留出一条纸带。</dd></dl>
+        </section>
+        <figure class="scene"><img src="assets/paper-cutting/intro/craft-step-03.webp" alt="匠人在木案前画出花瓣与透孔" width="1278" height="1230"></figure>
+        <aside class="detail">
+          <h3>哪一段要留下？</h3>
+          <img src="assets/paper-cutting/intro/craft-detail-03.webp" alt="描画纹样时的手部和纸面局部" width="560" height="270">
+          <p>顺着铅笔线看一遍。留在两处剪口之间的纸带，会把展开的花瓣连起来。</p>
+          <a class="action" href="#step-4">下一步 · 循线剪花 <span>→</span></a>
+        </aside>
+      </article>
+      <article class="stage" id="step-4" aria-labelledby="title-4">
+        <section class="method">
+          <div class="chapter"><i>04</i><span>／ 05</span></div>
+          <h2 id="title-4">转着纸剪出弧线</h2>
+          <p class="tools">纹样纸、尖头剪刀</p>
+          <dl><dt>剪透孔</dt><dd>从折边的小月牙剪入，再沿线回到同一条边。</dd><dt>修花缘</dt><dd>捏住纸层，慢慢转纸，沿外侧弧线剪出瓣尖。</dd></dl>
+        </section>
+        <figure class="scene"><img src="assets/paper-cutting/intro/craft-step-04.webp" alt="匠人在木案前转着纸剪出弧线" width="1278" height="1230"></figure>
+        <aside class="detail">
+          <h3>剪口怎样才圆顺？</h3>
+          <img src="assets/paper-cutting/intro/craft-detail-04.webp" alt="循线剪花时的手部和纸面局部" width="560" height="270">
+          <p>让剪尖朝前，持纸的手慢慢转弯。剪到细纸带旁边时，把每一剪放短。</p>
+          <a class="action" href="#step-5">下一步 · 展纸成花 <span>→</span></a>
+        </aside>
+      </article>
+      <article class="stage" id="step-5" aria-labelledby="title-5">
+        <section class="method">
+          <div class="chapter"><i>05</i><span>／ 05</span></div>
+          <h2 id="title-5">顺着折痕打开</h2>
+          <p class="tools">剪好的纸、浅色衬纸</p>
+          <dl><dt>逐层揭开</dt><dd>从最外一层开始，捏住宽纸面轻轻打开，遇到细连接处就换个位置拿。</dd><dt>衬纸压平</dt><dd>把团花放在浅色纸上，从花心往外轻轻理平。</dd></dl>
+        </section>
+        <figure class="scene"><img src="assets/paper-cutting/intro/craft-step-05.webp" alt="匠人在木案前顺着折痕打开" width="1278" height="1230"></figure>
+        <aside class="detail">
+          <h3>一弯月牙去了哪里？</h3>
+          <img src="assets/paper-cutting/intro/craft-detail-05.webp" alt="展纸成花时的手部和纸面局部" width="560" height="270">
+          <p>沿花心绕一圈，看相同的透孔怎样在各瓣间重复。衬纸的颜色会从每个剪口露出来。</p>
+          <a class="action" href="#tools">认识剪纸工具 <span>→</span></a>
+        </aside>
+      </article>
+    </div>
+    <section class="kit" id="tools" aria-labelledby="kit-title">
+      <header class="kit-head"><h2 id="kit-title">剪纸案头的器与材</h2><p>裁方、描样、剪花，各有一件趁手的家伙。</p></header>
+      <fieldset class="kit-layout">
+        <legend class="kit-sr">选择要观察的工具或材料</legend>
+        <input class="kit-pick kit-sr" type="radio" id="kit-scissors" name="kit-item" aria-controls="kit-view-scissors" checked>
+        <input class="kit-pick kit-sr" type="radio" id="kit-paper" name="kit-item" aria-controls="kit-view-paper">
+        <input class="kit-pick kit-sr" type="radio" id="kit-ruler" name="kit-item" aria-controls="kit-view-ruler">
+        <input class="kit-pick kit-sr" type="radio" id="kit-pencil" name="kit-item" aria-controls="kit-view-pencil">
+        <div class="kit-index">
+          <label for="kit-scissors"><i>01</i>尖头剪刀</label>
+          <label for="kit-paper"><i>02</i>薄红纸</label>
+          <label for="kit-ruler"><i>03</i>直尺</label>
+          <label for="kit-pencil"><i>04</i>铅笔</label>
+        </div>
+        <div class="kit-view" id="kit-view-scissors">
+          <figure class="kit-plate">
+            <img src="assets/paper-cutting/tools/study-scissors.webp" loading="lazy" width="1200" height="800" alt="尖头钢剪与刚剪开的红纸团花">
+            <figcaption><h3>尖头剪刀</h3><p>一手送纸，一手开合剪刀。</p></figcaption>
+          </figure>
+          <aside class="kit-notes" aria-label="尖头剪刀的细节">
+            <h3>细看尖头剪刀</h3>
+            <dl>
+              <div><dt><img src="assets/paper-cutting/tools/study-scissors-1.webp" alt="" width="88" height="88" loading="lazy">剪尖</dt><dd>探进折边的小月牙，剪出花瓣间的透孔。</dd></div>
+              <div><dt><img src="assets/paper-cutting/tools/study-scissors-2.webp" alt="" width="88" height="88" loading="lazy">剪口</dt><dd>让纸沿弧线转动，每次只向前剪一小段。</dd></div>
+            </dl>
+            <a class="kit-return" href="#step-4">看工序 · 循线剪花 <span aria-hidden="true">↗</span></a>
+          </aside>
+        </div>
+        <div class="kit-view" id="kit-view-paper">
+          <figure class="kit-plate">
+            <img src="assets/paper-cutting/tools/study-paper.webp" loading="lazy" width="1200" height="800" alt="叠放的红色方纸、掀起的纸角与浅色衬纸">
+            <figcaption><h3>薄红纸</h3><p>让一张薄纸，经得住三次对折。</p></figcaption>
+          </figure>
+          <aside class="kit-notes" aria-label="薄红纸的细节">
+            <h3>细看薄红纸</h3>
+            <dl>
+              <div><dt><img src="assets/paper-cutting/tools/study-paper-1.webp" alt="" width="88" height="88" loading="lazy">纸边</dt><dd>选薄而有韧性的纸，几层叠起也容易剪透。</dd></div>
+              <div><dt><img src="assets/paper-cutting/tools/study-paper-2.webp" alt="" width="88" height="88" loading="lazy">折痕</dt><dd>先让两角重合，再从中间向两端抹平。</dd></div>
+            </dl>
+            <a class="kit-return" href="#step-2">看工序 · 对角折纸 <span aria-hidden="true">↗</span></a>
+          </aside>
+        </div>
+        <div class="kit-view" id="kit-view-ruler">
+          <figure class="kit-plate">
+            <img src="assets/paper-cutting/tools/study-ruler.webp" loading="lazy" width="1200" height="800" alt="竹直尺沿着红纸边缘摆放">
+            <figcaption><h3>直尺</h3><p>先量准边长，再裁一张方纸。</p></figcaption>
+          </figure>
+          <aside class="kit-notes" aria-label="直尺的细节">
+            <h3>细看直尺</h3>
+            <dl>
+              <div><dt><img src="assets/paper-cutting/tools/study-ruler-1.webp" alt="" width="88" height="88" loading="lazy">刻度</dt><dd>从零刻线起量，在相邻两边取相同长度。</dd></div>
+              <div><dt><img src="assets/paper-cutting/tools/study-ruler-2.webp" alt="" width="88" height="88" loading="lazy">尺缘</dt><dd>把两个记号连成裁线，轻轻按住尺身，避免纸张滑动。</dd></div>
+            </dl>
+            <a class="kit-return" href="#step-1">看工序 · 备纸裁方 <span aria-hidden="true">↗</span></a>
+          </aside>
+        </div>
+        <div class="kit-view" id="kit-view-pencil">
+          <figure class="kit-plate">
+            <img src="assets/paper-cutting/tools/study-pencil.webp" loading="lazy" width="1200" height="800" alt="铅笔尖落在折纸上花瓣弧线的末端">
+            <figcaption><h3>铅笔</h3><p>在折好的纸面上，轻轻定下花形。</p></figcaption>
+          </figure>
+          <aside class="kit-notes" aria-label="铅笔的细节">
+            <h3>细看铅笔</h3>
+            <dl>
+              <div><dt><img src="assets/paper-cutting/tools/study-pencil-1.webp" alt="" width="88" height="88" loading="lazy">笔尖</dt><dd>用细笔尖轻描，剪的时候仍能看清纸边。</dd></div>
+              <div><dt><img src="assets/paper-cutting/tools/study-pencil-2.webp" alt="" width="88" height="88" loading="lazy">弧线</dt><dd>让月牙剪口与花瓣外缘隔开一小段，给纸桥留足宽度。</dd></div>
+            </dl>
+            <a class="kit-return" href="#step-3">看工序 · 描画纹样 <span aria-hidden="true">↗</span></a>
+          </aside>
+        </div>
+      </fieldset>
+    </section>
+    <section class="motifs" id="patterns" aria-labelledby="motifs-title">
+      <header class="motifs-head">
+        <h2 id="motifs-title">剪纹解意</h2>
+        <p>从花鸟到团花，读懂一张纸上的疏密与呼应。</p>
+        <label class="motif-search"><span aria-hidden="true"></span><input type="search" aria-label="搜索剪纸纹样" placeholder="搜索纹样"></label>
+      </header>
+      <div class="motifs-layout">
+        <div class="motifs-library">
+          <div class="motif-filters" role="group" aria-label="纹样分类">
+            <button type="button" data-intro="从一枝牡丹、一只飞燕，看剪口怎样组成花形，再看纹样怎样成双、成行。" aria-pressed="true">全部</button>
+            <button type="button" data-intro="看花瓣与枝叶。外缘定花形，瓣间的小剪口分出层次。" aria-pressed="false">花草</button>
+            <button type="button" data-intro="看鸟喙、羽翼和尾叉，剪影的轮廓交代了鸟的姿态。" aria-pressed="false">禽鸟</button>
+            <button type="button" data-intro="看围着花心重复的形状，沿折痕寻找彼此对应的剪口。" aria-pressed="false">团花</button>
+            <button type="button" data-intro="看两个以上的纹样怎样搭配，或相向呼应，或沿一条边连续排列。" aria-pressed="false">组合纹样</button>
+          </div>
+          <p class="motif-intro">从一枝牡丹、一只飞燕，看剪口怎样组成花形，再看纹样怎样成双、成行。</p>
+          <div class="motif-grid" role="group" aria-label="剪纸纹样图例">
+            <button class="motif-card" type="button" aria-pressed="true" aria-controls="motif-reading" data-type="花草" data-note="牡丹的枝叶托住花头。细看花瓣之间的锯齿形剪口，红纸层层断开，又在瓣根处相连。" data-words="花卉 植物 花瓣 花草 枝叶 富贵" data-unit="peony"><span class="motif-mat"><span class="motif-art motif-peony" aria-hidden="true"><img src="assets/paper-cutting/meanings/peony.png" loading="lazy" alt=""></span></span><strong>折枝牡丹</strong></button>
+            <button class="motif-card" type="button" aria-pressed="false" aria-controls="motif-reading" data-type="禽鸟" data-note="尾尖分作两叉，翅上的细孔顺着羽毛排开。只看外轮廓，也能认出燕子飞行的方向。" data-words="鸟 燕子 动物 飞鸟 羽毛 春燕" data-unit="swallow"><span class="motif-mat"><span class="motif-art motif-swallow" aria-hidden="true"><img src="assets/paper-cutting/meanings/swallow.png" loading="lazy" alt=""></span></span><strong>展翅飞燕</strong></button>
+            <button class="motif-card" type="button" aria-pressed="false" aria-controls="motif-reading" data-type="团花" data-note="从花心向外看，同一瓣绕着中心重复。折边上剪去的一弯月牙，展开后便成了一圈透孔。" data-words="窗花 花瓣 对称 圆形 几何 折叠" data-unit="rosette"><span class="motif-mat"><span class="motif-art motif-rosette" aria-hidden="true"><img src="assets/paper-cutting/meanings/rosette.png" loading="lazy" alt=""></span></span><strong>折剪团花</strong></button>
+            <button class="motif-card" type="button" aria-pressed="false" aria-controls="motif-reading" data-type="组合纹样" data-note="把一只燕子左右翻转，两只鸟便隔着中线相望。两张鸟喙之间的留白，也成了构图的一部分。" data-words="禽鸟 鸟 燕子 飞鸟 对称 双燕" data-unit="swallow"><span class="motif-mat"><span class="motif-art motif-pair" aria-hidden="true"><img src="assets/paper-cutting/meanings/swallow.png" loading="lazy" alt=""><img src="assets/paper-cutting/meanings/swallow.png" loading="lazy" alt=""></span></span><strong>双燕相向</strong></button>
+            <button class="motif-card" type="button" aria-pressed="false" aria-controls="motif-reading" data-type="组合纹样" data-note="燕子朝花头飞来，花枝向上承接。顺着鸟喙、花瓣和枝梢看，两个题材便有了呼应。" data-words="花草 花卉 牡丹 燕子 鸟 花枝" data-unit="peony"><span class="motif-mat"><span class="motif-art motif-garden" aria-hidden="true"><img src="assets/paper-cutting/meanings/peony.png" loading="lazy" alt=""><img src="assets/paper-cutting/meanings/swallow.png" loading="lazy" alt=""></span></span><strong>花鸟相映</strong></button>
+            <button class="motif-card" type="button" aria-pressed="false" aria-controls="motif-reading" data-type="组合纹样" data-note="沿着一条边反复排列小团花，花心之间保持相近的距离。剪连续花边时，相邻花瓣的交接处要留纸桥。" data-words="团花 连续 边饰 二方连续 几何 重复" data-unit="rosette"><span class="motif-mat"><span class="motif-art motif-border" aria-hidden="true"><img src="assets/paper-cutting/meanings/rosette.png" loading="lazy" alt=""><img src="assets/paper-cutting/meanings/rosette.png" loading="lazy" alt=""><img src="assets/paper-cutting/meanings/rosette.png" loading="lazy" alt=""></span></span><strong>连珠花边</strong></button>
+          </div>
+          <div class="motif-empty" hidden><p>没有找到匹配的纹样。</p><button type="button">查看全部纹样</button></div>
+        </div>
+        <aside id="motif-reading" class="motif-reading" aria-labelledby="motif-name">
+          <div class="motif-observe"><div><p class="motif-kicker">纹样观察 <span>／ 花草</span></p><h3 id="motif-name" tabindex="-1">折枝牡丹</h3><p class="motif-note">牡丹的枝叶托住花头。细看花瓣之间的锯齿形剪口，红纸层层断开，又在瓣根处相连。</p></div>
+            <div class="motif-lens"><span class="motif-art motif-peony" aria-hidden="true"><img src="assets/paper-cutting/meanings/peony.png" loading="lazy" alt=""></span></div>
+          </div>
+          <div class="motif-diagrams" aria-label="以基本纹样为例的三种排列">
+            <figure><div class="motif-seq seq-1"><img alt="" loading="lazy" src="assets/paper-cutting/meanings/peony.png"></div><figcaption>单元</figcaption></figure>
+            <figure><div class="motif-seq seq-2"><img alt="" loading="lazy" src="assets/paper-cutting/meanings/peony.png"><img alt="" loading="lazy" src="assets/paper-cutting/meanings/peony.png"></div><figcaption>镜像</figcaption></figure>
+            <figure><div class="motif-seq seq-3"><img alt="" loading="lazy" src="assets/paper-cutting/meanings/peony.png"><img alt="" loading="lazy" src="assets/paper-cutting/meanings/peony.png"><img alt="" loading="lazy" src="assets/paper-cutting/meanings/peony.png"></div><figcaption>连续</figcaption></figure>
+          </div>
+          <a class="motif-workshop" href="paper-cutting.html">去习艺坊选纹样 <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+      <span class="kit-sr motif-status" role="status"></span>
+    </section>
+    <section class="lineage" id="heritage" aria-labelledby="lineage-title">
+      <header class="lineage-rail">
+        <h2 id="lineage-title">匠心传承</h2><img src="assets/paper-cutting/meanings/peony.png" alt="" loading="lazy">
+      </header>
+      <figure class="lineage-film">
+        <div class="lineage-screen">
+          <a class="lineage-play" href="https://www.bilibili.com/video/BV14t4y1e73H/" target="_blank" rel="noopener" data-player="https://player.bilibili.com/player.html?bvid=BV14t4y1e73H&amp;page=1&amp;autoplay=1&amp;danmaku=0">
+            <span class="lineage-playlabel"><b aria-hidden="true">▶</b> 看团花剪制</span>
+          </a>
+        </div>
+        <figcaption><span>《八折团花简单的祥云纹窗花》 · 江小鱼剪纸</span><a href="https://www.bilibili.com/video/BV14t4y1e73H/" target="_blank" rel="noopener">在哔哩哔哩观看 ↗</a></figcaption>
+      </figure>
+      <aside class="lineage-people" aria-labelledby="lineage-people-title">
+        <h3 id="lineage-people-title">三台剪纸传承人图鉴</h3>
+        <article><h4>兰小奇</h4><p>在三台县七一小学教剪纸。她把川剧变脸剪进作品《川韵》，也把剪刀带进课堂，让学生从身边的题材起稿。</p><a href="https://caich.sca.edu.cn/p/40/?StId=st_app_news_i_x639232657904822951" target="_blank" rel="noopener">读《川韵》的创作介绍 ↗</a></article>
+        <article><h4>刘莺莺</h4><p>在七一小学校剪纸馆，她带研支团成员把校园、花朵与云彩画进底稿，再剪刻花纹，装裱成画。</p><a href="https://xibu.youth.cn/gzdt/gddt/202407/t20240719_15390450.htm" target="_blank" rel="noopener">看中国青年网课堂记录 ↗</a></article>
+      </aside>
+      <nav class="lineage-strip" aria-label="回看剪纸制作动作">
+        <a class="kit-return" href="#step-2"><img src="assets/paper-cutting/intro/craft-detail-02.webp" width="560" height="270" loading="lazy" alt=""><span>合纸压痕　↗</span></a>
+        <a class="kit-return" href="#step-4"><img src="assets/paper-cutting/intro/craft-detail-04.webp" width="560" height="270" loading="lazy" alt=""><span>转纸运剪　↗</span></a>
+        <a class="kit-return" href="#step-5"><img src="assets/paper-cutting/intro/craft-detail-05.webp" width="560" height="270" loading="lazy" alt=""><span>展开团花　↗</span></a>
+      </nav>
+    </section>
+  </main>
+  <div class="paper-ending-story">
+    <p class="meaning-footnote">同一朵团花，贴在窗上，夹进信里，各有一份心意</p>
+    <section class="paper-next" aria-labelledby="paper-next-title">
+      <h2 id="paper-next-title">剪好一朵花，把春意贴上窗</h2>
+      <p>从窗上的团花到信里的飞燕，看看三台剪纸怎样走进日常</p>
+      <a class="paper-craft-link" href="paper-cutting-life.html">走进寄意 · 入日常</a>
+      <a class="project-home-button paper-observe-link" href="paper-cutting-intro.html">返回观微阁首页</a>
+    </section>
+  </div>
+  <footer class="paper-end-footer">
+    <strong>三台剪纸 · 四城五艺的材料之境</strong>
+    <button type="button" id="end-credits" aria-haspopup="dialog" aria-controls="credits-dialog">项目与出处</button>
+  </footer>
+  <dialog id="credits-dialog" class="craft-credits" aria-labelledby="credits-title">
+    <h2 id="credits-title">项目与出处</h2>
+    <p>三台剪纸 · 四城五艺的材料之境</p>
+    <p>本章以八瓣团花演示折剪工序。<a href="#heritage">传承人图鉴</a>收录了剪制视频、《川韵》的创作介绍与三台县七一小学的课堂记录。</p>
+    <form method="dialog"><button>关闭</button></form>
+  </dialog>
+  <script>
+    const craftCredits = document.getElementById('credits-dialog');
+    document.getElementById('end-credits').addEventListener('click', () => craftCredits.showModal());
+    craftCredits.querySelector('a').addEventListener('click', () => craftCredits.close());
+  </script>
+  <script>
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add('cut-entered');
+          observer.unobserve(entry.target);
+        }
+      }, { threshold: .08 });
+
+      const targets = [
+        '.heading', '.stages', '.kit-head', '.kit-view', '.motifs-head',
+        '.motif-card', '.motif-reading', '.lineage-rail', '.lineage-people',
+        '.lineage-strip', '.paper-next'
+      ];
+      document.querySelectorAll(targets.join(', ')).forEach(element => observer.observe(element));
+    }
+  </script>
+
+  
+</body>
+</html>

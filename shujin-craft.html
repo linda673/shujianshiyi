@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>织华 · 识匠艺｜蜀锦</title>
+  <link rel="stylesheet" href="paper-cutting-craft.css">
+  <link rel="stylesheet" href="paper-meanings.css">
+  <link rel="stylesheet" href="paper-ending.css">
+  <style>
+    .paper-ending-story {
+      --paper: #f8f4eb; --ink: #39785c; --teal: #357f70; --rule: #a2c1b3; --gold: #ab8539;
+      --gutter: clamp(20px, 6vw, 100px); --content: min(1200px, calc(100% - 2 * var(--gutter)));
+      --heading-size: clamp(28px, 3vw, 46px); --copy-size: clamp(17px, 1.24vw, 20px);
+      max-width: none;
+      display: grid;
+      align-content: center;
+      min-height: calc(100vw / 3);
+      background: var(--paper) url("assets/paper-cutting/meanings/ending-landscape.webp") center bottom / 100% auto no-repeat;
+    }
+    .paper-ending-story::before { content: none; }
+    .paper-end-footer {--rule:#a2c1b3; border:0}
+    .paper-end-footer button,.craft-credits button {font:inherit; cursor:pointer}
+    .craft-credits {width:min(90%,460px); padding:28px; color:var(--ink); border:1px solid #a5b7a6; background:#faf7ef}
+    .craft-credits::backdrop {background:#273e3366}
+    .craft-credits p {margin:14px 0; line-height:1.75}
+    .craft-credits a {text-decoration:underline; text-underline-offset:3px}
+    .craft-credits button {background:#315e4d;color:#fff9eb;border:0;padding:8px 20px}
+  </style>
+  <style>
+    .phases { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .scene img { aspect-ratio: 1; object-fit: contain; }
+    @media (max-width: 620px) {
+      .phases { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    #kit-shuttle:checked ~ #kit-view-shuttle,
+    #kit-reed:checked ~ #kit-view-reed,
+    #kit-draft:checked ~ #kit-view-draft,
+    #kit-pattern-cords:checked ~ #kit-view-pattern-cords { display: grid; }
+    #kit-shuttle:checked ~ .kit-index label[for="kit-shuttle"],
+    #kit-reed:checked ~ .kit-index label[for="kit-reed"],
+    #kit-draft:checked ~ .kit-index label[for="kit-draft"],
+    #kit-pattern-cords:checked ~ .kit-index label[for="kit-pattern-cords"] {
+      background: #315e48; color: #fff8e9; border-color: #bbaa7e; border-radius: 4px 16px 4px 16px;
+    }
+    #kit-shuttle:checked ~ .kit-index label[for="kit-shuttle"] i,
+    #kit-reed:checked ~ .kit-index label[for="kit-reed"] i,
+    #kit-draft:checked ~ .kit-index label[for="kit-draft"] i,
+    #kit-pattern-cords:checked ~ .kit-index label[for="kit-pattern-cords"] i { color: #edce9d; }
+    #kit-shuttle:focus-visible ~ .kit-index label[for="kit-shuttle"],
+    #kit-reed:focus-visible ~ .kit-index label[for="kit-reed"],
+    #kit-draft:focus-visible ~ .kit-index label[for="kit-draft"],
+    #kit-pattern-cords:focus-visible ~ .kit-index label[for="kit-pattern-cords"] { outline: 3px solid #ae583e; outline-offset: 2px; }
+    #patterns .motif-art { inset: 0; }
+    #patterns .motif-art img { object-fit: cover; filter: none; }
+    #patterns .motif-lens img { object-position: center; }
+    #heritage .lineage-play {
+      background-image: linear-gradient(0deg, #30231838, transparent 70%), url('assets/shujin/history/2016.webp');
+      text-decoration: none;
+    }
+    #heritage .lineage-play:focus-visible { outline: 3px solid #ae583e; outline-offset: 4px; }
+    #heritage .lineage-image-note {
+      position: absolute; right: 12px; bottom: 10px;
+      padding: 3px 8px; background: #253d31b8; color: #fff8e9;
+      font-size: 13px; pointer-events: none;
+    }
+    #heritage [hidden] { display: none !important; }
+    #heritage video { position: absolute; inset: 0; width: 100%; height: 100%; background: #18271f; object-fit: contain; }
+    #heritage .lineage-video-start { border: 0; padding: 0; background: none; color: #536d57; font: inherit; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+    #heritage .lineage-video-status { margin: 0; color: #526b57; font-size: 14px; }
+    #heritage button:disabled { cursor: wait; }
+  </style>
+  <style>
+    @media screen and (prefers-reduced-motion: no-preference) {
+      :root { --weave-ease: cubic-bezier(.18,.76,.23,1); --weave-rise: 26px; }
+      @keyframes weave-rise {
+        from { opacity: .15; transform: translateY(var(--weave-rise)); }
+        to { opacity: 1; transform: none; }
+      }
+      @keyframes weave-unroll {
+        from { clip-path: inset(0 94% 0 0); transform: scale(.97); }
+        to { clip-path: inset(0); transform: none; }
+      }
+      @keyframes weave-turn {
+        from { opacity: .2; transform: perspective(800px) rotateY(-42deg) rotateZ(-3deg) scale(.93); }
+        to { opacity: 1; transform: none; }
+      }
+
+      .heading.brocade-entered .crumb, .heading.brocade-entered h1, .heading.brocade-entered > p,
+      .kit-head.brocade-entered, .motifs-head.brocade-entered, .lineage-rail.brocade-entered,
+      .lineage-people.brocade-entered, .paper-next.brocade-entered > * {
+        animation: weave-rise .74s var(--weave-ease) backwards;
+      }
+      .heading.brocade-entered h1, .paper-next.brocade-entered p { animation-delay: .10s; }
+      .heading.brocade-entered > p, .paper-next.brocade-entered .paper-craft-link { animation-delay: .20s; }
+      .paper-next.brocade-entered .paper-observe-link { animation-delay: .27s; }
+      .phases a { transition: color .16s, background-color .16s; }
+
+      .stages.brocade-entered .stage:not([hidden]) .scene img,
+      .kit-view.brocade-entered .kit-plate > img {
+        animation: weave-unroll .85s var(--weave-ease) backwards;
+      }
+      .stages.brocade-entered .stage:not([hidden]) .method,
+      .kit-view.brocade-entered .kit-plate figcaption {
+        animation: weave-rise .64s .10s var(--weave-ease) backwards;
+      }
+      .stages.brocade-entered .stage:not([hidden]) .detail,
+      .kit-view.brocade-entered .kit-notes {
+        animation: weave-rise .68s .20s var(--weave-ease) backwards;
+      }
+
+      .motif-card.brocade-entered .motif-mat, .motif-reading.brocade-entered .motif-lens .motif-art {
+        animation: weave-turn .76s var(--card-delay, 0s) var(--weave-ease) backwards;
+      }
+      .motif-card.brocade-entered strong {
+        animation: weave-rise .50s calc(var(--card-delay, 0s) + .12s) var(--weave-ease) backwards;
+      }
+      .lineage-strip.brocade-entered a { animation: weave-rise .58s var(--weave-ease) backwards; }
+      .lineage-strip.brocade-entered a:nth-child(2) { animation-delay: .10s; }
+      .lineage-strip.brocade-entered a:nth-child(3) { animation-delay: .20s; }
+      dialog[open] { --weave-rise: 12px; animation: weave-rise .26s var(--weave-ease); }
+
+      @media (min-width: 701px) {
+        .motif-card:nth-child(3n + 2) { --card-delay: .10s; }
+        .motif-card:nth-child(3n) { --card-delay: .20s; }
+      }
+      @supports (animation-timeline: view()) {
+        .paper-ending-story { view-timeline-name: --weave-ending; overflow: clip; background-image: none; }
+        .paper-ending-story::before {
+          content: ""; inset: -4% 0; height: auto; aspect-ratio: auto; mask-image: none;
+          background-size: 100% auto; pointer-events: none;
+          animation: weave-landscape auto linear both;
+          animation-timeline: --weave-ending;
+        }
+        @keyframes weave-landscape { from { transform: translateY(-2%); } to { transform: translateY(2%); } }
+      }
+      @media (max-width: 700px) {
+        :root { --weave-rise: 14px; }
+        .stages.brocade-entered .stage:not([hidden]) .detail { animation-delay: .12s; }
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="project-typeface.css?v=20261119-1">
+  
+
+  <link rel="stylesheet" href="project-home-button.css?v=20261123-top-left-1">
+  <link rel="stylesheet" href="project-home-toolbar.css?v=20261123-top-left-1">
+</head>
+<body class="project-has-home-toolbar">
+  <div class="project-home-toolbar"><a class="project-home-button project-home-return" href="index.html" aria-label="返回蜀间拾艺主页"><svg class="project-home-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5M5.5 9v11h5v-6h3v6h5V9"/></svg><span>返回主页</span></a></div>
+
+  <main>
+    <div class="heading">
+      <div>
+        <nav class="crumb" aria-label="当前位置"><a href="shujin-intro.html">蜀锦</a>　/　制作工序</nav>
+        <h1>织华<span>·</span>识匠艺</h1>
+      </div>
+      <p>从一张花稿，看一匹蜀锦怎样织成。</p>
+    </div>
+    <nav class="phases" aria-label="蜀锦织造的六道工序">
+      <a href="#step-1" aria-controls="step-1"><i>01</i><span>纹样设计</span></a>
+      <a href="#step-2" aria-controls="step-2"><i>02</i><span>点意匠</span></a>
+      <a href="#step-3" aria-controls="step-3"><i>03</i><span>挑花结本</span></a>
+      <a href="#step-4" aria-controls="step-4"><i>04</i><span>装机</span></a>
+      <a href="#step-5" aria-controls="step-5"><i>05</i><span>织造</span></a>
+      <a href="#step-6" aria-controls="step-6"><i>06</i><span>成锦</span></a>
+    </nav>
+    <div class="stages">
+      <article class="stage" id="step-1" aria-labelledby="title-1">
+        <section class="method">
+          <div class="chapter"><i>01</i><span>／ 06</span></div>
+          <h2 id="title-1">把牡丹画成花稿</h2>
+          <p class="tools">花样、画纸、毛笔</p>
+          <dl>
+            <dt>取形</dt><dd>先画出花头的朝向和大小，再添枝叶，留出花瓣之间的空隙。</dd>
+            <dt>排花</dt><dd>把同一朵花在纸上排开，看看枝叶怎样与下一朵衔接。</dd>
+          </dl>
+        </section>
+        <figure class="scene"><img src="assets/shujin/craft-step-01.webp" alt="匠人对照案上的牡丹勾画花稿"></figure>
+        <aside class="detail">
+          <h3>花瓣怎样分出前后？</h3>
+          <img src="assets/shujin/craft-detail-01.webp" alt="花稿上正在勾画的花瓣" width="560" height="270">
+          <p>顺着笔尖看花心。前一瓣的边缘遮住后一瓣，几笔弧线就定下了花形。</p>
+          <a class="action" href="#step-2">下一步 · 点意匠 <span aria-hidden="true">→</span></a>
+        </aside>
+      </article>
+      <article class="stage" id="step-2" aria-labelledby="title-2">
+        <section class="method">
+          <div class="chapter"><i>02</i><span>／ 06</span></div>
+          <h2 id="title-2">把花稿移进方格</h2>
+          <p class="tools">花稿、意匠纸、色笔</p>
+          <dl>
+            <dt>对格</dt><dd>把花形放到意匠纸上，沿着格子标出花心、花瓣和叶片的位置。</dd>
+            <dt>点色</dt><dd>按织物组织的要求填格，用不同颜色区分纹样和地部，供挑花时逐行辨读。</dd>
+          </dl>
+        </section>
+        <figure class="scene"><img src="assets/shujin/craft-step-02.webp" alt="匠人在意匠纸上点绘花纹"></figure>
+        <aside class="detail">
+          <h3>弧线怎样落进方格？</h3>
+          <img src="assets/shujin/craft-detail-02.webp" alt="笔尖与意匠纸上的彩色方格" width="560" height="270">
+          <p>花瓣边缘在格纸上成了细小的阶梯。退远一点看，相邻色格又连成了花瓣。</p>
+          <a class="action" href="#step-3">下一步 · 挑花结本 <span aria-hidden="true">→</span></a>
+        </aside>
+      </article>
+      <article class="stage" id="step-3" aria-labelledby="title-3">
+        <section class="method">
+          <div class="chapter"><i>03</i><span>／ 06</span></div>
+          <h2 id="title-3">把格上的花结成线本</h2>
+          <p class="tools">意匠图、挑花架、丝线</p>
+          <dl>
+            <dt>照图挑线</dt><dd>沿意匠图逐行读格，用挑花工具分出这一行纹样对应的线。</dd>
+            <dt>依次结本</dt><dd>用线把挑出的线组依次编结，保留每次提起哪组经线的次序，做成花本。</dd>
+          </dl>
+        </section>
+        <figure class="scene"><img src="assets/shujin/craft-step-03.webp" alt="匠人在木架前依照意匠图挑线结本"></figure>
+        <aside class="detail">
+          <h3>花本怎样记住花样？</h3>
+          <img src="assets/shujin/craft-detail-03.webp" alt="挑花架上的竖线与横向结线" width="560" height="270">
+          <p>看横线如何穿过一排竖线。每一行挑起的线组不同，把这些次序留下来，织造时便能按本提花。</p>
+          <a class="action" href="#step-4">下一步 · 装机 <span aria-hidden="true">→</span></a>
+        </aside>
+      </article>
+      <article class="stage" id="step-4" aria-labelledby="title-4">
+        <section class="method">
+          <div class="chapter"><i>04</i><span>／ 06</span></div>
+          <h2 id="title-4">把花本接上织机</h2>
+          <p class="tools">花本、经线、综、筘</p>
+          <dl>
+            <dt>理经穿引</dt><dd>将经线依次理顺，按织造要求穿综、过筘，使丝线在机上排齐。</dd>
+            <dt>接本试提</dt><dd>把花本与提花装置连接，试提一组，查看相应的经线能否顺畅升起。</dd>
+          </dl>
+        </section>
+        <figure class="scene"><img src="assets/shujin/craft-step-04.webp" alt="匠人在木织机前整理经线"></figure>
+        <aside class="detail">
+          <h3>为什么经线要排齐？</h3>
+          <img src="assets/shujin/craft-detail-04.webp" alt="手与织机上成排的经线" width="560" height="270">
+          <p>沿着匠人手边的一束经线往下看。经线各就各位，提起一组时，梭子才有清楚的通道。</p>
+          <a class="action" href="#step-5">下一步 · 织造 <span aria-hidden="true">→</span></a>
+        </aside>
+      </article>
+      <article class="stage" id="step-5" aria-labelledby="title-5">
+        <section class="method">
+          <div class="chapter"><i>05</i><span>／ 06</span></div>
+          <h2 id="title-5">一人提花，一人投梭</h2>
+          <p class="tools">花楼织机、梭子、彩纬</p>
+          <dl>
+            <dt>楼上拽花</dt><dd>拽花工按花本次序提动线组，让相应的经线抬起。</dd>
+            <dt>楼下织纬</dt><dd>织工趁经线分开送梭引纬，再用筘将纬线打紧。一提一织，花纹逐行显现。</dd>
+          </dl>
+        </section>
+        <figure class="scene"><img src="assets/shujin/craft-step-05.webp" alt="拽花工与织工在花楼织机上配合织锦"></figure>
+        <aside class="detail">
+          <h3>梭子从哪里穿过？</h3>
+          <img src="assets/shujin/craft-detail-05.webp" alt="下方织工手边的梭子与织口" width="560" height="270">
+          <p>看下方织工手边的梭子。它从上下两层经线之间穿过，把一根彩纬留在锦面里。</p>
+          <a class="action" href="#step-6">下一步 · 成锦 <span aria-hidden="true">→</span></a>
+        </aside>
+      </article>
+      <article class="stage" id="step-6" aria-labelledby="title-6">
+        <section class="method">
+          <div class="chapter"><i>06</i><span>／ 06</span></div>
+          <h2 id="title-6">展开锦面看花纹</h2>
+          <p class="tools">成幅蜀锦、展布案</p>
+          <dl>
+            <dt>展幅</dt><dd>将织好的锦轻轻展开，顺着布边铺平，让整组纹样在案上显出来。</dd>
+            <dt>看花验锦</dt><dd>沿一列花纹查看花瓣是否完整，再顺着布边检查纬线和边缘是否平整。</dd>
+          </dl>
+        </section>
+        <figure class="scene"><img src="assets/shujin/craft-step-06.webp" alt="匠人在木案上展开花纹蜀锦"></figure>
+        <aside class="detail">
+          <h3>一朵花怎样接着下一朵？</h3>
+          <img src="assets/shujin/craft-detail-06.webp" alt="展开的锦面与花纹边缘" width="560" height="270">
+          <p>从近处的花心看向布卷，依次找到同样的花与叶。相邻花纹的间距和方向，铺成了整匹锦的节奏。</p>
+          <a class="action" href="#tools">认识蜀锦工具 <span aria-hidden="true">→</span></a>
+        </aside>
+      </article>
+    </div>
+    <section class="kit" id="tools" aria-labelledby="kit-title">
+      <header class="kit-head"><h2 id="kit-title">蜀锦织作的器与具</h2><p>从意匠纸上的一格，到织机上的一梭。</p></header>
+      <fieldset class="kit-layout">
+        <legend class="kit-sr">选择要观察的蜀锦工具</legend>
+        <input class="kit-pick kit-sr" type="radio" id="kit-shuttle" name="weaving-tool" aria-controls="kit-view-shuttle" checked>
+        <input class="kit-pick kit-sr" type="radio" id="kit-reed" name="weaving-tool" aria-controls="kit-view-reed">
+        <input class="kit-pick kit-sr" type="radio" id="kit-draft" name="weaving-tool" aria-controls="kit-view-draft">
+        <input class="kit-pick kit-sr" type="radio" id="kit-pattern-cords" name="weaving-tool" aria-controls="kit-view-pattern-cords">
+        <div class="kit-index">
+          <label for="kit-shuttle"><i>01</i>木梭</label>
+          <label for="kit-reed"><i>02</i>织筘</label>
+          <label for="kit-draft"><i>03</i>意匠纸</label>
+          <label for="kit-pattern-cords"><i>04</i>花本</label>
+        </div>
+        <div class="kit-view" id="kit-view-shuttle">
+          <figure class="kit-plate">
+            <img src="assets/shujin/tools/shuttle.webp" width="768" height="512" alt="木梭躺在经线上，梭腔里装着缠有珊瑚色纬丝的纡管（工艺示意）" loading="lazy">
+            <figcaption><h3>木梭</h3><p>把纬丝从一侧经线送到另一侧。</p></figcaption>
+          </figure>
+          <aside class="kit-notes" aria-label="木梭的细节">
+            <h3>细看木梭</h3>
+            <dl>
+              <div><dt><img src="assets/shujin/tools/shuttle-1.webp" alt="" width="144" height="144" loading="lazy">梭腔</dt><dd>把绕好纬丝的纡管装进梭腔，引出线头。梭子向前走，管上的纬丝随之放出。</dd></div>
+              <div><dt><img src="assets/shujin/tools/shuttle-2.webp" alt="" width="144" height="144" loading="lazy">梭尖</dt><dd>经线提起，分成上下两层。让梭尖对准中间的梭口，横向送梭，再从另一侧接住。</dd></div>
+            </dl>
+            <a class="kit-return" href="#step-5">看工序 · 织造 <span aria-hidden="true">↗</span></a>
+          </aside>
+        </div>
+        <div class="kit-view" id="kit-view-reed">
+          <figure class="kit-plate">
+            <img src="assets/shujin/tools/reed.webp" width="768" height="512" alt="细密的筘齿排在木框内，浅色经丝穿过齿隙（工艺示意）" loading="lazy">
+            <figcaption><h3>织筘</h3><p>装机时分经，织造时打纬。</p></figcaption>
+          </figure>
+          <aside class="kit-notes" aria-label="织筘的细节">
+            <h3>细看织筘</h3>
+            <dl>
+              <div><dt><img src="assets/shujin/tools/reed-1.webp" alt="" width="144" height="144" loading="lazy">筘齿</dt><dd>装机时按穿筘次序，将经丝分束穿入齿隙。经丝沿布幅排开，织口的宽度也随之确定。</dd></div>
+              <div><dt><img src="assets/shujin/tools/reed-2.webp" alt="" width="144" height="144" loading="lazy">筘框</dt><dd>每送过一梭，织工就把装着筘的框架拉向织口，将新纬推紧，再退回原位。</dd></div>
+            </dl>
+            <a class="kit-return" href="#step-4">看工序 · 装机 <span aria-hidden="true">↗</span></a>
+          </aside>
+        </div>
+        <div class="kit-view" id="kit-view-draft">
+          <figure class="kit-plate">
+            <img src="assets/shujin/tools/draft.webp" width="768" height="512" alt="方格纸上用浅红和青绿色点出一朵牡丹，细笔靠在纸边（工艺示意）" loading="lazy">
+            <figcaption><h3>意匠纸</h3><p>用一格格色点，记下花纹的起落。</p></figcaption>
+          </figure>
+          <aside class="kit-notes" aria-label="意匠纸的细节">
+            <h3>细看意匠纸</h3>
+            <dl>
+              <div><dt><img src="assets/shujin/tools/draft-1.webp" alt="" width="144" height="144" loading="lazy">方格</dt><dd>把花稿的轮廓落到方格里。在格子上标出花与地的分界，花瓣的曲边就成了有次序的阶梯。</dd></div>
+              <div><dt><img src="assets/shujin/tools/draft-2.webp" alt="" width="144" height="144" loading="lazy">色点</dt><dd>沿一行格子读过去，辨认不同记号对应的组织变化。挑花时，匠人照着这些记号选线。</dd></div>
+            </dl>
+            <a class="kit-return" href="#step-2">看工序 · 点意匠 <span aria-hidden="true">↗</span></a>
+          </aside>
+        </div>
+        <div class="kit-view" id="kit-view-pattern-cords">
+          <figure class="kit-plate">
+            <img src="assets/shujin/tools/pattern-cords.webp" width="768" height="512" alt="成排的纵线由横向结线分组，展示花本如何记录花纹（工艺示意）" loading="lazy">
+            <figcaption><h3>花本</h3><p>用线的分组和次序记下一个花纹循环。</p></figcaption>
+          </figure>
+          <aside class="kit-notes" aria-label="花本的细节">
+            <h3>细看花本</h3>
+            <dl>
+              <div><dt><img src="assets/shujin/tools/pattern-cords-1.webp" alt="" width="144" height="144" loading="lazy">分组挑线</dt><dd>对照意匠图读出一行花纹，挑出相应的线，用横线把这次选择记录下来。</dd></div>
+              <div><dt><img src="assets/shujin/tools/pattern-cords-2.webp" alt="" width="144" height="144" loading="lazy">依次提花</dt><dd>装机接好花本后，拽花工逐次提动相应线组。经线随之分层，楼下的织工便可送入这一纬。</dd></div>
+            </dl>
+            <a class="kit-return" href="#step-3">看工序 · 挑花结本 <span aria-hidden="true">↗</span></a>
+          </aside>
+        </div>
+      </fieldset>
+    </section>
+    <section class="motifs" id="patterns" aria-labelledby="motifs-title">
+      <header class="motifs-head">
+        <h2 id="motifs-title">锦纹解意</h2>
+        <p>从一朵花到一匹锦，看经纬间的花形、对称与重复。</p>
+        <label class="motif-search"><span aria-hidden="true"></span><input type="search" aria-label="搜索蜀锦纹样" placeholder="搜索纹样"></label>
+      </header>
+      <div class="motifs-layout">
+        <div class="motifs-library">
+          <div class="motif-filters" role="group" aria-label="按纹样题材与构图筛选">
+            <button type="button" data-intro="先认出一朵花、一只蝶，再看珠圈、方格和色条怎样把花纹排成一幅锦。" aria-pressed="true">全部</button>
+            <button type="button" data-intro="从花心向外看，扶桑随枝舒展，团花围绕中心层层展开。" aria-pressed="false">花卉</button>
+            <button type="button" data-intro="顺着蝶翼和花枝的方向，看两个纹样如何隔着留白呼应。" aria-pressed="false">花蝶</button>
+            <button type="button" data-intro="沿珠圈找中线，对照两侧鸟首、翅膀和尾羽的位置。" aria-pressed="false">禽鸟</button>
+            <button type="button" data-intro="沿横竖格线找出一个方格，再看花朵与底色怎样轮换。" aria-pressed="false">几何</button>
+            <button type="button" data-intro="比较相邻色条的宽窄、明暗和间距，观察经向彩条的变化。" aria-pressed="false">条纹</button>
+          </div>
+          <p class="motif-intro">先认出一朵花、一只蝶，再看珠圈、方格和色条怎样把花纹排成一幅锦。</p>
+          <div class="motif-grid" role="group" aria-label="蜀锦纹样教学图例">
+            <button class="motif-card" type="button" aria-controls="motif-reading" aria-pressed="true" data-type="花卉" data-words="木槿 朱槿 花草 植物 花蕊 花瓣" data-note="五片花瓣从花心舒展开来，长长的花蕊斜伸向外。沿花瓣看，珊瑚红从瓣根的浓色过渡到边缘的浅色，把花头和米色锦地区分开。" data-workshop="hibiscus">
+              <span class="motif-mat"><span class="motif-art" aria-hidden="true"><img src="assets/shujin/motifs/hibiscus.webp" loading="lazy" alt=""></span></span><strong>扶桑花</strong>
+            </button>
+            <button class="motif-card" type="button" aria-controls="motif-reading" aria-pressed="false" data-type="花蝶" data-words="蝴蝶 花卉 花草 花枝 昆虫" data-note="先找蝶翅，再沿触须的方向看向右下方的花。两者之间留着一小片素地，蝶的动势和枝条的斜势在这里呼应。" data-workshop="butterfly">
+              <span class="motif-mat"><span class="motif-art" aria-hidden="true"><img src="assets/shujin/motifs/butterfly.webp" loading="lazy" alt=""></span></span><strong>蝶恋花</strong>
+            </button>
+            <button class="motif-card" type="button" aria-controls="motif-reading" aria-pressed="false" data-type="禽鸟" data-words="双鸟 联珠纹 对禽 团窠 对称 镜像" data-note="一圈珠点围出圆形纹区，两只鸟隔着中线相向。对照鸟喙、展开的翅和下垂的尾羽，可以看出同一组线条怎样左右呼应。" data-workshop="">
+              <span class="motif-mat"><span class="motif-art" aria-hidden="true"><img src="assets/shujin/motifs/birds.webp" loading="lazy" alt=""></span></span><strong>联珠对鸟</strong>
+            </button>
+            <button class="motif-card" type="button" aria-controls="motif-reading" aria-pressed="false" data-type="花卉" data-words="宝相花 团花 圆花 卷草 花草 放射 对称" data-note="从中央的小花向外看，花瓣、卷叶和瓣尖一层层展开。沿中心转过四分之一圈，相似的花叶又出现在下一个方向。" data-workshop="">
+              <span class="motif-mat"><span class="motif-art" aria-hidden="true"><img src="assets/shujin/motifs/rosette.webp" loading="lazy" alt=""></span></span><strong>宝相团花</strong>
+            </button>
+            <button class="motif-card" type="button" aria-controls="motif-reading" aria-pressed="false" data-type="几何" data-words="方格 格子 方胜 几何 锦种 连续" data-note="先看横竖两组金色细边，它们把锦面划成一排排方格。再看相邻两格，花形相似，底色深浅交替；沿着格线便能找到重复的节奏。" data-workshop="">
+              <span class="motif-mat"><span class="motif-art" aria-hidden="true"><img src="assets/shujin/motifs/squares.webp" loading="lazy" alt=""></span></span><strong>方方锦</strong>
+            </button>
+            <button class="motif-card" type="button" aria-controls="motif-reading" aria-pressed="false" data-type="条纹" data-words="经向 彩条 色晕 粗细 锦种 雨条" data-note="视线沿着经向移动，可以看到浅金与青绿色条并排延伸。条纹粗细、疏密的变化让色带时隐时现，像细雨在锦面上落下来。" data-workshop="">
+              <span class="motif-mat"><span class="motif-art" aria-hidden="true"><img src="assets/shujin/motifs/rain.webp" loading="lazy" alt=""></span></span><strong>雨丝锦</strong>
+            </button>
+          </div>
+          <div class="motif-empty" hidden><p>没有找到匹配的纹样。</p><button type="button">查看全部纹样</button></div>
+        </div>
+        <aside class="motif-reading" id="motif-reading" aria-labelledby="motif-name">
+          <div class="motif-observe">
+            <div><p class="motif-kicker">纹样观察 <span>／ 花卉</span></p><h3 id="motif-name" tabindex="-1">扶桑花</h3>
+              <p class="motif-note">五片花瓣从花心舒展开来，长长的花蕊斜伸向外。沿花瓣看，珊瑚红从瓣根的浓色过渡到边缘的浅色，把花头和米色锦地区分开。</p></div>
+            <div class="motif-lens"><span class="motif-art" aria-hidden="true"><img src="assets/shujin/motifs/hibiscus.webp" loading="lazy" alt=""></span></div>
+          </div>
+          <div class="motif-diagrams" aria-label="纹样排列示意">
+            <figure><div class="motif-seq seq-1"><img src="assets/shujin/motifs/hibiscus.webp" loading="lazy" alt=""></div><figcaption>单元</figcaption></figure>
+            <figure><div class="motif-seq seq-2"><img src="assets/shujin/motifs/hibiscus.webp" loading="lazy" alt=""><img src="assets/shujin/motifs/hibiscus.webp" loading="lazy" alt=""></div><figcaption>镜像</figcaption></figure>
+            <figure><div class="motif-seq seq-3"><img src="assets/shujin/motifs/hibiscus.webp" loading="lazy" alt=""><img src="assets/shujin/motifs/hibiscus.webp" loading="lazy" alt=""><img src="assets/shujin/motifs/hibiscus.webp" loading="lazy" alt=""></div><figcaption>连续</figcaption></figure>
+          </div>
+          <a class="motif-workshop" href="shujin.html?pattern=hibiscus"><span>用扶桑花配色</span><span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+      <span class="kit-sr motif-status" role="status"></span>
+    </section>
+    <section class="lineage" id="heritage" aria-labelledby="lineage-title">
+      <header class="lineage-rail">
+        <h2 id="lineage-title">匠心传承</h2>
+        <img src="assets/shujin/motifs/rosette.webp" loading="lazy" alt="">
+      </header>
+      <figure class="lineage-film">
+        <div class="lineage-screen">
+          <button class="lineage-play" type="button" aria-controls="heritage-video" aria-label="播放《农广天地》蜀锦专题">
+            <span class="lineage-playlabel"><b aria-hidden="true">▶</b>看蜀锦织造</span>
+          </button>
+          <video id="heritage-video" controls playsinline preload="none" hidden aria-label="《农广天地》蜀锦专题"></video>
+          <span class="lineage-image-note">织造场景示意</span>
+        </div>
+        <figcaption>
+          <span>央视《农广天地》· 蜀锦 · 2012-02-10</span>
+          <button class="lineage-video-start" type="button" aria-controls="heritage-video">播放视频 ▷</button>
+        </figcaption>
+        <p class="lineage-video-status" role="status" hidden></p>
+      </figure>
+      <aside class="lineage-people" aria-labelledby="lineage-people-title">
+        <h3 id="lineage-people-title">蜀锦传承人图鉴</h3>
+        <article>
+          <h4>叶永洲</h4>
+          <p>第一批国家级代表性传承人。十四岁入织锦作坊学艺，从挽花、投梭练起，后来与刘晨曦共同探索小梭挖花，让细密的花纹在经纬间成形。</p>
+          <a href="https://www.ihchina.cn/ccr_detail/2988.html" target="_blank" rel="noopener noreferrer">读中国非遗网人物档案 ↗</a>
+        </article>
+        <article>
+          <h4>贺斌</h4>
+          <p>第五批国家级代表性传承人。师从蜀锦老艺人学习织造，参与恢复传统手工技艺，并带徒传授，把灯笼锦、八答晕锦等花样和织法接续下来。</p>
+          <a href="https://www.ihchina.cn/ccr_detail/3309.html" target="_blank" rel="noopener noreferrer">读中国非遗网人物档案 ↗</a>
+        </article>
+      </aside>
+      <nav class="lineage-strip" aria-label="回看蜀锦制作工序">
+        <a class="kit-return" href="#step-3"><img src="assets/shujin/craft-detail-03.webp" loading="lazy" alt=""><span>挑花结本　↗</span></a>
+        <a class="kit-return" href="#step-5"><img src="assets/shujin/craft-detail-05.webp" loading="lazy" alt=""><span>拽花投梭　↗</span></a>
+        <a class="kit-return" href="#step-6"><img src="assets/shujin/craft-detail-06.webp" loading="lazy" alt=""><span>展锦看花　↗</span></a>
+      </nav>
+    </section>
+  </main>
+  <div class="paper-ending-story">
+    <p class="meaning-footnote">锦巾上的牡丹随衣领轻折，锦包上的菱格沿包边排开</p>
+    <section class="paper-next" aria-labelledby="paper-next-title">
+      <h2 id="paper-next-title">织成一匹锦，把花系在领间</h2>
+      <p>从肩头的锦巾到手边的锦包，看看成都蜀锦怎样走进日常</p>
+      <a class="paper-craft-link" href="shujin-life.html">走进续锦 · 入日常</a>
+      <a class="project-home-button paper-observe-link" href="shujin-intro.html">返回观微阁首页</a>
+    </section>
+  </div>
+  <footer class="paper-end-footer">
+    <strong>成都蜀锦 · 四城五艺的材料之境</strong>
+    <button type="button" id="end-credits" aria-haspopup="dialog" aria-controls="credits-dialog">项目与出处</button>
+  </footer>
+  <dialog id="credits-dialog" class="craft-credits" aria-labelledby="credits-title">
+    <h2 id="credits-title">项目与出处</h2>
+    <p>成都蜀锦 · 四城五艺的材料之境</p>
+    <p>本章从画稿讲到投梭显花。<a href="#heritage">传承人图鉴</a>收录了央视《农广天地》的蜀锦影像，以及叶永洲、贺斌的相关资料。</p>
+    <form method="dialog"><button>关闭</button></form>
+  </dialog>
+  <script>
+    const craftCredits = document.getElementById('credits-dialog');
+    document.getElementById('end-credits').addEventListener('click', () => craftCredits.showModal());
+    craftCredits.querySelector('a').addEventListener('click', () => craftCredits.close());
+  </script>
+  <script>
+    const steps = Array.from(document.querySelectorAll('.stage'));
+    const links = Array.from(document.querySelectorAll('.phases a'));
+
+    function showStep() {
+      const current = steps.find(step => '#' + step.id === location.hash) || (['#tools', '#patterns', '#heritage'].includes(location.hash) ? steps[steps.length - 1] : steps[0]);
+      for (const step of steps) step.hidden = step !== current;
+      for (const link of links) {
+        if (link.hash === '#' + current.id) link.setAttribute('aria-current', 'step');
+        else link.removeAttribute('aria-current');
+      }
+    }
+
+    document.addEventListener('click', event => {
+      const link = event.target.closest('a[href^="#step-"]');
+      if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      if (link.hash !== location.hash) history.pushState(null, '', link.hash);
+      showStep();
+      if (link.classList.contains('kit-return')) {
+        const active = document.querySelector('.phases [aria-current]');
+        active.focus({ preventScroll: true });
+        active.scrollIntoView({ block: 'start' });
+      }
+      if (link.classList.contains('action')) document.querySelector('.phases [aria-current]').focus();
+    });
+    window.addEventListener('popstate', showStep);
+    window.addEventListener('hashchange', showStep);
+    showStep();
+  </script>
+  <script>
+    (() => {
+      const video = document.getElementById('heritage-video');
+      const cover = document.querySelector('#heritage .lineage-play');
+      const startButton = document.querySelector('#heritage .lineage-video-start');
+      const imageNote = document.querySelector('#heritage .lineage-image-note');
+      const status = document.querySelector('#heritage .lineage-video-status');
+      const stream = 'https://newcntv.qcloudcdn.com/asp/hls/main/0303000a/3/default/d536fd504c224f1e9e653512f2030dac/main.m3u8?maxbr=2048';
+      let hls;
+      let library;
+
+      function showStatus(message) {
+        status.textContent = message;
+        status.hidden = !message;
+      }
+
+      function fail() {
+        if (hls) { hls.destroy(); hls = null; }
+        video.pause();
+        video.removeAttribute('src');
+        video.load();
+        video.hidden = true;
+        cover.hidden = false;
+        imageNote.hidden = false;
+        cover.disabled = false;
+        startButton.disabled = false;
+        startButton.textContent = '重新播放 ▷';
+        showStatus('视频暂时无法加载，请检查网络后点击重新播放。');
+      }
+
+      function loadLibrary() {
+        if (window.Hls) return Promise.resolve();
+        if (!library) {
+          library = new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/hls.js@1.6.13/dist/hls.min.js';
+            script.onload = resolve;
+            script.onerror = () => { script.remove(); library = null; reject(new Error('HLS library unavailable')); };
+            document.head.append(script);
+          });
+        }
+        return library;
+      }
+
+      function play() {
+        video.play().catch(error => {
+          if (error.name === 'NotAllowedError') showStatus('请点击播放器中的播放按钮。');
+          else if (error.name !== 'AbortError') fail();
+        });
+      }
+
+      async function start() {
+        if (!video.hidden) { play(); video.focus(); return; }
+        cover.disabled = true;
+        startButton.disabled = true;
+        showStatus('正在加载视频…');
+        try {
+          if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = stream;
+          } else {
+            await loadLibrary();
+            if (!window.Hls.isSupported()) throw new Error('HLS unsupported');
+            hls = new Hls();
+            hls.on(Hls.Events.MANIFEST_PARSED, play);
+            hls.on(Hls.Events.ERROR, (_event, data) => { if (data.fatal) fail(); });
+            hls.loadSource(stream);
+            hls.attachMedia(video);
+          }
+          video.hidden = false;
+          cover.hidden = true;
+          imageNote.hidden = true;
+          startButton.disabled = false;
+          startButton.textContent = '播放视频 ▷';
+          video.focus();
+          if (!hls) play();
+        } catch { fail(); }
+      }
+
+      cover.addEventListener('click', start);
+      startButton.addEventListener('click', start);
+      video.addEventListener('playing', () => showStatus(''));
+      video.addEventListener('error', fail);
+    })();
+  </script>
+  <script src="assets/shujin/motifs/gallery.js"></script>
+  <script>
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add('brocade-entered');
+          observer.unobserve(entry.target);
+        }
+      }, { threshold: .08 });
+
+      const targets = [
+        '.heading', '.stages', '.kit-head', '.kit-view', '.motifs-head',
+        '.motif-card', '.motif-reading', '.lineage-rail', '.lineage-people',
+        '.lineage-strip', '.paper-next'
+      ];
+      document.querySelectorAll(targets.join(', ')).forEach(element => observer.observe(element));
+    }
+  </script>
+
+  
+</body>
+</html>

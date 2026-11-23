@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>蜀间拾艺 · 四城五艺的材料之境</title><link rel="stylesheet" href="home.css?v=20261028-1"><script src="crafts-config.js?v=20261118-maliu-link" defer></script><script src="artwork-store.js?v=20261028-1" defer></script><script src="home.js?v=20261123-nianhua-image-2" defer></script><script src="nianhua-navigation.js?v=20261114-2" defer></script>
+  <link rel="stylesheet" href="project-typeface.css?v=20261119-1">
+  <link rel="stylesheet" href="project-brand.css?v=20261120-solid-2">
+  <link rel="stylesheet" href="home-redesign.css?v=20261123-background-ratio-1">
+  <link rel="stylesheet" href="home-opening.css?v=20261123-1">
+  <script src="home-opening.js?v=20261123-1" defer></script>
+  <link rel="stylesheet" href="home-motion.css?v=20261123-1">
+  <script src="home-motion.js?v=20261123-1" defer></script>
+</head>
+<body class="home-redesign">
+  <div id="home-opening" role="dialog" aria-modal="true" aria-labelledby="opening-title" aria-describedby="opening-description" hidden>
+    <div class="opening-grain" aria-hidden="true"></div>
+    <div class="opening-sun" aria-hidden="true"></div>
+    <svg class="opening-silk" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <path pathLength="1" d="M-80 660C220 820 300 140 720 160S1120 790 1520 320"/>
+      <path pathLength="1" d="M-80 678C240 838 320 162 720 181S1140 810 1520 339"/>
+      <path pathLength="1" d="M-80 696C260 856 340 184 720 202S1160 830 1520 358"/>
+      <path pathLength="1" d="M-80 714C280 874 360 206 720 223S1180 850 1520 377"/>
+      <path pathLength="1" d="M-80 732C300 892 380 228 720 244S1200 870 1520 396"/>
+    </svg>
+    <div class="opening-copy">
+      <p class="opening-eyebrow">四城五艺 · 材料之境</p>
+      <h2 class="opening-title" id="opening-title" aria-label="蜀间拾艺"><span aria-hidden="true">蜀</span><span aria-hidden="true">间</span><span aria-hidden="true">拾</span><span aria-hidden="true">艺</span></h2>
+      <p class="opening-subtitle" id="opening-description">从一门手艺，走进一方风物。</p>
+      <div class="opening-rule" aria-hidden="true"></div>
+    </div>
+    <p class="opening-footer">年画 · 蜀锦 · 剪纸 · 石刻 · 刺绣</p>
+    <button class="opening-skip" type="button">跳过动画 →</button>
+  </div>
+
+  <svg class="shared-brand-filter" width="0" height="0" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <defs><filter id="shared-brand-solid-ink" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -1 -1 -1 0 2.8" result="inkMask"/>
+      <feComposite in="inkMask" in2="SourceAlpha" operator="in" result="glyphMask"/>
+      <feFlood flood-color="#174e3c" flood-opacity="1" result="solidInk"/>
+      <feComposite in="solidInk" in2="glyphMask" operator="in"/>
+    </filter></defs>
+  </svg>
+
+  <a class="shared-site-brand" href="index.html" aria-label="蜀间拾艺，返回首页">
+    <span class="shared-brand-sun" aria-hidden="true"></span>
+    <img class="shared-brand-wordmark" src="assets/brand/shujian-wordmark.png" alt="蜀间拾艺" decoding="sync" fetchpriority="high">
+    <img class="shared-brand-cloud" src="assets/brand/shujian-cloud.png" alt="" aria-hidden="true">
+  </a>
+
+<header class="home-header"><a class="home-brand" href="index.html" aria-label="手艺体验首页" inert aria-hidden="true"><img alt="一版生春" hidden><span class="brand-text">手艺体验</span></a></header>
+<main class="home-main">
+  <section class="home-hero" aria-labelledby="home-title">
+    <div class="intro">
+      <p class="eyebrow">四城五艺 · 材料之境</p>
+      <h1 id="home-title">从一门手艺，<br>走进一方风物。</h1>
+      <p>选择一门手艺，开启你的体验。</p>
+      <a class="explore-button" href="#craft-grid">探索五艺 <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="home-hero-art illustration-crop" aria-hidden="true"><img src="assets/home/hero-five-crafts-transparent-v3.png" alt="" fetchpriority="high"></div>
+  </section>
+  <p id="save-notice" class="save-notice" role="status" hidden></p>
+  <div class="craft-heading"><h2 id="craft-heading">五艺体验</h2><span aria-hidden="true"></span><p>选择一门手艺，开始探索</p></div>
+  <section id="craft-grid" class="craft-grid" aria-labelledby="craft-heading"></section>
+  <section id="latest-work" class="latest-work" aria-labelledby="latest-title" hidden><img id="latest-image" alt="最近完成的作品"><div><p class="eyebrow">我的作品</p><h2 id="latest-title"></h2><p id="latest-description"></p><div class="work-actions"><a id="latest-download" class="primary" download>下载作品 PNG</a><a id="latest-edit" class="secondary">继续配色</a></div></div></section>
+  <noscript><p>体验页面需要启用 JavaScript。</p><a href="nianhua-intro.html">绵竹木版年画</a> · <a href="shujin.html">成都蜀锦</a> · <a href="paper-cutting.html">三台剪纸</a> · <a href="stone-carving.html">白花石刻</a> · <a href="embroidery-intro.html#daily-life">麻柳刺绣</a></noscript>
+</main>
+<footer class="home-footer"><span>四城五艺的材料之境</span><span>蜀间拾艺</span></footer>
+</body></html>

@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>续锦 · 入日常｜成都蜀锦</title>
+<link rel="stylesheet" href="paper-cutting-origin.css">
+<link rel="stylesheet" href="paper-meanings.css">
+<link rel="stylesheet" href="paper-ending.css">
+<style>
+body {background:#faf7ef url("assets/shujin/origin/page-background.png") center top / 100% auto;color:#284e40}
+.life {width:min(92%,1440px);margin:auto}
+.life-nav {display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 0}
+.life-nav {border-bottom:1px solid #a8bca9}
+.life-nav div {display:flex;gap:clamp(14px,3vw,42px);align-items:center}
+.life a:hover {text-decoration:underline;text-underline-offset:5px}
+.life-hero {position:relative;margin-top:22px;background:#f7ead5}
+.life-hero img {width:100%;height:auto}
+.hero-copy {position:absolute;inset:0 auto 0 0;width:40%;padding:4%;display:flex;justify-content:center;align-items:flex-start;flex-direction:column;background:linear-gradient(90deg,#faf5e7aa,transparent)}
+.hero-copy h1 {font-size:clamp(37px,4.3vw,77px);font-weight:500;white-space:nowrap;line-height:1.25}
+.hero-copy h1 span {color:#b7644e;padding:0 .08em}
+.hero-copy p {margin:20px 0 25px;max-width:17em;line-height:1.85;font-size:clamp(16px,1.35vw,22px)}
+.hero-copy a {padding:6px 0;border-bottom:1px solid #72947d}
+.life-block {margin:clamp(36px,5vw,78px) 0}
+.life h2 {font-size:clamp(28px,3vw,48px);font-weight:500;letter-spacing:.04em}
+.life-title {display:flex;align-items:center;gap:24px;margin-bottom:24px}
+.life-title::after {content:"";height:1px;background:#adbcaa;flex:1}
+.flower-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,3vw,44px)}
+.flower-grid figure {aspect-ratio:1.88;overflow:hidden;background:#f1ecdc;position:relative;display:grid;place-items:center;border:1px solid #cbceba}
+.flower-grid figure::before {content:"";position:absolute;inset:7px;border:1px solid #bfc8b0}
+.flower-grid img {position:absolute;inset:5% 0;margin:auto;width:auto;height:90%;max-width:96%;object-fit:contain;mix-blend-mode:multiply;mask-image:linear-gradient(to right,transparent,#000 4%,#000 96%,transparent)}
+.flower-grid article:nth-child(2) figure {background:#e8ecdf}
+.flower-grid article:nth-child(3) figure {background:#f4e7d9}
+.life h3 {margin:15px 0 7px;font-weight:500;font-size:clamp(22px,1.7vw,30px)}
+.life-block p {font-size:clamp(16px,1.12vw,19px);line-height:1.9;color:#485f51}
+.local-story {display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,76px);align-items:center;border-top:1px solid #b2c1ae;padding-top:clamp(25px,3vw,48px)}
+.local-story img {width:100%;height:auto}
+.local-story figcaption {padding-top:8px;color:#5c7266;font-size:14px}
+.local-text article {padding:4px 0 12px}
+.local-text article+article {border-top:1px solid #c4cebf}
+.local-text a {display:inline-block;margin-top:6px;text-decoration:underline;text-underline-offset:4px;font-size:14px}
+@media(max-width:760px){
+.life-hero {display:flex;flex-direction:column-reverse}
+.hero-copy {position:static;width:auto;padding:20px;background:#faf3e5}.hero-copy p {max-width:100%;margin:8px 0}
+.life-nav div {flex-wrap:wrap}
+.flower-grid,.local-story {grid-template-columns:1fr}.flower-grid {gap:24px}.flower-grid figure {aspect-ratio:2.4}.local-text {grid-row:1}.life-nav {font-size:14px}
+}
+.paper-ending-story {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221672%22%20height%3D%22941%22%20viewBox%3D%220%200%201672%20941%22%3E%3Cdefs%3E%3CradialGradient%20id%3D%22paper%22%3E%3Cstop%20offset%3D%22.86%22%20stop-color%3D%22%23f9f4ec%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f9f4ec%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Cellipse%20cx%3D%221040%22%20cy%3D%22357%22%20rx%3D%22288%22%20ry%3D%22279%22%20fill%3D%22url%28%23paper%29%22%2F%3E%3C%2Fsvg%3E"), url("assets/paper-cutting/origin/page-background.png");
+}
+.paper-ending-story {display:flow-root}
+.life-motif-link {display:inline-block;margin-top:16px;text-decoration:underline;text-underline-offset:4px}
+#credits-dialog a {text-decoration:underline;text-underline-offset:3px}
+@media screen and (prefers-reduced-motion: no-preference) {
+  :root {
+    --life-ease: cubic-bezier(.16,.8,.22,1);
+    --life-rise: 42px;
+    --object-turn: -38deg;
+  }
+  @keyframes life-rise {
+    from { opacity:0; transform:translateY(var(--life-rise)); }
+    to { opacity:1; transform:none; }
+  }
+  @keyframes life-open {
+    from { clip-path:inset(5% 47% 5% 47%); }
+    to { clip-path:inset(0); }
+  }
+  @keyframes life-turn {
+    from { opacity:0; transform:perspective(900px) translateY(22%) rotateY(var(--object-turn)) scale(.78); }
+    72% { opacity:1; transform:perspective(900px) translateY(-2%) rotateY(3deg) scale(1.035); }
+    to { opacity:1; transform:none; }
+  }
+  @keyframes life-rule { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+  @keyframes side-light {
+    from { opacity:0; transform:translateX(-100%); }
+    28%,65% { opacity:1; }
+    to { opacity:0; transform:translateX(100%); }
+  }
+  @keyframes brocade-frame {
+    from { opacity:0; clip-path:inset(0 80% 70% 0); }
+    to { opacity:1; clip-path:inset(0); }
+  }
+
+  .life-nav { position:relative; border-bottom-color:transparent; }
+  .life-nav::after {
+    content:""; position:absolute; inset:auto 0 -1px; height:1px; background:#a8bca9;
+    transform-origin:left; animation:life-rule 1s var(--life-ease);
+  }
+  .life-hero-frame, .screen-image { overflow:hidden; position:relative; }
+  .life-hero.life-entered .life-hero-frame, .local-story figure.life-entered .screen-image {
+    animation:life-open 1.25s var(--life-ease) backwards;
+  }
+  .hero-copy.life-entered > *, .life-title.life-entered h2,
+  .local-text .life-entered, .paper-next.life-entered > * {
+    animation:life-rise .86s var(--life-ease) backwards;
+  }
+  .hero-copy.life-entered h1 { animation-delay:.16s; }
+  .hero-copy.life-entered p, .paper-next.life-entered p { animation-delay:.34s; }
+  .hero-copy.life-entered a, .paper-next.life-entered .paper-craft-link { animation-delay:.54s; }
+  .paper-next.life-entered .paper-observe-link { animation-delay:.68s; }
+  .life-title.life-entered::after { transform-origin:left; animation:life-rule 1s .1s var(--life-ease) backwards; }
+
+  .flower-grid article.life-entered figure::before {
+    animation:brocade-frame .75s var(--object-delay,0s) var(--life-ease) backwards;
+  }
+  .flower-grid article.life-entered figure img {
+    animation:life-turn 1.10s calc(var(--object-delay,0s) + .12s) var(--life-ease) backwards;
+  }
+  .flower-grid article.life-entered h3, .flower-grid article.life-entered p {
+    --life-rise:24px;
+    animation:life-rise .70s calc(var(--object-delay,0s) + .36s) var(--life-ease) backwards;
+  }
+  .flower-grid article.life-entered p { animation-delay:calc(var(--object-delay,0s) + .50s); }
+  .screen-image::after {
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:0;
+    background:linear-gradient(115deg,transparent 32%,rgba(255,238,191,.34) 50%,transparent 68%);
+  }
+  .local-story figure.life-entered .screen-image::after { animation:side-light 1.3s .38s ease-in-out; }
+  .local-story figure.life-entered figcaption { --life-rise:16px; animation:life-rise .6s .36s var(--life-ease) backwards; }
+
+  @media (min-width:761px) {
+    .flower-grid article:nth-child(2) { --object-delay:.24s; --object-turn:30deg; }
+    .flower-grid article:nth-child(3) { --object-delay:.48s; }
+    @supports (animation-timeline:view()) {
+      .life-hero { view-timeline-name:--courtyard-scene; }
+      .life-hero-frame img {
+        animation:life-courtyard-depth auto linear both;
+        animation-timeline:--courtyard-scene;
+      }
+      @keyframes life-courtyard-depth {
+        from { transform:translateY(-7%) scale(1.16); }
+        to { transform:translateY(7%) scale(1.16); }
+      }
+      .paper-ending-story { overflow:clip; view-timeline-name:--mountain-scene; }
+      .paper-ending-story::before {
+        transform-origin:center bottom;
+        animation:life-mountains auto linear both;
+        animation-timeline:--mountain-scene;
+      }
+      @keyframes life-mountains {
+        from { transform:translateY(8%) scale(1.10); }
+        to { transform:translateY(0) scale(1); }
+      }
+    }
+  }
+  @media (hover:hover) and (pointer:fine) {
+    .flower-grid figure {
+      transition:transform .38s var(--life-ease),box-shadow .38s;
+    }
+    .flower-grid figure:hover {
+      transform:perspective(900px) translateY(-5px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));
+      box-shadow:0 12px 24px -12px #2b473e70;
+    }
+  }
+  @media (max-width:760px) {
+    :root { --life-rise:20px; --object-turn:-18deg; }
+    .hero-copy.life-entered a { animation-delay:.32s; }
+    .flower-grid article.life-entered h3 { animation-delay:.18s; }
+    .flower-grid article.life-entered p { animation-delay:.28s; }
+  }
+}
+</style>  <link rel="stylesheet" href="project-typeface.css?v=20261119-1">
+  
+
+  <link rel="stylesheet" href="project-home-button.css?v=20261123-top-left-1">
+  <link rel="stylesheet" href="project-home-toolbar.css?v=20261123-top-left-1">
+</head>
+<body class="project-has-home-toolbar">
+  <div class="project-home-toolbar"><a class="project-home-button project-home-return" href="index.html" aria-label="返回蜀间拾艺主页"><svg class="project-home-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5M5.5 9v11h5v-6h3v6h5V9"/></svg><span>返回主页</span></a></div>
+
+<div class="life">
+  <nav class="life-nav" aria-label="章节导航">
+    <a href="shujin-intro.html">← 成都蜀锦</a>
+    <div><a href="shujin-origin.html">溯锦 · 知来处</a><a href="shujin-craft.html#step-1">织华 · 识匠艺</a></div>
+  </nav>
+  <main>
+    <header class="life-hero">
+      <div class="life-hero-frame"><img src="assets/shujin/life/courtyard.webp" width="2042" height="770" fetchpriority="high" alt="成都小院里，女子挽着菱纹锦包推门出行，木椅上倚着花锦靠枕"></div>
+      <div class="hero-copy"><h1>续锦<span>·</span>入日常</h1>
+        <p>出门时，挽起一只菱纹锦包；回家时，靠一靠窗边的花锦软枕。织机上连成一片的花纹，就这样有了各自的去处。</p>
+        <a href="#pieces">看看三件日用锦物 ↓</a>
+      </div>
+    </header>
+    <section class="life-block" id="pieces" aria-labelledby="pieces-title">
+      <div class="life-title"><h2 id="pieces-title">一幅锦，三种日常</h2></div>
+      <div class="flower-grid">
+        <article><figure><img src="assets/shujin/life/peony-scarf.webp" width="724" height="724" loading="lazy" alt="米色锦巾轻轻折起，珊瑚色牡丹和绿叶沿巾面延伸"></figure>
+          <h3>领间的牡丹</h3><p>把锦巾松松绕过衣领，让一朵牡丹落在结外。铺平时，花枝顺着巾面相连；系起来，一小段枝叶藏进褶里，花头便衬着素衣露了出来。</p></article>
+        <article><figure><img src="assets/shujin/life/diamond-bag.webp" width="724" height="724" loading="lazy" alt="青绿色短柄锦包，包腹横排浅金色菱格，中央点缀小花"></figure>
+          <h3>腕上的菱格</h3><p>把钥匙和零钱收进包里，扣上搭扣。包身下沿的一列菱格正好横过掌宽，每格里藏着一朵小花。提起来看，方整的纹带衬出了包角的圆。</p></article>
+        <article><figure><img src="assets/shujin/life/floral-cushion.webp" width="724" height="724" loading="lazy" alt="豆绿色方形靠枕，圆形花纹内上下呼应着两朵牡丹"></figure>
+          <h3>椅背上的团花</h3><p>把靠枕放上木椅，轻拍四角，花叶围成的圆就舒展开来。圆纹居中，枕面四角留出一圈青绿；人坐下再起身，光顺着丝线移到了另一侧。</p></article>
+      </div>
+      <a class="life-motif-link" href="shujin-craft.html#patterns">细看蜀锦纹样 →</a>
+    </section>
+    <section class="life-block local-story" aria-labelledby="chengdu-title">
+      <figure><div class="screen-image"><img src="assets/shujin/history/2006.webp" alt="红绿花锦与木梭并置，成片的织纹在丝面上延续" loading="lazy"></div><figcaption>木梭与花锦 · 织物细部示意</figcaption></figure>
+      <div class="local-text"><h2 id="chengdu-title">把成都织进随身物件</h2>
+        <article><h3>一条绶带里的芙蓉</h3><p>2023 年成都大运会上，运动员胸前的奖牌系着蜀锦绶带。成都的市花芙蓉与太阳神鸟纹一起织进红蓝相间的窄带，一座城的标记也随着奖牌被带走。</p><a href="https://www.moe.gov.cn/jyb_xwfb/xw_zt/moe_357/2023/2023_zt12/mtbd/202307/t20230731_1071613.html">读成都大运会蜀锦绶带的故事 ↗</a></article>
+        <article><h3>翻开随身镜，也能遇见锦</h3><p>同一届大运会，成都古蜀蜀锦研究所还推出了花树对鹿纹丝巾、双面渔夫帽和随身镜。想细看一对鹿，可以铺开丝巾；出门前拿起一面小镜子，手心也容得下一方锦。</p><a href="https://sichuan.scol.com.cn/ggxw/202307/58929564.html">看四川在线的研究所现场报道 ↗</a></article>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="paper-ending-story">
+  <p class="meaning-footnote">一枝花绕过衣领，一排菱格落在手袋上</p>
+  <section class="paper-next" aria-labelledby="paper-next-title">
+    <h2 id="paper-next-title">为随身的锦包，配一幅花色</h2>
+    <p>去习艺坊选一朵扶桑，试试花瓣与锦地的丝线配色</p>
+    <a class="paper-craft-link" href="shujin.html?pattern=hibiscus">走进蜀锦习艺坊</a>
+    <a class="project-home-button paper-observe-link" href="shujin-intro.html">返回观微阁首页</a>
+  </section>
+</div>
+<footer class="paper-end-footer">
+  <strong>成都蜀锦 · 四城五艺的材料之境</strong>
+  <button id="end-credits" type="button" aria-haspopup="dialog" aria-controls="credits-dialog">项目与出处</button>
+</footer>
+<dialog id="credits-dialog" aria-labelledby="credits-title">
+  <form method="dialog"><button class="close" aria-label="关闭项目与出处">×</button></form>
+  <h2 id="credits-title">项目与出处</h2>
+  <p>成都蜀锦 · 续锦入日常</p>
+  <p>奖牌绶带的纹饰见<a href="https://www.moe.gov.cn/jyb_xwfb/xw_zt/moe_357/2023/2023_zt12/mtbd/202307/t20230731_1071613.html">《大运会奖牌绶带：千年蜀锦绽“蓉光”》</a>。丝巾、渔夫帽与随身镜的设计见<a href="https://sichuan.scol.com.cn/ggxw/202307/58929564.html">四川在线的蜀锦文创报道</a>。</p>
+</dialog>
+<script>
+  document.getElementById('end-credits').addEventListener('click', () => {
+    document.getElementById('credits-dialog').showModal();
+  });
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add('life-entered');
+        observer.unobserve(entry.target);
+      }
+    }, { threshold: .12 });
+    const targets = [
+      '.life-hero', '.hero-copy', '.life-title', '.flower-grid article',
+      '.local-story figure', '.local-text > *', '.paper-next'
+    ];
+    document.querySelectorAll(targets.join(', ')).forEach(element => observer.observe(element));
+  }
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+  document.querySelectorAll('.flower-grid figure').forEach(figure => {
+    figure.addEventListener('pointermove', event => {
+      if (!finePointer.matches || event.pointerType === 'touch') return;
+      const bounds = figure.getBoundingClientRect();
+      const x = Math.max(-1, Math.min(1, 2 * (event.clientX - bounds.left) / bounds.width - 1));
+      const y = Math.max(-1, Math.min(1, 2 * (event.clientY - bounds.top) / bounds.height - 1));
+      figure.style.setProperty('--tilt-x', (-5 * y).toFixed(2) + 'deg');
+      figure.style.setProperty('--tilt-y', (7 * x).toFixed(2) + 'deg');
+    });
+    figure.addEventListener('pointerleave', () => {
+      figure.style.removeProperty('--tilt-x');
+      figure.style.removeProperty('--tilt-y');
+    });
+  });
+</script>
+
+  
+</body></html>

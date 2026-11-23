@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>绣寄心意 · 麻柳刺绣寄情居</title>
+  <meta name="description" content="选一件绣物，把祝福藏进针线，制作属于你的麻柳刺绣心意卡。">
+  <link rel="stylesheet" href="embroidery-gift.css?v=c653331d50d2">
+  <script src="assets/maliu-pages/embroidery-gift-art.js" defer></script>
+  <script src="embroidery-gift.js" defer></script>
+  <link rel="stylesheet" href="project-typeface.css?v=20261119-1">
+  <link rel="stylesheet" href="project-navigation.css?v=20261119-2">
+  <link rel="stylesheet" href="embroidery-navigation-state.css?v=20261123-1">
+
+  <link rel="stylesheet" href="project-home-button.css?v=20261123-top-left-1">
+  <link rel="stylesheet" href="project-home-toolbar.css?v=20261123-top-left-1">
+</head>
+<body class="project-has-home-toolbar">
+  <div class="project-home-toolbar"><a class="project-home-button project-home-return" href="index.html" aria-label="返回蜀间拾艺主页"><svg class="project-home-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5M5.5 9v11h5v-6h3v6h5V9"/></svg><span>返回主页</span></a></div>
+
+  <nav class="shared-craft-nav embroidery-section-nav embroidery-gift-nav" aria-label="主导航">
+    <a href="embroidery-intro.html"><img class="craft-nav-icon" alt="" src="assets/icons/observe.png"><span class="craft-nav-label">观微阁</span></a>
+    <a href="embroidery.html"><img class="craft-nav-icon" alt="" src="assets/icons/workshop.png"><span class="craft-nav-label">习艺坊</span></a>
+    <a href="embroidery-gift.html" aria-current="page"><img class="craft-nav-icon" alt="" src="assets/icons/letters.png"><span class="craft-nav-label">寄情居</span></a>
+  </nav>
+
+  <img class="page-background" src="assets/maliu-pages/embroidery/gift/page-background.png?v=c653331d50d2" width="6688" height="3764" alt="" aria-hidden="true" decoding="sync" fetchpriority="high">
+  <main>
+    <nav class="page-nav" aria-label="页面导航"><a href="embroidery-intro.html#daily-life">← 返回麻柳刺绣</a><span>麻柳刺绣 / 寄情居</span></nav>
+    <header class="intro"><h1>绣寄心意</h1><p>选一件绣物，把心里那句话藏进针线里。</p></header>
+    <div class="layout">
+      <section class="stage" aria-label="绣礼预览">
+        <div class="stage-heading"><span id="gift-caption">随身绣囊</span><span>一针一线 · 一份心意</span></div>
+        <div class="gift-scene" id="gift-scene">
+          <div class="cloth-mat" aria-hidden="true"></div>
+          <img id="gift-image" class="gift-image" alt="米白绣囊，青绿系绳与珊瑚色流苏">
+          <div class="gift-tag"><span>寄给</span><strong id="tag-recipient">心上之人</strong></div>
+          <div class="gift-band" aria-hidden="true"><span>绣</span></div>
+        </div>
+        <p class="hint" id="hint" role="status">选一件喜欢的绣物，写下想说的话。</p>
+      </section>
+      <section class="desk" aria-labelledby="desk-title">
+        <p class="step" id="step">择物寄意 · 麻柳刺绣</p>
+        <h2 id="desk-title">把这份心意，寄给谁？</h2>
+        <div class="options" role="group" aria-label="选择绣礼">
+          <button class="tile" type="button" data-gift="pouch" aria-pressed="true"><img alt=""><span>随身绣囊</span></button>
+          <button class="tile" type="button" data-gift="cloth" aria-pressed="false"><img alt=""><span>一方绣帕</span></button>
+          <button class="tile" type="button" data-gift="hoop" aria-pressed="false"><img alt=""><span>案头绣框</span></button>
+        </div>
+        <p class="gift-meaning" id="gift-meaning">把牵挂系在身边，愿你所行皆安。</p>
+        <div id="message-fields">
+          <label for="recipient">寄给</label><input id="recipient" maxlength="12" placeholder="家人、好友，或自己" autocomplete="off">
+          <label for="message">藏进针线里的话</label><textarea id="message" maxlength="60" rows="3">愿你一程有暖，一岁无忧。</textarea>
+          <div class="field-foot"><span>让绣物带去一份祝福</span><span id="count">14 / 60</span></div>
+        </div>
+        <p class="sealed-note" id="sealed-note" hidden>绣礼已封好，祝福藏在其中。<br>轻轻拆开，读一读这份心意。</p>
+        <button class="primary action" id="action" type="button" disabled>正在准备绣礼…</button>
+        <button class="edit-link" id="edit" type="button" hidden>返回修改</button>
+        <p id="error" class="error" role="alert" hidden></p>
+      </section>
+    </div>
+  </main>
+  <footer><span>四城五艺的材料之境 · 麻柳刺绣</span><a href="embroidery-origin.html">溯绣 · 知来处 ↗</a></footer>
+  <dialog class="receipt" aria-labelledby="receipt-title">
+    <h2 id="receipt-title" class="sr-only">你的刺绣心意卡</h2>
+    <canvas id="gift-card" width="1440" height="1000" role="img" aria-label="刺绣心意卡"></canvas>
+    <p id="card-description" class="sr-only"></p>
+    <div class="buttons"><button class="quiet" id="back" type="button">返回修改</button><button class="primary" id="save" type="button">保存心意卡 PNG</button></div>
+    <p class="download-status" id="download-status" role="status"></p>
+  </dialog>
+</body>
+</html>

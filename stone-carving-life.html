@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>寄石 · 入日常｜白花石刻</title>
+<link rel="stylesheet" href="paper-cutting-origin.css">
+<link rel="stylesheet" href="paper-meanings.css">
+<link rel="stylesheet" href="paper-ending.css">
+<style>
+body {background:#faf7ef url("assets/stone-carving/origin/page-background.png") center top / 100% auto;color:#284e40}
+.life {width:min(92%,1440px);margin:auto}
+.life-nav {display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 0}
+.life-nav {border-bottom:1px solid #a8bca9}
+.life-nav div {display:flex;gap:clamp(14px,3vw,42px);align-items:center}
+.life a:hover {text-decoration:underline;text-underline-offset:5px}
+.life-hero {position:relative;margin-top:22px;background:#f7ead5}
+.life-hero img {width:100%;height:auto}
+.hero-copy {position:absolute;inset:0 auto 0 0;width:40%;padding:4%;display:flex;justify-content:center;align-items:flex-start;flex-direction:column;background:linear-gradient(90deg,#faf5e7aa,transparent)}
+.hero-copy h1 {font-size:clamp(37px,4.3vw,77px);font-weight:500;white-space:nowrap;line-height:1.25}
+.hero-copy h1 span {color:#b7644e;padding:0 .08em}
+.hero-copy p {margin:20px 0 25px;max-width:17em;line-height:1.85;font-size:clamp(16px,1.35vw,22px)}
+.hero-copy a {padding:6px 0;border-bottom:1px solid #72947d}
+.life-block {margin:clamp(36px,5vw,78px) 0}
+.life h2 {font-size:clamp(28px,3vw,48px);font-weight:500;letter-spacing:.04em}
+.life-title {display:flex;align-items:center;gap:24px;margin-bottom:24px}
+.life-title::after {content:"";height:1px;background:#adbcaa;flex:1}
+.flower-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,3vw,44px)}
+.flower-grid figure {aspect-ratio:1.88;overflow:hidden;background:#f1ecdc;position:relative;display:grid;place-items:center;border:1px solid #cbceba}
+.flower-grid figure::before {content:"";position:absolute;inset:7px;border:1px solid #bfc8b0}
+.flower-grid img {position:absolute;inset:4% 0;margin:auto;width:auto;max-width:96%;height:92%;object-fit:contain;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.flower-grid article:nth-child(2) figure {background:#e8ecdf}
+.flower-grid article:nth-child(3) figure {background:#f4e7d9}
+.life h3 {margin:15px 0 7px;font-weight:500;font-size:clamp(22px,1.7vw,30px)}
+.life-block p {font-size:clamp(16px,1.12vw,19px);line-height:1.9;color:#485f51}
+.local-story {display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,76px);align-items:center;border-top:1px solid #b2c1ae;padding-top:clamp(25px,3vw,48px)}
+.local-story img {width:100%;height:auto}
+.local-story figcaption {padding-top:8px;color:#5c7266;font-size:14px}
+.local-text article {padding:4px 0 12px}
+.local-text article+article {border-top:1px solid #c4cebf}
+.local-text a {display:inline-block;margin-top:6px;text-decoration:underline;text-underline-offset:4px;font-size:14px}
+.paper-ending-story {display:flow-root;background:#f9f4ec}
+.life-motif-link {display:inline-block;margin-top:16px;text-decoration:underline;text-underline-offset:4px}
+#credits-dialog a {text-decoration:underline;text-underline-offset:3px}
+@media(max-width:760px){
+.life-hero {display:flex;flex-direction:column-reverse}
+.hero-copy {position:static;width:auto;padding:20px;background:#faf3e5}.hero-copy p {max-width:100%;margin:8px 0}
+.life-nav div {flex-wrap:wrap}
+.flower-grid,.local-story {grid-template-columns:1fr}.flower-grid {gap:24px}.flower-grid figure {aspect-ratio:2.4}.local-text {grid-row:1}.life-nav {font-size:14px}
+}
+@media screen and (prefers-reduced-motion: no-preference) {
+  :root {
+    --life-ease: cubic-bezier(.16,.8,.22,1);
+    --life-rise: 42px;
+    --object-turn: -38deg;
+  }
+  @keyframes life-rise {
+    from { opacity:0; transform:translateY(var(--life-rise)); }
+    to { opacity:1; transform:none; }
+  }
+  @keyframes life-open {
+    from { clip-path:inset(5% 47% 5% 47%); }
+    to { clip-path:inset(0); }
+  }
+  @keyframes life-turn {
+    from { opacity:0; transform:perspective(900px) translateY(22%) rotateY(var(--object-turn)) scale(.78); }
+    72% { opacity:1; transform:perspective(900px) translateY(-2%) rotateY(3deg) scale(1.035); }
+    to { opacity:1; transform:none; }
+  }
+  @keyframes life-rule { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+  @keyframes side-light {
+    from { opacity:0; transform:translateX(-100%); }
+    28%,65% { opacity:1; }
+    to { opacity:0; transform:translateX(100%); }
+  }
+  @keyframes stone-frame {
+    from { opacity:0; clip-path:inset(0 80% 70% 0); }
+    to { opacity:1; clip-path:inset(0); }
+  }
+
+  .life-nav { position:relative; border-bottom-color:transparent; }
+  .life-nav::after {
+    content:""; position:absolute; inset:auto 0 -1px; height:1px; background:#a8bca9;
+    transform-origin:left; animation:life-rule 1s var(--life-ease);
+  }
+  .life-hero-frame, .screen-image { overflow:hidden; position:relative; }
+  .life-hero.life-entered .life-hero-frame, .local-story figure.life-entered .screen-image {
+    animation:life-open 1.25s var(--life-ease) backwards;
+  }
+  .hero-copy.life-entered > *, .life-title.life-entered h2,
+  .local-text .life-entered, .paper-next.life-entered > * {
+    animation:life-rise .86s var(--life-ease) backwards;
+  }
+  .hero-copy.life-entered h1 { animation-delay:.16s; }
+  .hero-copy.life-entered p, .paper-next.life-entered p { animation-delay:.34s; }
+  .hero-copy.life-entered a, .paper-next.life-entered .paper-craft-link { animation-delay:.54s; }
+  .paper-next.life-entered .paper-observe-link { animation-delay:.68s; }
+  .life-title.life-entered::after { transform-origin:left; animation:life-rule 1s .1s var(--life-ease) backwards; }
+
+  .flower-grid article.life-entered figure::before {
+    animation:stone-frame .75s var(--object-delay,0s) var(--life-ease) backwards;
+  }
+  .flower-grid article.life-entered figure img {
+    animation:life-turn 1.10s calc(var(--object-delay,0s) + .12s) var(--life-ease) backwards;
+  }
+  .flower-grid article.life-entered h3, .flower-grid article.life-entered p {
+    --life-rise:24px;
+    animation:life-rise .70s calc(var(--object-delay,0s) + .36s) var(--life-ease) backwards;
+  }
+  .flower-grid article.life-entered p { animation-delay:calc(var(--object-delay,0s) + .50s); }
+  .screen-image::after {
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:0;
+    background:linear-gradient(115deg,transparent 32%,rgba(255,238,191,.34) 50%,transparent 68%);
+  }
+  .local-story figure.life-entered .screen-image::after { animation:side-light 1.3s .38s ease-in-out; }
+  .local-story figure.life-entered figcaption { --life-rise:16px; animation:life-rise .6s .36s var(--life-ease) backwards; }
+
+  @media (min-width:761px) {
+    .flower-grid article:nth-child(2) { --object-delay:.24s; --object-turn:30deg; }
+    .flower-grid article:nth-child(3) { --object-delay:.48s; }
+    @supports (animation-timeline:view()) {
+      .life-hero { view-timeline-name:--desk-scene; }
+      .life-hero-frame img {
+        animation:life-desk-depth auto linear both;
+        animation-timeline:--desk-scene;
+      }
+      @keyframes life-desk-depth {
+        from { transform:translateY(-7%) scale(1.16); }
+        to { transform:translateY(7%) scale(1.16); }
+      }
+      .paper-ending-story { overflow:clip; view-timeline-name:--mountain-scene; }
+      .paper-ending-story::before {
+        transform-origin:center bottom;
+        animation:life-mountains auto linear both;
+        animation-timeline:--mountain-scene;
+      }
+      @keyframes life-mountains {
+        from { transform:translateY(8%) scale(1.10); }
+        to { transform:translateY(0) scale(1); }
+      }
+    }
+  }
+  @media (hover:hover) and (pointer:fine) {
+    .flower-grid figure {
+      transition:transform .38s var(--life-ease),box-shadow .38s;
+    }
+    .flower-grid figure:hover {
+      transform:perspective(900px) translateY(-5px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));
+      box-shadow:0 12px 24px -12px #2b473e70;
+    }
+  }
+  @media (max-width:760px) {
+    :root { --life-rise:20px; --object-turn:-18deg; }
+    .hero-copy.life-entered a { animation-delay:.32s; }
+    .flower-grid article.life-entered h3 { animation-delay:.18s; }
+    .flower-grid article.life-entered p { animation-delay:.28s; }
+  }
+}
+</style>  <link rel="stylesheet" href="project-typeface.css?v=20261119-1">
+  
+
+  <link rel="stylesheet" href="project-home-button.css?v=20261123-top-left-1">
+  <link rel="stylesheet" href="project-home-toolbar.css?v=20261123-top-left-1">
+</head>
+<body class="project-has-home-toolbar">
+  <div class="project-home-toolbar"><a class="project-home-button project-home-return" href="index.html" aria-label="返回蜀间拾艺主页"><svg class="project-home-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5M5.5 9v11h5v-6h3v6h5V9"/></svg><span>返回主页</span></a></div>
+
+<div class="life">
+  <nav class="life-nav" aria-label="章节导航">
+    <a href="stone-carving-intro.html">← 白花石刻</a>
+    <div><a href="stone-carving-origin.html">溯石 · 知来处</a><a href="stone-carving-craft.html#step-1">琢华 · 识匠艺</a></div>
+  </nav>
+  <main>
+    <header class="life-hero">
+      <div class="life-hero-frame">
+        <img src="assets/stone-carving/life/window-desk.webp" width="2042" height="770" fetchpriority="high" alt="窗前的女孩从梅枝石笔筒中取笔，手边放着石砚和一扇山水小屏">
+      </div>
+      <div class="hero-copy"><h1>寄石<span>·</span>入日常</h1>
+        <p>从笔筒里取一支笔，筒上的白梅正好朝向窗边。抬眼望去，案头的小石屏里，还有一重远山。</p>
+        <a href="#objects">细看案头的三件石器 ↓</a>
+      </div>
+    </header>
+    <section class="life-block" id="objects" aria-labelledby="objects-title">
+      <div class="life-title"><h2 id="objects-title">一张书案，三件石器</h2></div>
+      <div class="flower-grid">
+        <article><figure><img src="assets/stone-carving/life/plum-brush-pot.webp" width="724" height="724" loading="lazy" alt="深绿石笔筒上浮起白梅，花枝沿筒身舒展"></figure>
+          <h3>梅枝笔筒，收一案笔墨</h3><p>把晾干的毛笔笔锋朝上放回筒里。转一转筒身，一枝白梅从背面探出来：宽处刻成花瓣，细处接成枝梗，恰好绕过圆弧。</p></article>
+        <article><figure><img src="assets/stone-carving/life/bamboo-inkstone.webp" width="724" height="724" loading="lazy" alt="椭圆石砚中央平整，浅色竹叶贴着砚池边缘伸展"></figure>
+          <h3>竹叶石砚，研一池墨</h3><p>滴几滴清水，用墨锭在平整的砚堂上慢慢研磨。浅色竹叶留在砚边，叶尖朝着墨池；手里的墨锭转过一圈，碰不到凸起的叶脉。</p></article>
+        <article><figure><img src="assets/stone-carving/life/landscape-screen.webp" width="724" height="724" loading="lazy" alt="立在木座上的山水石屏，浅色山脊间蜿蜒着一条河"></figure>
+          <h3>山水石屏，留一窗远山</h3><p>把小屏立在窗旁，顺着浅色的河湾往上看，能一路找到山脊。午后的光斜斜照来，凸起处先亮，山坳里落下一层细影。</p></article>
+      </div>
+      <a class="life-motif-link" href="stone-carving-craft.html#patterns">细看石刻纹样 →</a>
+    </section>
+    <section class="life-block local-story" aria-labelledby="local-title">
+      <figure><div class="screen-image"><img src="assets/stone-carving/history/2019.webp" loading="lazy" alt="侧光照在花卉石屏上，花瓣的高低映在深色石底上"></div><figcaption>侧光下的花卉石屏 · 陈设示意</figcaption></figure>
+      <div class="local-text"><h2 id="local-title">广元人的石上花木</h2>
+        <article><h3>花从石色里来</h3><p>广元艺人挑选红白、绿白相间的石料，先看两色在哪里相遇。看这扇花屏，可以沿着一片浅色花瓣往外找：深色石底退下去，花的轮廓便清楚了。</p><a href="https://www.ihchina.cn/project_details/14118.html">读中国非遗网的白花石刻项目介绍 ↗</a></article>
+        <article><h3>从书桌到窗台</h3><p>在广元，白花石也被雕成花瓶、花钵和果盒。书案上的笔筒要容得下长短不同的笔，窗台上的花钵要托得住一株花。同样一段浅色石纹，到了不同器物上，便有了不同的去处。</p><a href="https://swglj.cngy.gov.cn/new/show/20191217133034323.html">看广元市美术馆白花石刻作品展介绍 ↗</a></article>
+        <a class="life-motif-link" href="stone-carving.html">去习艺坊选石纹 →</a>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="paper-ending-story">
+  <p class="meaning-footnote">白纹在笔筒上开成梅花，在石屏里连成远山</p>
+  <section class="paper-next" aria-labelledby="stone-next-title">
+    <h2 id="stone-next-title">看懂石纹，再琢一枝白梅</h2>
+    <p>从辨石色、画梅枝到细修花瓣，看一枝梅怎样从石上浮起</p>
+    <a class="paper-craft-link" href="stone-carving-craft.html#step-1">走进琢华 · 识匠艺</a>
+    <a class="project-home-button paper-observe-link" href="stone-carving-intro.html">返回观微阁首页</a>
+  </section>
+</div>
+<footer class="paper-end-footer">
+  <strong>白花石刻 · 四城五艺的材料之境</strong>
+  <button id="end-credits" type="button" aria-haspopup="dialog" aria-controls="credits-dialog">项目与出处</button>
+</footer>
+<dialog id="credits-dialog" aria-labelledby="credits-title">
+  <form method="dialog"><button class="close" aria-label="关闭项目与出处">×</button></form>
+  <h2 id="credits-title">项目与出处</h2>
+  <p>白花石刻 · 寄石入日常</p>
+  <p>关于石料的色层与雕刻手法，见<a href="https://www.ihchina.cn/project_details/14118.html">中国非遗网白花石刻项目介绍</a>；关于白花石刻的器物与陈设，见<a href="https://swglj.cngy.gov.cn/new/show/20191217133034323.html">广元市美术馆白花石刻作品展介绍</a>。</p>
+</dialog>
+<script>
+  document.getElementById('end-credits').addEventListener('click', () => {
+    document.getElementById('credits-dialog').showModal();
+  });
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add('life-entered');
+        observer.unobserve(entry.target);
+      }
+    }, { threshold: .12 });
+    const targets = [
+      '.life-hero', '.hero-copy', '.life-title', '.flower-grid article',
+      '.local-story figure', '.local-text > *', '.paper-next'
+    ];
+    document.querySelectorAll(targets.join(', ')).forEach(element => observer.observe(element));
+  }
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+  document.querySelectorAll('.flower-grid figure').forEach(figure => {
+    figure.addEventListener('pointermove', event => {
+      if (!finePointer.matches || event.pointerType === 'touch') return;
+      const bounds = figure.getBoundingClientRect();
+      const x = Math.max(-1, Math.min(1, 2 * (event.clientX - bounds.left) / bounds.width - 1));
+      const y = Math.max(-1, Math.min(1, 2 * (event.clientY - bounds.top) / bounds.height - 1));
+      figure.style.setProperty('--tilt-x', (-5 * y).toFixed(2) + 'deg');
+      figure.style.setProperty('--tilt-y', (7 * x).toFixed(2) + 'deg');
+    });
+    figure.addEventListener('pointerleave', () => {
+      figure.style.removeProperty('--tilt-x');
+      figure.style.removeProperty('--tilt-y');
+    });
+  });
+</script>
+
+  
+</body>
+</html>

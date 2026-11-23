@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>一版生春 · 施彩体验</title>
+<link rel="stylesheet" href="style.css?v=20261119-bg-0a8f2078">
+<script src="assets-config.js?v=20261120-motifs" defer></script><script src="script.js?v=20261120-motifs" defer></script>
+<script src="nianhua-navigation.js?v=20261114-2" defer></script>
+  <link rel="stylesheet" href="project-typeface.css?v=20261119-1">
+  <link rel="stylesheet" href="project-navigation.css?v=20261119-2">
+  <link rel="stylesheet" href="project-brand.css?v=20261120-solid-2">
+  <link rel="stylesheet" href="project-roof.css?v=20261120-1">
+<style>.thumb img, #line-image, #color-image { mix-blend-mode: multiply; }</style>
+  
+  <link rel="stylesheet" href="nianhua-navigation-state.css?v=20261123-1">
+
+  <link rel="stylesheet" href="project-home-button.css?v=20261123-top-left-1">
+  <link rel="stylesheet" href="project-home-toolbar.css?v=20261123-top-left-1">
+</head>
+<body class="project-has-home-toolbar">
+  <div class="project-home-toolbar"><a class="project-home-button project-home-return" href="index.html" aria-label="返回蜀间拾艺主页"><svg class="project-home-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5M5.5 9v11h5v-6h3v6h5V9"/></svg><span>返回主页</span></a></div>
+
+  <img class="shared-site-roof" src="assets/decorations/roof.png" width="3780" height="552" alt="" aria-hidden="true" decoding="sync">
+
+  <svg class="shared-brand-filter" width="0" height="0" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <defs><filter id="shared-brand-solid-ink" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -1 -1 -1 0 2.8" result="inkMask"/>
+      <feComposite in="inkMask" in2="SourceAlpha" operator="in" result="glyphMask"/>
+      <feFlood flood-color="#578f73" flood-opacity="1" result="solidInk"/>
+      <feComposite in="solidInk" in2="glyphMask" operator="in"/>
+    </filter></defs>
+  </svg>
+
+  <a class="shared-site-brand" href="index.html" aria-label="蜀间拾艺，返回首页">
+    <span class="shared-brand-sun" aria-hidden="true"></span>
+    <img class="shared-brand-wordmark" src="assets/brand/shujian-wordmark.png" alt="蜀间拾艺" decoding="sync" fetchpriority="high">
+    <img class="shared-brand-cloud" src="assets/brand/shujian-cloud.png" alt="" aria-hidden="true">
+  </a>
+
+  <nav class="shared-craft-nav nianhua-section-nav" aria-label="主导航">
+    <a href="nianhua-intro.html"><span class="nav-icon"><img class="craft-nav-icon" data-icon="observe" alt="" src="assets/icons/observe.png"><span hidden>◇</span></span><span class="craft-nav-label">观微阁</span></a>
+    <a href="nianhua.html" aria-current="page"><span class="nav-icon"><img class="craft-nav-icon" data-icon="workshop" alt="" src="assets/icons/workshop.png"><span hidden>▧</span></span><span class="craft-nav-label">习艺坊</span></a>
+    <a href="../../../../2026-11-17/file-c-users-15712-documents-codex/outputs/nianhua-gift.html"><span class="nav-icon"><img class="craft-nav-icon" data-icon="letters" alt="" src="assets/icons/letters.png"><span hidden>⌂</span></span><span class="craft-nav-label">寄情居</span></a>
+  </nav>
+
+<header>
+  <div class="brand" inert aria-hidden="true"><img id="logo" alt="一版生春" hidden><div id="logo-fallback"><h1>一版生春</h1><p>手艺图谱 / 绵竹木版年画 / 施彩体验</p></div></div>
+  <div class="roof"><img id="roof" alt="" hidden><div id="roof-fallback"></div></div>
+  <div class="craft-nav-space" aria-hidden="true"></div>
+</header>
+<div class="experience-breadcrumb"><span>绵竹木版年画</span></div>
+<main>
+  <aside class="left">
+    <section class="panel"><h2 class="panel-title"><span class="seal" aria-hidden="true"><img data-decoration="stepsBadge" alt="" hidden><span>版</span></span>体验步骤</h2>
+      <ol class="steps">
+        <li><button data-step="0"><span class="number">1</span><span><strong>择稿迎喜</strong><small>选一幅吉祥画稿，把心中的祝愿藏进画里</small></span></button></li>
+        <li><button data-step="1"><span class="number">2</span><span><strong>刻线成形</strong><small>循着画稿刻出线条，让人物与花纹在木版上显形</small></span></button></li>
+        <li><button data-step="2"><span class="number">3</span><span><strong>印墨留形</strong><small>将线版印在纸上，留下清晰的年画轮廓</small></span></button></li>
+        <li><button data-step="3"><span class="number">4</span><span><strong>敷彩生春</strong><small>为画稿添上色彩，让吉祥与春意跃然纸上</small></span></button></li>
+      </ol>
+    </section>
+    <section class="panel"><div class="panel-title"><span class="seal" aria-hidden="true"><img data-decoration="patternsBadge" alt="" hidden><span>画</span></span><button id="patterns-tab" class="tab active">选择画稿</button><button id="palette-tab" class="tab">调色板</button></div>
+      <div id="patterns" class="patterns" aria-label="可选画稿"></div>
+      <div id="palette" hidden><p>选择喜欢的颜色</p><div id="swatches"></div><p id="color-label"></p><small>完成刻板后可进入上色页进行区域填色。</small></div>
+    </section>
+  </aside>
+  <section class="workspace" aria-labelledby="workspace-title">
+    <div class="frame"><div class="frame-top"><h2 id="workspace-title"><img data-decoration="workTitle" alt="" hidden><span>工作区</span></h2></div><div class="paper">
+      <img id="line-image" alt="" hidden>
+      <div id="line-placeholder" class="placeholder"><span>画</span><h3></h3><p>放入线稿素材后，刷新页面即可显示。</p><code></code></div>
+    </div><span class="corner bottom-left" aria-hidden="true"><img data-decoration="workCornerLeft" alt="" hidden></span><span class="corner bottom-right" aria-hidden="true"><img data-decoration="workCornerRight" alt="" hidden></span></div>
+    <div class="controls"><button id="previous"><span>←</span> 上一步</button><button id="next"><span>→</span> 下一步</button><button id="reset"><span>⟳</span> 重置</button></div>
+    <p id="step-status" role="status"></p>
+  </section>
+  <aside class="reference"><h2>参考效果</h2><div class="reference-art"><img id="color-image" alt="" hidden><div id="color-placeholder" class="placeholder"><span>彩</span><h3>彩色参考图预留区</h3><code></code></div></div><p class="caption">教学示意</p><p class="description">同一线版，也能呈现不同配色。</p><button id="use-pattern" class="primary">选用此稿</button><p id="selection-status" role="status"></p></aside>
+</main>
+<footer><span>绵竹年画 · 四城五艺的材料之境</span><button id="credits">项目与出处</button></footer>
+<dialog id="dialog"><h2 id="dialog-title"></h2><p id="dialog-body"></p><form method="dialog"><button class="primary">关闭</button></form></dialog>
+</body></html>
+
+

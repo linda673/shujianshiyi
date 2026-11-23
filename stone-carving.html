@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+  <script src="stone-carving-navigation.js" defer></script>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>石上生花 · 雕刻体验</title>
+<link rel="stylesheet" href="style.css?v=20261119-bg-0a8f2078">
+<script src="assets-config.js?v=20261028-1" defer></script><script src="stone-experience-assets.js?v=20261120-1" defer></script><script src="artwork-store.js" defer></script><script src="stone-experience-core.js?v=20261120-1" defer></script><script src="stone-experience.js?v=20261120-1" defer></script>
+<link rel="stylesheet" href="stone-carving.css?v=20261120-1">  <link rel="stylesheet" href="project-typeface.css?v=20261119-1">
+  <link rel="stylesheet" href="project-navigation.css?v=20261119-2">
+  <link rel="stylesheet" href="project-brand.css?v=20261120-solid-2">
+  <link rel="stylesheet" href="project-roof.css?v=20261120-1">
+  
+  <link rel="stylesheet" href="stone-carving-navigation-state.css?v=20261123-1">
+
+  <link rel="stylesheet" href="project-home-button.css?v=20261123-top-left-1">
+  <link rel="stylesheet" href="project-home-toolbar.css?v=20261123-top-left-1">
+</head>
+<body class="project-has-home-toolbar stone-carving-page">
+  <div class="project-home-toolbar"><a class="project-home-button project-home-return" href="index.html" aria-label="返回蜀间拾艺主页"><svg class="project-home-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5M5.5 9v11h5v-6h3v6h5V9"/></svg><span>返回主页</span></a></div>
+
+  <img class="shared-site-roof" src="assets/decorations/roof.png" width="3780" height="552" alt="" aria-hidden="true" decoding="sync">
+
+  <svg class="shared-brand-filter" width="0" height="0" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <defs><filter id="shared-brand-solid-ink" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -1 -1 -1 0 2.8" result="inkMask"/>
+      <feComposite in="inkMask" in2="SourceAlpha" operator="in" result="glyphMask"/>
+      <feFlood flood-color="#578f73" flood-opacity="1" result="solidInk"/>
+      <feComposite in="solidInk" in2="glyphMask" operator="in"/>
+    </filter></defs>
+  </svg>
+
+  <a class="shared-site-brand" href="index.html" aria-label="蜀间拾艺，返回首页">
+    <span class="shared-brand-sun" aria-hidden="true"></span>
+    <img class="shared-brand-wordmark" src="assets/brand/shujian-wordmark.png" alt="蜀间拾艺" decoding="sync" fetchpriority="high">
+    <img class="shared-brand-cloud" src="assets/brand/shujian-cloud.png" alt="" aria-hidden="true">
+  </a>
+
+  <nav class="shared-craft-nav stone-carving-section-nav" aria-label="主导航">
+    <a href="stone-carving-intro.html"><span class="nav-icon"><img class="craft-nav-icon" data-icon="observe" alt="" src="assets/icons/observe.png"><span hidden>◇</span></span><span class="craft-nav-label">观微阁</span></a>
+    <a href="stone-carving.html" aria-current="page"><span class="nav-icon"><img class="craft-nav-icon" data-icon="workshop" alt="" src="assets/icons/workshop.png"><span hidden>▧</span></span><span class="craft-nav-label">习艺坊</span></a>
+    <a href="../../../../2026-11-17/file-c-users-15712-documents-codex/outputs/stone-carving-gift.html"><span class="nav-icon"><img class="craft-nav-icon" data-icon="letters" alt="" src="assets/icons/letters.png"><span hidden>⌂</span></span><span class="craft-nav-label">寄情居</span></a>
+  </nav>
+
+<header>
+  <div class="brand" inert aria-hidden="true"><img id="logo" alt="石上生花" hidden><div id="logo-fallback"><h1>石上生花</h1><p>手艺图谱 / 白花石刻 / 雕刻体验</p></div></div>
+  <div class="roof"><img id="roof" alt="" hidden><div id="roof-fallback"></div></div>
+  <div class="craft-nav-space" aria-hidden="true"></div>
+</header>
+<div class="experience-breadcrumb"><span>白花石刻</span></div>
+<main class="stone-experience">
+ <aside class="left">
+  <section class="panel"><h2 class="panel-title"><span class="seal" aria-hidden="true"><img src="assets/decorations/steps-badge.png" alt=""></span>体验步骤</h2>
+   <ol class="steps">
+    <li><button data-stage="0"><span class="number">1</span><span><strong>选石定稿</strong><small>选择石材与纹样，顺应石色安排构图。</small></span></button></li>
+    <li><button data-stage="1"><span class="number">2</span><span><strong>循线雕刻</strong><small>沿辅助线运刀，让白色花纹逐渐浮现。</small></span></button></li>
+    <li><button data-stage="2"><span class="number">3</span><span><strong>打磨赏石</strong><small>轻磨石面，比较打磨前后的层次。</small></span></button></li>
+   </ol>
+  </section>
+  <section class="panel" id="draft-tools"><h2 class="panel-title"><span class="seal" aria-hidden="true"><img src="assets/decorations/patterns-badge.png" alt=""></span>选择石材</h2>
+   <div class="tool-body"><div id="stone-materials" class="choice-grid" aria-label="石材颜色"></div><h3>选择纹样</h3><div id="stone-patterns" class="choice-grid" aria-label="石刻纹样"></div><p class="tool-note">拖动纹样，贴合白色石层。定稿后保留你的构图。</p></div>
+  </section>
+  <section class="panel" id="carve-tools" hidden><h2 class="panel-title"><span class="seal" aria-hidden="true">⚒</span>雕刻工具</h2>
+   <div class="tool-body"><div class="tool-pair"><button data-chisel="flat" aria-pressed="true"><span class="tool-drawing flat-chisel" aria-hidden="true"></span>平口刀</button><button data-chisel="round" aria-pressed="false"><span class="tool-drawing round-chisel" aria-hidden="true"></span>圆口刀</button></div>
+    <label class="toggle-row">显示辅助线 <input id="show-guides" type="checkbox" checked></label>
+    <label class="range-row" for="cut-width">刻痕宽度 <output id="cut-width-value">1.2 mm</output></label><input id="cut-width" type="range" min="0.6" max="2.4" step="0.2" value="1.2">
+    <p class="tool-note" id="carve-hint">沿花瓣与枝干反复拖动，逐层显出浮雕。</p>
+    <div class="tool-pair"><button id="undo-carve">↶ 撤销一步</button><button id="restart-carve">⟳ 重新雕刻</button></div>
+   </div>
+  </section>
+  <section class="panel" id="polish-tools" hidden><h2 class="panel-title"><span class="seal" aria-hidden="true">◇</span>打磨设置</h2>
+   <div class="tool-body"><div class="tool-pair"><button data-polish="fine" aria-pressed="true"><span class="grind-disc" aria-hidden="true"></span>细磨</button><button data-polish="shine" aria-pressed="false"><span class="grind-disc buff" aria-hidden="true"></span>抛光</button></div>
+    <label class="range-row" for="brush-size">磨头大小 <output id="brush-value">60%</output></label><input id="brush-size" type="range" min="20" max="100" value="60">
+    <label class="toggle-row">显示打磨区域 <input id="show-polish" type="checkbox" checked></label>
+    <h3>展示底座</h3><div class="tool-pair"><button data-base="none" aria-pressed="true">⊘ 无底座</button><button data-base="wood" aria-pressed="false">▰ 木座</button></div>
+    <p class="tool-note">按住石面来回打磨；切换“效果对比”查看变化。</p><button class="small-button" id="restart-polish">⟳ 重新打磨</button>
+   </div>
+  </section>
+ </aside>
+ <section class="workspace" aria-labelledby="workspace-title">
+  <div class="frame"><div class="frame-top"><h2 id="workspace-title">选石定稿</h2><span id="stage-count">步骤 01 / 03</span></div>
+   <div class="stone-surface"><canvas id="stone-canvas" width="800" height="720" tabindex="0" aria-label="石刻工作区：拖动纹样定稿；雕刻与打磨时按住并移动。方向键移动光标，空格落刀。"></canvas><span id="canvas-hint" class="canvas-hint">拖动纹样，贴合白色石层</span><div id="compare-labels" hidden><span>打磨前</span><span>打磨后</span></div></div>
+   <div class="canvas-toolbar" id="draft-toolbar"><label for="pattern-scale">纹样大小</label><input id="pattern-scale" type="range" min="45" max="100" value="85"><output id="scale-value">85%</output><button id="center-pattern">⌖ 居中</button><button id="rotate-pattern">⟳ 旋转</button></div>
+   <div class="canvas-toolbar" id="carve-toolbar" hidden><label for="carve-progress">雕刻进度</label><progress id="carve-progress" max="100" value="0"></progress><output id="carve-percent">0%</output><span id="carve-count">已完成 0 / 20 区</span></div>
+   <div id="polish-toolbar" hidden><div class="canvas-toolbar"><label for="polish-progress">打磨进度</label><progress id="polish-progress" max="100" value="0"></progress><output id="polish-percent">0%</output><button id="compare-mode" aria-pressed="false">效果对比</button><button id="original-mode" aria-pressed="false">原石预览</button></div><div class="canvas-toolbar"><label for="compare-slider">左右对比</label><input id="compare-slider" type="range" min="0" max="100" value="50" disabled><button id="zoom-out" aria-label="缩小">−</button><output id="zoom-value">100%</output><button id="zoom-in" aria-label="放大">＋</button></div></div>
+  </div>
+  <div class="controls"><button id="previous" disabled><span>←</span> 上一步</button><button id="next" disabled><span>→</span> 下一步</button><button id="reset"><span>⟳</span> 重置</button></div>
+  <p id="step-status" role="status" aria-live="polite">正在准备石材与纹样…</p>
+ </section>
+ <aside class="reference"><h2 id="reference-title">参考效果</h2><div class="reference-art"><canvas id="stone-preview" width="560" height="630" aria-label="当前纹样的石刻参考效果"></canvas></div><p id="pattern-name" class="caption">梅枝栖鸟</p><div class="reference-rule" aria-hidden="true">◇</div><p id="reference-description" class="description">顺应石色，因材定稿。</p><button id="stone-action" class="primary" disabled>确认定稿</button><button id="make-another" class="text-button" hidden>再刻一幅 ›</button><p id="selection-status" role="status" aria-live="polite"></p></aside>
+</main>
+
+<footer><span>白花石刻 · 四城五艺的材料之境</span><button id="credits">项目与出处</button></footer>
+<dialog id="dialog"><h2 id="dialog-title"></h2><p id="dialog-body"></p><form method="dialog"><button class="primary">关闭</button></form></dialog>
+</body></html>
+
+

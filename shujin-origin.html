@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>溯锦 · 知来处｜锦城与蜀锦</title>
+  <link rel="stylesheet" href="shujin-origin.css?v=20261114-heading3">
+  <script src="shujin-origin.js?v=20261114-layout2" defer></script>
+  <link rel="stylesheet" href="shujin-weave.css?v=20261114-2">
+  <link rel="stylesheet" href="paper-structure.css">
+  <link rel="stylesheet" href="assets/shujin/weave/pattern-study.css">
+  <script src="shujin-interlacing.js?v=20261114-1" defer></script>
+  <link rel="stylesheet" href="paper-history.css">
+  <link rel="stylesheet" href="assets/shujin/history/timeline.css">
+  <link rel="stylesheet" href="paper-meanings.css">
+  <link rel="stylesheet" href="paper-ending.css">
+  <link rel="stylesheet" href="shujin-typography.css?v=20261119">
+  <style>
+    .jin-ending {
+      --gutter: clamp(20px, 6vw, 100px);
+      --content: min(1200px, calc(100% - 2 * var(--gutter)));
+      --section-space: clamp(40px, 5.4vw, 82px);
+      --heading-size: clamp(28px, 3vw, 46px);
+      --copy-size: clamp(17px, 1.24vw, 20px);
+    }
+    .jin-ending figure, .jin-ending .paper-next :is(h2, p) { margin: 0; }
+    /* Keep the woven samples inside the soft cloud-shaped mounts. */
+    .jin-ending .meaning-art img {
+      object-fit: cover;
+      mask-image: radial-gradient(ellipse closest-side, #000 75%, transparent 100%);
+    }
+  </style>
+  <style>
+    @media screen and (prefers-reduced-motion: no-preference) {
+      :root {
+        --silk-ease: cubic-bezier(.18,.76,.23,1);
+        --silk-rise: 30px;
+      }
+
+      @keyframes silk-rise-in {
+        from { opacity: .15; transform: translateY(var(--silk-rise)); }
+        to { opacity: 1; transform: none; }
+      }
+      @keyframes silk-uncover {
+        from { clip-path: inset(0 94% 0 0); transform: scale(.97); }
+        to { clip-path: inset(0); transform: none; }
+      }
+      @keyframes silk-lay-down {
+        from { opacity: .2; transform: translateY(22px) rotate(-12deg) scale(.88); }
+        to { opacity: 1; transform: none; }
+      }
+      @keyframes silk-open {
+        from { opacity: .22; transform: perspective(800px) rotateY(-48deg) rotateZ(-5deg) scale(.91); }
+        to { opacity: 1; transform: none; }
+      }
+      @keyframes silk-rule-in { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+      .top-line { transform-origin: left; animation: silk-rule-in .8s var(--silk-ease) backwards; }
+      .chapter-heading.silk-entered > *, .story-copy.silk-entered > *,
+      .pc-banner-copy.silk-entered > *, .paper-next.silk-entered > *,
+      .study-inner > header.silk-entered, .history-inner > h2.silk-entered, #jin-meanings-title.silk-entered {
+        animation: silk-rise-in .74s var(--silk-ease) backwards;
+      }
+      .chapter-heading.silk-entered h1, .story-copy.silk-entered h2,
+      .pc-banner-copy.silk-entered p, .paper-next.silk-entered p { animation-delay: .10s; }
+      .chapter-heading.silk-entered .subtitle, .story-copy.silk-entered .intro,
+      .pc-banner-copy.silk-entered a, .paper-next.silk-entered .paper-craft-link { animation-delay: .20s; }
+      .story-copy.silk-entered .keywords, .paper-next.silk-entered .paper-observe-link { animation-delay: .27s; }
+      .story-copy.silk-entered .story-button { animation-delay: .34s; }
+      .photo-wrap.silk-entered :is(.reference-art, .weaving-photo) { animation: silk-uncover 1.05s var(--silk-ease) backwards; }
+      .photo-wrap.silk-entered .brocade-roll {
+        transform-origin: 65% 70%;
+        animation: silk-lay-down .85s .28s var(--silk-ease) backwards;
+      }
+
+      /* Link only the background layer to scrolling. */
+      @supports (animation-timeline: view()) {
+        #shujin-weave { overflow: clip; view-timeline-name: --brocade-banner; }
+        #shujin-weave .pc-banner {
+          animation: brocade-depth auto linear both;
+          animation-timeline: --brocade-banner;
+        }
+        @keyframes brocade-depth {
+          from { transform: translateY(-5%) scale(1.13); }
+          to { transform: translateY(5%) scale(1.13); }
+        }
+      }
+      #interlace-figure.silk-entered svg { animation: silk-open .88s var(--silk-ease) backwards; }
+      #shujin-interlacing .study-sample { overflow: hidden; }
+      #shujin-interlacing .study-sample img { animation: silk-uncover .54s var(--silk-ease) backwards; }
+      #interlace-status.silk-entered { --silk-rise: 12px; animation: silk-rise-in .42s .08s var(--silk-ease) backwards; }
+      .history-view.silk-entered .history-image { animation: silk-uncover .66s var(--silk-ease) backwards; }
+      .history-view.silk-entered .history-text { --silk-rise: 16px; animation: silk-rise-in .58s .12s var(--silk-ease) backwards; }
+
+      .meaning-gallery figure.silk-entered .meaning-art img {
+        animation: silk-open .92s var(--motif-delay, 0s) var(--silk-ease) backwards;
+      }
+      .meaning-gallery figure.silk-entered figcaption {
+        --silk-rise: 14px;
+        animation: silk-rise-in .56s calc(var(--motif-delay, 0s) + .16s) var(--silk-ease) backwards;
+      }
+      #shujin-interlacing .study-sample img[data-sample="warp"] { animation-name: warp-uncover; }
+      @keyframes warp-uncover {
+        from { clip-path: inset(0 0 94% 0); transform: scale(.97); }
+        to { clip-path: inset(0); transform: none; }
+      }
+      #interlace-figure :is(.interlace-warp, .interlace-weft) { transition: opacity .32s ease; }
+      #interlace-figure g[data-sample] {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: thread-marker .38s var(--silk-ease);
+      }
+      @keyframes thread-marker {
+        from { opacity: .35; transform: scale(1.45); }
+        to { opacity: 1; transform: scale(1); }
+      }
+      dialog[open] { --silk-rise: 12px; animation: silk-rise-in .26s var(--silk-ease); }
+
+      @media (min-width: 601px) {
+        .meaning-gallery figure:nth-child(2) { --motif-delay: .15s; }
+        .meaning-gallery figure:nth-child(3) { --motif-delay: .30s; }
+      }
+      @media (hover: hover) and (pointer: fine) {
+        .meaning-art img { transition: translate .3s, filter .3s; }
+        .meaning-art:hover img { translate: 0 -6px; filter: drop-shadow(0 7px 4px #60433136); }
+      }
+      @media (max-width: 600px) {
+        :root { --silk-rise: 16px; }
+        .story-copy.silk-entered .story-button { animation-delay: .17s; }
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="project-typeface.css?v=20261119-1">
+  
+
+  <link rel="stylesheet" href="project-home-button.css?v=20261123-top-left-1">
+  <link rel="stylesheet" href="project-home-toolbar.css?v=20261123-top-left-1">
+</head>
+<body class="project-has-home-toolbar">
+  <div class="project-home-toolbar"><a class="project-home-button project-home-return" href="index.html" aria-label="返回蜀间拾艺主页"><svg class="project-home-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5M5.5 9v11h5v-6h3v6h5V9"/></svg><span>返回主页</span></a></div>
+
+  <div class="origin-page">
+    <div class="top-line"></div>
+    <main>
+      <header class="chapter-heading">
+        <p class="chapter"><span class="chapter-seal" aria-hidden="true">壹</span>第一章 · 锦城与蜀锦</p>
+        <h1>一座城，与一匹锦</h1>
+        <p class="subtitle">经纬之间，织就成都的千年记忆</p>
+      </header>
+
+      <section class="origin-layout" aria-labelledby="city-title">
+        <figure class="photo-wrap">
+          <div class="reference-art" aria-hidden="true"><img src="assets/shujin/origin/reference.png" alt=""></div>
+          <!-- 未放入独立照片时，使用参考图的照片区域预览。 -->
+          <div class="weaving-photo" role="img" aria-label="织工在传统木织机上织造红色蜀锦">
+            <img class="optional-photo" data-optional-src="assets/shujin/origin/weaving-photo.jpg" alt="" hidden>
+          </div>
+          <img class="brocade-roll" src="assets/shujin/origin/brocade-roll.png" alt="锦卷、蚕茧与桑叶插画">
+        </figure>
+
+        <div class="story-copy">
+          <p class="eyebrow" lang="en">01 / THE CITY OF BROCADE</p>
+          <h2 id="city-title">为什么是锦城？</h2>
+          <p class="intro">蜀锦是成都具有代表性的传统技艺。成都因盛产锦而有“锦城”“锦官城”的美名。一匹锦，也织进了一座城的记忆。</p>
+          <ul class="keywords" aria-label="成都、经纬、丝韵">
+            <li><span class="keyword-shape" aria-hidden="true"></span><span>成都</span></li>
+            <li><span class="keyword-shape" aria-hidden="true"></span><span>经纬</span></li>
+            <li><span class="keyword-shape" aria-hidden="true"></span><span>丝韵</span></li>
+          </ul>
+          <button class="story-button" type="button" id="open-story">走进蜀锦故事</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>成都蜀锦 · 四城五艺的材料之境</span>
+      <div><a href="shujin-intro.html" class="project-home-button">返回蜀锦首页</a><button type="button" id="open-credits">项目与出处</button></div>
+    </footer>
+  </div>
+
+  <div id="patterns">
+    <section id="shujin-weave" class="pc-structure" aria-labelledby="shujin-weave-title">
+      <img class="pc-banner" src="assets/shujin/weave/flower-brocade.webp" alt="黛绿锦面上的朱色花朵与金色枝叶，沿锦卷起伏展开">
+      <div class="pc-banner-copy">
+        <h2 id="shujin-weave-title">经纬之间，<br>纹样生长</h2>
+        <p>一梭彩丝穿过经线，锦上的花便多了一行。</p>
+        <a href="#shujin-interlacing">观察经纬 <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+  </div>
+  <section id="shujin-interlacing" class="silk-study" data-view="all" aria-labelledby="interlace-title">
+    <div class="study-inner">
+      <header>
+        <h2 id="interlace-title">读一方蜀锦</h2>
+        <p>从锦面看到丝线，对照平纹示意，辨认经纬的走向。</p>
+      </header>
+      <div class="study-switch" role="group" aria-label="选择观察方式">
+        <button type="button" data-weave-view="all" aria-pressed="true" aria-controls="interlace-sample interlace-figure interlace-status">看锦面</button>
+        <button type="button" data-weave-view="warp" aria-pressed="false" aria-controls="interlace-sample interlace-figure interlace-status">看经线</button>
+        <button type="button" data-weave-view="weft" aria-pressed="false" aria-controls="interlace-sample interlace-figure interlace-status">看纬线</button>
+      </div>
+      <div class="study-pair">
+        <div class="study-sample" id="interlace-sample">
+          <img data-sample="all" src="assets/shujin/weave/flower-detail.webp" alt="放大的朱金花瓣边缘，可见密排的细丝" loading="lazy">
+          <img data-sample="warp" src="assets/shujin/weave/warp-threads.webp" alt="织机上的浅绿色经线纵向绷直" loading="lazy">
+          <img data-sample="weft" src="assets/shujin/weave/weft-shuttle.webp" alt="梭子牵着朱色纬线横穿纵向排列的经线" loading="lazy">
+        </div>
+        <div class="study-reading">
+          <figure id="interlace-figure"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 372 291" role="img" aria-label="平纹交织全貌：浅绿色经线纵向排列，米白与珊瑚色纬线横向穿行，上下交替。">
+<defs>
+  <linearGradient id="interlace-green" x1="0" y1="0" x2="1" y2="0">
+    <stop stop-color="#87a47c"/><stop offset=".16" stop-color="#9fb994"/><stop offset=".48" stop-color="#b2c6a2"/><stop offset=".78" stop-color="#a0b88f"/><stop offset="1" stop-color="#8aa37c"/>
+  </linearGradient>
+  <linearGradient id="interlace-ivory" x1="0" y1="0" x2="0" y2="1">
+    <stop stop-color="#e9d6b3"/><stop offset=".13" stop-color="#f3e5c9"/><stop offset=".5" stop-color="#faefd7"/><stop offset=".85" stop-color="#f0dfbd"/><stop offset="1" stop-color="#ddc6a0"/>
+  </linearGradient>
+  <linearGradient id="interlace-coral" x1="0" y1="0" x2="0" y2="1">
+    <stop stop-color="#e99476"/><stop offset=".12" stop-color="#f4b193"/><stop offset=".45" stop-color="#fac0a4"/><stop offset=".84" stop-color="#f2aa8a"/><stop offset="1" stop-color="#e58f71"/>
+  </linearGradient>
+  <pattern id="interlace-warp-fiber" width="3.2" height="8" patternUnits="userSpaceOnUse">
+    <path d="M.6 0V8" stroke="#f6f3dc" stroke-opacity=".07" stroke-width=".6"/>
+    <path d="M2.1 0V8" stroke="#627e56" stroke-opacity=".045" stroke-width=".5"/>
+  </pattern>
+  <pattern id="interlace-weft-fiber" width="8" height="3.2" patternUnits="userSpaceOnUse">
+    <path d="M0 .6H8" stroke="#fffaf0" stroke-opacity=".10" stroke-width=".6"/>
+    <path d="M0 2.1H8" stroke="#a37d53" stroke-opacity=".035" stroke-width=".5"/>
+  </pattern>
+  <filter id="interlace-shadow" x="-30%" y="-15%" width="160%" height="140%">
+    <feDropShadow dx="0" dy=".9" stdDeviation=".9" flood-color="#6b6e47" flood-opacity=".14"/>
+  </filter>
+</defs>
+
+<g class="interlace-warp"><rect x="43" y="16" width="28" height="261" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="43" y="16" width="28" height="261" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="95" y="16" width="28" height="261" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="95" y="16" width="28" height="261" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="146" y="16" width="28" height="261" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="146" y="16" width="28" height="261" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="198" y="16" width="28" height="261" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="198" y="16" width="28" height="261" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="249" y="16" width="28" height="261" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="249" y="16" width="28" height="261" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="301" y="16" width="28" height="261" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="301" y="16" width="28" height="261" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-weft"><rect x="16" y="44" width="343" height="29" rx=".35" fill="url(#interlace-ivory)" filter="url(#interlace-shadow)"/><rect x="16" y="44" width="343" height="29" fill="url(#interlace-weft-fiber)"/></g>
+<g class="interlace-weft"><rect x="16" y="90" width="343" height="29" rx=".35" fill="url(#interlace-coral)" filter="url(#interlace-shadow)"/><rect x="16" y="90" width="343" height="29" fill="url(#interlace-weft-fiber)"/></g>
+<g class="interlace-weft"><rect x="16" y="136" width="343" height="29" rx=".35" fill="url(#interlace-ivory)" filter="url(#interlace-shadow)"/><rect x="16" y="136" width="343" height="29" fill="url(#interlace-weft-fiber)"/></g>
+<g class="interlace-weft"><rect x="16" y="181" width="343" height="29" rx=".35" fill="url(#interlace-coral)" filter="url(#interlace-shadow)"/><rect x="16" y="181" width="343" height="29" fill="url(#interlace-weft-fiber)"/></g>
+<g class="interlace-weft"><rect x="16" y="226" width="343" height="29" rx=".35" fill="url(#interlace-ivory)" filter="url(#interlace-shadow)"/><rect x="16" y="226" width="343" height="29" fill="url(#interlace-weft-fiber)"/></g>
+<g class="interlace-warp"><rect x="95" y="42" width="28" height="33" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="95" y="42" width="28" height="33" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="198" y="42" width="28" height="33" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="198" y="42" width="28" height="33" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="301" y="42" width="28" height="33" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="301" y="42" width="28" height="33" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="43" y="88" width="28" height="33" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="43" y="88" width="28" height="33" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="146" y="88" width="28" height="33" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="146" y="88" width="28" height="33" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="249" y="88" width="28" height="33" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="249" y="88" width="28" height="33" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="95" y="134" width="28" height="33" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="95" y="134" width="28" height="33" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="198" y="134" width="28" height="33" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="198" y="134" width="28" height="33" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="301" y="134" width="28" height="33" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="301" y="134" width="28" height="33" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="43" y="179" width="28" height="33" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="43" y="179" width="28" height="33" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="146" y="179" width="28" height="33" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="146" y="179" width="28" height="33" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="249" y="179" width="28" height="33" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="249" y="179" width="28" height="33" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="95" y="224" width="28" height="33" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="95" y="224" width="28" height="33" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="198" y="224" width="28" height="33" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="198" y="224" width="28" height="33" fill="url(#interlace-warp-fiber)"/></g>
+<g class="interlace-warp"><rect x="301" y="224" width="28" height="33" rx=".35" fill="url(#interlace-green)" filter="url(#interlace-shadow)"/><rect x="301" y="224" width="28" height="33" fill="url(#interlace-warp-fiber)"/></g>
+<g data-sample="all" aria-hidden="true" fill="none"><circle cx="109" cy="105" r="14" stroke="#fff7e2" stroke-width="6"/><circle cx="109" cy="105" r="14" stroke="#573a21" stroke-width="2"/></g><g data-sample="warp" aria-hidden="true" fill="none"><circle cx="211" cy="29" r="14" stroke="#fff7e2" stroke-width="6"/><circle cx="211" cy="29" r="14" stroke="#573a21" stroke-width="2"/></g><g data-sample="weft" aria-hidden="true" fill="none"><circle cx="332" cy="195" r="14" stroke="#fff7e2" stroke-width="6"/><circle cx="332" cy="195" r="14" stroke="#573a21" stroke-width="2"/></g></svg>
+            <figcaption>圆圈标出当前观察处</figcaption>
+          </figure>
+          <div id="interlace-status" aria-live="polite" aria-atomic="true">
+            <h3 class="interlace-mode-title">交错之间，织物成形</h3>
+            <p class="interlace-mode-body">一上一下，循环往复。经纬彼此交织，形成平纹织物的基本结构。</p>
+            <span class="interlace-step" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="shujin-history" aria-labelledby="jin-history-title">
+    <div class="history-inner">
+      <h2 id="jin-history-title">成都蜀锦的来路</h2>
+      <p class="history-prelude">方才看到经纬一上一下。要在锦上织出一只走兽，每一行该提起哪些经线？成都老官山汉墓留下的织机模型，保存了两千多年前的回答。 <a href="https://cdmuseum.com/xinwen/202011/1508.html">看成都博物馆讲提花 ↗</a></p>
+      <h3 class="history-period">从技艺保护到汉锦复织</h3>
+      <fieldset class="history-view">
+        <legend>选择年份，查看蜀锦保护与复原记录</legend>
+        <input type="radio" id="js-era-2006" name="jin-history-year" aria-controls="js-leaf-2006" checked>
+        <label for="js-era-2006"><span>2006</span>名录保护</label>
+        <input type="radio" id="js-era-2009" name="jin-history-year" aria-controls="js-leaf-2009">
+        <label for="js-era-2009"><span>2009</span>蚕桑丝织</label>
+        <input type="radio" id="js-era-2013" name="jin-history-year" aria-controls="js-leaf-2013">
+        <label for="js-era-2013"><span>2012–13</span>织机出土</label>
+        <input type="radio" id="js-era-2014" name="jin-history-year" aria-controls="js-leaf-2014">
+        <label for="js-era-2014"><span>2014</span>测绘复原</label>
+        <input type="radio" id="js-era-2016" name="jin-history-year" aria-controls="js-leaf-2016">
+        <label for="js-era-2016"><span>2016</span>开馆展演</label>
+        <input type="radio" id="js-era-2018" name="jin-history-year" aria-controls="js-leaf-2018">
+        <label for="js-era-2018"><span>2018</span>汉锦试织</label>
+        <article id="js-leaf-2006" class="history-leaf" aria-labelledby="js-title-2006">
+          <div class="history-image"><img src="assets/shujin/history/2006.webp" loading="lazy" decoding="async" width="888" height="590" alt="两块红绿花锦与木梭的工艺配图"></div>
+          <div class="history-text">
+            <h3 id="js-title-2006">传下来的，还有织花的手艺</h3>
+            <p>蜀锦织造技艺入选首批国家级非物质文化遗产名录。从挑花结本到上机织造，一匹锦背后的整套手艺有了专门的保护项目。</p>
+            <p class="history-reading">看同一枝花怎样在锦面上重复。织工要先安排好每一组经线何时提起。</p>
+            <a href="https://www.ihchina.cn/project_details/19985">查看国家级非遗项目 <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article id="js-leaf-2009" class="history-leaf" aria-labelledby="js-title-2009">
+          <div class="history-image"><img src="assets/shujin/history/2009.webp" loading="lazy" decoding="async" width="888" height="590" alt="蚕茧、丝束与线轴的工艺配图"></div>
+          <div class="history-text">
+            <h3 id="js-title-2009">从一枚蚕茧，看见整条工艺</h3>
+            <p>蜀锦织造作为中国蚕桑丝织技艺的一部分，随该项目列入人类非物质文化遗产代表作名录。锦上的丝光，可以一直追溯到缫丝时合在一起的茧丝。</p>
+            <p class="history-reading">沿着蚕茧、丝束和线轴看一遍，便能认出织机上的线从哪里来。</p>
+            <a href="https://www.ihchina.cn/project_details/20195/">读蜀锦保护实践记录 <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article id="js-leaf-2013" class="history-leaf" aria-labelledby="js-title-2013">
+          <div class="history-image"><img src="assets/shujin/history/2013.webp" loading="lazy" decoding="async" width="888" height="590" alt="木质织机结构的工艺配图"></div>
+          <div class="history-text">
+            <h3 id="js-title-2013">一座汉墓，留下了织造工坊</h3>
+            <p>2012 年，成都老官山汉墓开始发掘。随后的清理中，考古人员找到了四部提花织机模型和一组织工俑。织锦的人、工具与分工，在这组随葬品里都有迹可循。</p>
+            <p class="history-reading">从木架上的横梁往下看，绷紧的线提示了布面展开的方向。</p>
+            <a href="https://cdmuseum.com/xinwen/202509/4086.html">读成都博物馆发掘记述 <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article id="js-leaf-2014" class="history-leaf" aria-labelledby="js-title-2014">
+          <div class="history-image"><img src="assets/shujin/history/2014.webp" loading="lazy" decoding="async" width="888" height="590" alt="木构件、量具与织机草图的工艺配图"></div>
+          <div class="history-text">
+            <h3 id="js-title-2014">照着模型，寻找提花的动作</h3>
+            <p>汉代提花技术复原研究立项。研究人员测量构件、比对结构，追问一个具体的问题：织机怎样从一排经线中提起恰好需要的那几根？</p>
+            <p class="history-reading">零件的尺寸可以测量；它怎样带动丝线，还要把各部分装回一起试。</p>
+            <a href="https://www.chinasilkmuseum.com/uploadfiles/2020/05/20200522104225593.pdf">查看中国丝绸博物馆课题资料 <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article id="js-leaf-2016" class="history-leaf" aria-labelledby="js-title-2016">
+          <div class="history-image"><img src="assets/shujin/history/2016.webp" loading="lazy" decoding="async" width="888" height="590" alt="在木织机上引纬的工艺配图"></div>
+          <div class="history-text">
+            <h3 id="js-title-2016">两人配合，展厅里响起梭声</h3>
+            <p>成都博物馆新馆开馆之夜，织工在复原的汉代提花织机上现场织锦。一人踏动织机、抛梭引纬，另一人推动横梁，为织下一行备好开口。</p>
+            <p class="history-reading">梭子每横穿一次，经线就要再换一次位置，两个人的动作要接得上。</p>
+            <a href="https://cdmuseum.com/xinwen/202509/4086.html">读成都博物馆开馆展演记述 <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article id="js-leaf-2018" class="history-leaf" aria-labelledby="js-title-2018">
+          <div class="history-image"><img src="assets/shujin/history/2018.webp" loading="lazy" decoding="async" width="888" height="590" alt="对称兽纹与几何纹带的织物配图"></div>
+          <div class="history-text">
+            <h3 id="js-title-2018">让动物纹重新出现在经线上</h3>
+            <p>汉代经锦织造工坊的复原展示完成。团队依据老官山出土模型复原了一台滑框式织机，并在上面织出了“动物人物锦”试样。</p>
+            <p class="history-reading">沿兽纹的轮廓看，原本笔直的彩线随着显露位置的变化，织出了背脊与四足。</p>
+            <a href="https://www.ihchina.cn/project_details/21921.html">查看汉锦试织记录 <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+      </fieldset>
+      <p class="history-outro">从展厅回到案头，给一幅锦纹配上自己的丝色。 <a href="shujin.html">走进蜀锦习艺坊 →</a></p>
+    </div>
+  </section>
+
+  <div class="paper-ending-story jin-ending">
+    <section id="jin-meanings" class="paper-meanings" aria-labelledby="jin-meanings-title">
+      <h2 id="jin-meanings-title">锦上花与鸟，纹里有心意</h2>
+      <div class="meaning-gallery">
+        <figure>
+          <div class="meaning-art"><img src="assets/shujin/motifs/hibiscus.webp" alt="扶桑花的五片珊瑚红花瓣向外舒展，花蕊斜伸" loading="lazy" decoding="async"></div>
+          <figcaption>扶桑花｜盼花开</figcaption>
+        </figure>
+        <figure>
+          <div class="meaning-art"><img src="assets/shujin/motifs/birds.webp" alt="一圈珠点围住两只相向的鸟，鸟喙隔着中线相对" loading="lazy" decoding="async"></div>
+          <figcaption>联珠对鸟｜愿相伴</figcaption>
+        </figure>
+        <figure>
+          <div class="meaning-art"><img src="assets/shujin/motifs/rosette.webp" alt="宝相团花的花瓣与卷叶绕着花心，层层围成圆形" loading="lazy" decoding="async"></div>
+          <figcaption>宝相团花｜寄团圆</figcaption>
+        </figure>
+      </div>
+      <p class="meaning-footnote">珠圈里的双鸟相向而立，团花的瓣尖绕着花心围成一圈</p>
+    </section>
+    <section class="paper-next" aria-labelledby="jin-next-title">
+      <h2 id="jin-next-title">从一张花稿，织出一匹花锦</h2>
+      <p>从勾画牡丹、点绘意匠图开始，看花瓣怎样一纬一纬织出来</p>
+      <a class="paper-craft-link" href="shujin-craft.html#step-1">走进织华 · 识匠艺</a>
+      <a class="project-home-button paper-observe-link" href="shujin-intro.html">返回观微阁首页</a>
+    </section>
+  </div>
+  <footer class="paper-end-footer">
+    <strong>成都蜀锦 · 四城五艺的材料之境</strong>
+    <button id="end-credits" type="button" aria-haspopup="dialog" aria-controls="credits-dialog">项目与出处</button>
+  </footer>
+
+  <script>
+    document.getElementById('end-credits').addEventListener('click', () => {
+      document.getElementById('credits-dialog').showModal();
+    });
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add('silk-entered');
+          observer.unobserve(entry.target);
+        }
+      }, { threshold: 0.12 });
+
+      const targets = [
+        '.chapter-heading', '.photo-wrap', '.story-copy', '.pc-banner-copy',
+        '.study-inner > header', '#interlace-figure', '#interlace-status',
+        '#jin-history-title', '.history-view', '#jin-meanings-title',
+        '.meaning-gallery figure', '.paper-next'
+      ];
+      document.querySelectorAll(targets.join(', ')).forEach(element => observer.observe(element));
+    }
+  </script>
+
+  <dialog id="story-dialog" aria-labelledby="story-title">
+    <form method="dialog"><button class="close" aria-label="关闭">×</button></form>
+    <p class="dialog-label">溯锦 · 知来处</p>
+    <h2 id="story-title">从一缕丝，寻一城锦的来处</h2>
+    <h3>锦城寻源</h3>
+    <p>蜀锦是成都具有代表性的传统技艺。“锦城”“锦官城”的称呼，让织锦与这座城市的记忆紧紧相连。</p>
+    <h3>丝缕成锦</h3>
+    <p>观察丝线的光泽与配色，再看经线、纬线如何交错。循着材料与结构，认识纹样形成的过程。</p>
+    <a class="story-button" href="shujin.html">进入习艺坊 →</a>
+  </dialog>
+
+  <dialog id="credits-dialog" aria-labelledby="credits-title">
+    <form method="dialog"><button class="close" aria-label="关闭">×</button></form>
+    <h2 id="credits-title">项目与出处</h2>
+    <p>历史板块的六幅配图为工艺主题创作。文物原件、复原研究与展演记录见各年份所附资料。</p>
+    <p>页末的扶桑花、联珠对鸟与宝相团花，均取自本项目的<a href="shujin-craft.html#patterns"><u>蜀锦纹样图鉴</u></a>。</p>
+    <p>项目：四城五艺的材料之境 · 成都蜀锦。</p>
+    <p>页面文案与视觉依据本项目提供的设计稿整理。</p>
+    <!-- 发布前在这里填写真实摄影作者、素材授权来源与参考资料。 -->
+  </dialog>
+
+  
+</body>
+</html>

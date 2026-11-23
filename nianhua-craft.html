@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>绘彩 · 识匠艺｜绵竹年画</title>
+  <link rel="stylesheet" href="paper-cutting-craft.css">
+  <link rel="stylesheet" href="paper-meanings.css">
+  <link rel="stylesheet" href="paper-ending.css">
+  <style>
+#kit-knife:checked ~ .kit-index label[for="kit-knife"],
+#kit-rubber:checked ~ .kit-index label[for="kit-rubber"],
+#kit-brush:checked ~ .kit-index label[for="kit-brush"],
+#kit-stamp:checked ~ .kit-index label[for="kit-stamp"] { background:#315e48; color:#fff8e9; border-color:#bbaa7e; border-radius:4px 16px 4px 16px; }
+#kit-knife:checked ~ .kit-index label[for="kit-knife"] i,
+#kit-rubber:checked ~ .kit-index label[for="kit-rubber"] i,
+#kit-brush:checked ~ .kit-index label[for="kit-brush"] i,
+#kit-stamp:checked ~ .kit-index label[for="kit-stamp"] i { color:#edce9d; }
+#kit-knife:focus-visible ~ .kit-index label[for="kit-knife"],
+#kit-rubber:focus-visible ~ .kit-index label[for="kit-rubber"],
+#kit-brush:focus-visible ~ .kit-index label[for="kit-brush"],
+#kit-stamp:focus-visible ~ .kit-index label[for="kit-stamp"] { outline:3px solid #ae583e; outline-offset:2px; }
+#kit-knife:checked ~ #kit-view-knife,
+#kit-rubber:checked ~ #kit-view-rubber,
+#kit-brush:checked ~ #kit-view-brush,
+#kit-stamp:checked ~ #kit-view-stamp { display:grid; }
+    #patterns .motif-art img { filter: none; }
+    #patterns .motif-mat, #patterns .motif-lens { background: #fbf4e3; }
+    #patterns .motif-art { inset: 4%; }
+    #patterns .motif-lens .motif-art { inset: 13%; }
+
+      #heritage .lineage-play {
+      background-image: linear-gradient(0deg, #30231838, transparent 70%), url('assets/nianhua/color-study/history-2011.webp');
+      text-decoration: none;
+    }
+    #heritage .lineage-play:focus-visible { outline: 3px solid #ae583e; outline-offset: 4px; }
+    #heritage .lineage-image-note {
+      position: absolute; right: 12px; bottom: 10px;
+      padding: 3px 8px; background: #253d31b8; color: #fff8e9;
+      font-size: 13px; pointer-events: none;
+    }
+    #heritage [hidden] { display: none !important; }
+    #heritage video { position: absolute; inset: 0; width: 100%; height: 100%; background: #18271f; object-fit: contain; }
+    #heritage .lineage-video-start { border: 0; padding: 0; background: none; color: #536d57; font: inherit; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+    #heritage .lineage-video-status { margin: 0; color: #526b57; font-size: 14px; }
+    #heritage button:disabled { cursor: wait; }
+    .paper-ending-story {
+      --paper: #f8f4eb; --ink: #39785c; --teal: #357f70; --rule: #a2c1b3; --gold: #ab8539;
+      --gutter: clamp(20px, 6vw, 100px); --content: min(1200px, calc(100% - 2 * var(--gutter)));
+      --heading-size: clamp(28px, 3vw, 46px); --copy-size: clamp(17px, 1.24vw, 20px);
+      max-width: none;
+      display: grid;
+      align-content: center;
+      min-height: calc(100vw / 3);
+      background: var(--paper) url("assets/paper-cutting/meanings/ending-landscape.webp") center bottom / 100% auto no-repeat;
+    }
+    .paper-ending-story::before { content: none; }
+    .paper-end-footer {--rule:#a2c1b3; border:0}
+    .paper-end-footer button,.craft-credits button {font:inherit; cursor:pointer}
+    .craft-credits {width:min(90%,460px); padding:28px; color:var(--ink); border:1px solid #a5b7a6; background:#faf7ef}
+    .craft-credits::backdrop {background:#273e3366}
+    .craft-credits p {margin:14px 0; line-height:1.75}
+    .craft-credits a {text-decoration:underline; text-underline-offset:3px}
+    .craft-credits button {background:#315e4d;color:#fff9eb;border:0;padding:8px 20px}
+  </style>
+  <style>
+    @media screen and (prefers-reduced-motion: no-preference) {
+      :root { --print-ease: cubic-bezier(.18,.76,.23,1); --print-rise: 26px; }
+      @keyframes print-rise {
+        from { opacity: .15; transform: translateY(var(--print-rise)); }
+        to { opacity: 1; transform: none; }
+      }
+      @keyframes print-unroll {
+        from { clip-path: inset(0 94% 0 0); transform: scale(.97); }
+        to { clip-path: inset(0); transform: none; }
+      }
+      @keyframes print-turn {
+        from { opacity: .2; transform: perspective(800px) rotateY(-42deg) rotateZ(-3deg) scale(.93); }
+        to { opacity: 1; transform: none; }
+      }
+
+      .heading.print-entered .crumb, .heading.print-entered h1, .heading.print-entered > p,
+      .kit-head.print-entered, .motifs-head.print-entered, .lineage-rail.print-entered,
+      .lineage-people.print-entered, .paper-next.print-entered > * {
+        animation: print-rise .74s var(--print-ease) backwards;
+      }
+      .heading.print-entered h1, .paper-next.print-entered p { animation-delay: .10s; }
+      .heading.print-entered > p, .paper-next.print-entered .paper-craft-link { animation-delay: .20s; }
+      .paper-next.print-entered .paper-observe-link { animation-delay: .27s; }
+      .phases a { transition: color .16s, background-color .16s; }
+
+      .stages.print-entered .stage:not([hidden]) .scene img,
+      .kit-view.print-entered .kit-plate > img {
+        animation: print-unroll .85s var(--print-ease) backwards;
+      }
+      .stages.print-entered .stage:not([hidden]) .method,
+      .kit-view.print-entered .kit-plate figcaption {
+        animation: print-rise .64s .10s var(--print-ease) backwards;
+      }
+      .stages.print-entered .stage:not([hidden]) .detail,
+      .kit-view.print-entered .kit-notes {
+        animation: print-rise .68s .20s var(--print-ease) backwards;
+      }
+
+      .motif-card.print-entered .motif-mat, .motif-reading.print-entered .motif-lens .motif-art {
+        animation: print-turn .76s var(--card-delay, 0s) var(--print-ease) backwards;
+      }
+      .motif-card.print-entered strong {
+        animation: print-rise .50s calc(var(--card-delay, 0s) + .12s) var(--print-ease) backwards;
+      }
+      .lineage-strip.print-entered a { animation: print-rise .58s var(--print-ease) backwards; }
+      .lineage-strip.print-entered a:nth-child(2) { animation-delay: .10s; }
+      .lineage-strip.print-entered a:nth-child(3) { animation-delay: .20s; }
+      dialog[open] { --print-rise: 12px; animation: print-rise .26s var(--print-ease); }
+
+      /* Reveal the carp's vermilion from its head toward the tail. */
+      .stages.print-entered #step-4 .scene {
+        position: relative;
+        animation: print-unroll .72s var(--print-ease) backwards;
+      }
+      .stages.print-entered #step-4 .scene img { animation: none; }
+      .stages.print-entered #step-4 .scene::after {
+        content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+        background: url("assets/nianhua/craft/step-04.webp") center / 100% 100% no-repeat;
+        clip-path: polygon(33% 66%, 40% 63%, 49% 60%, 55% 58%, 63% 60%, 64% 65%, 56% 70%, 46% 72%, 34% 70%);
+        filter: grayscale(1);
+        mask-image: linear-gradient(to right, black 44%, transparent 56%);
+        mask-size: 250% 100%;
+        animation: print-vermilion 1.15s .36s backwards;
+      }
+      @keyframes print-vermilion {
+        from { opacity: 1; mask-position: 0% center; }
+        to { opacity: 1; mask-position: 100% center; }
+      }
+
+      @media (min-width: 701px) {
+        .motif-card:nth-child(3n + 2) { --card-delay: .10s; }
+        .motif-card:nth-child(3n) { --card-delay: .20s; }
+      }
+      @supports (animation-timeline: view()) {
+        .paper-ending-story { view-timeline-name: --print-ending; overflow: clip; background-image: none; }
+        .paper-ending-story::before {
+          content: ""; inset: -4% 0; height: auto; aspect-ratio: auto; mask-image: none;
+          background-size: 100% auto; pointer-events: none;
+          animation: print-landscape auto linear both;
+          animation-timeline: --print-ending;
+        }
+        @keyframes print-landscape { from { transform: translateY(-2%); } to { transform: translateY(2%); } }
+      }
+      @media (max-width: 700px) {
+        :root { --print-rise: 14px; }
+        .stages.print-entered .stage:not([hidden]) .detail { animation-delay: .12s; }
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="project-typeface.css?v=20261119-1">
+  
+
+  <link rel="stylesheet" href="project-home-button.css?v=20261123-top-left-1">
+  <link rel="stylesheet" href="project-home-toolbar.css?v=20261123-top-left-1">
+</head>
+<body class="project-has-home-toolbar">
+  <div class="project-home-toolbar"><a class="project-home-button project-home-return" href="index.html" aria-label="返回蜀间拾艺主页"><svg class="project-home-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5M5.5 9v11h5v-6h3v6h5V9"/></svg><span>返回主页</span></a></div>
+
+  <main>
+    <div class="heading">
+      <div><nav class="crumb" aria-label="当前位置"><a href="nianhua-intro.html">绵竹年画</a>　/　制作工序</nav>
+      <h1>绘彩<span>·</span>识匠艺</h1></div>
+      <p>看一幅娃娃抱鲤，怎样从墨线画到花衣。</p>
+    </div>
+    <nav class="phases" aria-label="绵竹年画的五道工序">
+      <a href="#step-1"><i>01</i><span>起稿</span></a>
+      <a href="#step-2"><i>02</i><span>刻版</span></a>
+      <a href="#step-3"><i>03</i><span>印墨</span></a>
+      <a href="#step-4"><i>04</i><span>施彩</span></a>
+      <a href="#step-5"><i>05</i><span>盖花</span></a>
+    </nav>
+    <div class="stages">
+      <article class="stage" id="step-1" aria-labelledby="title-1">
+        <section class="method">
+          <div class="chapter"><i>01</i><span>／ 05</span></div>
+          <h2 id="title-1">勾出娃娃抱鲤</h2>
+          <p class="tools">纸、毛笔、墨碟</p>
+          <dl><dt>定外形</dt><dd>先画娃娃的圆脸，再用长弧勾出怀中鲤鱼的身形。</dd><dt>理前后</dt><dd>小手搭在鱼背上，鳞片画到手指边就收笔。</dd></dl>
+        </section>
+        <figure class="scene"><img src="assets/nianhua/craft/step-01.webp" width="1254" height="1254" alt="笔尖勾出鱼尾的弧线"></figure>
+        <aside class="detail">
+          <h3>哪条线在前面？</h3>
+          <img src="assets/nianhua/craft/detail-01.webp" width="672" height="324" alt="起稿时的手部与画面局部">
+          <p>沿袖口找到小手。手指遮住了几片鱼鳞，这一处交叠让人看出娃娃抱鱼的姿势。</p>
+          <a class="action" href="#step-2">下一步 · 刻版 <span>→</span></a>
+        </aside>
+      </article>
+      <article class="stage" id="step-2" aria-labelledby="title-2">
+        <section class="method">
+          <div class="chapter"><i>02</i><span>／ 05</span></div>
+          <h2 id="title-2">把墨线留在版上</h2>
+          <p class="tools">木版、画稿、刻刀</p>
+          <dl><dt>反贴画稿</dt><dd>把画稿反贴在木版上。纸上朝右的鱼头，到了木版上朝左。</dd><dt>剔去空白</dt><dd>沿线两侧剔去空白，使鱼鳞、袖口和笑眼的线条凸起，留作印墨。</dd></dl>
+        </section>
+        <figure class="scene"><img src="assets/nianhua/craft/step-02.webp" width="1254" height="1254" alt="刻刀沿朝左的鱼头雕出线版"></figure>
+        <aside class="detail">
+          <h3>鱼头为什么朝左？</h3>
+          <img src="assets/nianhua/craft/detail-02.webp" width="672" height="324" alt="刻版时的手部与画面局部">
+          <p>看刻刀旁的鱼嘴，再回想起稿时的鱼尾。木版上的图形左右相反，转印到纸上才会与原稿同向。</p>
+          <a class="action" href="#step-3">下一步 · 印墨 <span>→</span></a>
+        </aside>
+      </article>
+      <article class="stage" id="step-3" aria-labelledby="title-3">
+        <section class="method">
+          <div class="chapter"><i>03</i><span>／ 05</span></div>
+          <h2 id="title-3">揭出一张墨线稿</h2>
+          <p class="tools">线版、墨、纸、棕刷</p>
+          <dl><dt>刷墨覆纸</dt><dd>在凸起的线条上刷一层薄墨，铺好纸，从纸背轻擦，让纸面均匀受墨。</dd><dt>揭纸看线</dt><dd>从一角慢慢揭起纸，看看眼梢和细小的鱼鳞是否印清。</dd></dl>
+        </section>
+        <figure class="scene"><img src="assets/nianhua/craft/step-03.webp" width="1254" height="1254" alt="匠人轻揭纸角，露出木版和黑白印样"></figure>
+        <aside class="detail">
+          <h3>鱼头又朝哪边？</h3>
+          <img src="assets/nianhua/craft/detail-03.webp" width="672" height="324" alt="印墨时的手部与画面局部">
+          <p>纸上鱼嘴朝右，和最初的画稿同向。墨线围出的空白，就是下一步落色的地方。</p>
+          <a class="action" href="#step-4">下一步 · 施彩 <span>→</span></a>
+        </aside>
+      </article>
+      <article class="stage" id="step-4" aria-labelledby="title-4">
+        <section class="method">
+          <div class="chapter"><i>04</i><span>／ 05</span></div>
+          <h2 id="title-4">为鲤鱼添朱红</h2>
+          <p class="tools">墨线印样、毛笔、颜料碟</p>
+          <dl><dt>铺色</dt><dd>笔尖蘸朱红，从鱼头向鱼身铺开，顺着墨线把鱼身和衣袖分开。</dd><dt>添彩</dt><dd>留出鱼鳍上的鳍条，再给娃娃的衣襟和袖口添色。</dd></dl>
+        </section>
+        <figure class="scene"><img src="assets/nianhua/craft/step-04.webp" width="1254" height="1254" alt="毛笔正在鱼鳞之间施朱红"></figure>
+        <aside class="detail">
+          <h3>手绘的色从哪里起？</h3>
+          <img src="assets/nianhua/craft/detail-04.webp" width="672" height="324" alt="施彩时的手部与画面局部">
+          <p>从已经染红的鱼头看向笔尖，再看仍留白的鱼尾，一张印样上就能看出施彩的先后。</p>
+          <a class="action" href="#step-5">下一步 · 盖花 <span>→</span></a>
+        </aside>
+      </article>
+      <article class="stage" id="step-5" aria-labelledby="title-5">
+        <section class="method">
+          <div class="chapter"><i>05</i><span>／ 05</span></div>
+          <h2 id="title-5">在衣袖上盖花</h2>
+          <p class="tools">彩绘年画、小花印模、颜料</p>
+          <dl><dt>蘸色定位</dt><dd>用小花印模轻蘸颜料，在娃娃的绿袖上选好第一朵花的位置。</dd><dt>逐朵盖印</dt><dd>轻轻按下、提起，再顺着袖弯移到下一处，让几朵浅色小花沿衣纹排开。</dd></dl>
+        </section>
+        <figure class="scene"><img src="assets/nianhua/craft/step-05.webp" width="1254" height="1254" alt="匠人用小花印模在绿袖上盖出花纹"></figure>
+        <aside class="detail">
+          <h3>袖上的花怎样排出来？</h3>
+          <img src="assets/nianhua/craft/detail-05.webp" width="672" height="324" alt="盖花时的手部与画面局部">
+          <p>沿绿袖看三朵浅色小花，再看匠人手中印模的底面。同一朵小花反复盖印，素袖便有了花纹。</p>
+          <a class="action" href="nianhua.html">进入年画习艺坊 <span>→</span></a>
+        </aside>
+      </article>
+    </div>
+    <section class="kit" id="tools" aria-labelledby="kit-title">
+      <header class="kit-head"><h2 id="kit-title">年画案头的器具</h2><p>从鱼鳞的一道刻痕，到衣袖上的一朵小花。</p></header>
+      <fieldset class="kit-layout">
+        <legend class="kit-sr">选择年画工具</legend>
+        <input class="kit-pick kit-sr" type="radio" name="nianhua-tool" id="kit-knife" aria-controls="kit-view-knife" checked>
+        <input class="kit-pick kit-sr" type="radio" name="nianhua-tool" id="kit-rubber" aria-controls="kit-view-rubber">
+        <input class="kit-pick kit-sr" type="radio" name="nianhua-tool" id="kit-brush" aria-controls="kit-view-brush">
+        <input class="kit-pick kit-sr" type="radio" name="nianhua-tool" id="kit-stamp" aria-controls="kit-view-stamp">
+        <div class="kit-index">
+          <label for="kit-knife"><i>01</i>刻刀</label>
+          <label for="kit-rubber"><i>02</i>棕刷</label>
+          <label for="kit-brush"><i>03</i>毛笔</label>
+          <label for="kit-stamp"><i>04</i>花印模</label>
+        </div>
+        <div class="kit-view" id="kit-view-knife">
+          <figure class="kit-plate">
+            <img src="assets/nianhua/craft/tool-knife.webp" width="1200" height="800" loading="lazy" alt="刻刀斜放在鲤鱼木版上，刃尖贴近凸起的鳞纹">
+            <figcaption><h3>刻刀</h3><p>刻去线旁的木料，留下能着墨的轮廓。</p></figcaption>
+          </figure>
+          <aside class="kit-notes" aria-label="刻刀的用法">
+            <h3>细看刻刀</h3>
+            <dl>
+              <div><dt><img src="assets/nianhua/craft/tool-knife-1.webp" width="180" height="180" loading="lazy" alt="">刀尖</dt><dd>顺着鱼鳞的弧线走刀，一小段一小段剔去旁边的木料。</dd></div>
+              <div><dt><img src="assets/nianhua/craft/tool-knife-2.webp" width="180" height="180" loading="lazy" alt="">线脊</dt><dd>两道刀口之间留下细细的凸线。刷墨时，正是这条线把鳞纹印到纸上。</dd></div>
+            </dl>
+            <a class="kit-return" href="#step-2">看工序 · 刻版 <span aria-hidden="true">↗</span></a>
+          </aside>
+        </div>
+        <div class="kit-view" id="kit-view-rubber">
+          <figure class="kit-plate">
+            <img src="assets/nianhua/craft/tool-rubber.webp" width="1200" height="800" loading="lazy" alt="棕刷旁放着线版和揭起一角的娃娃抱鲤墨稿">
+            <figcaption><h3>棕刷</h3><p>隔着纸背擦印，让线版上的墨落到纸上。</p></figcaption>
+          </figure>
+          <aside class="kit-notes" aria-label="棕刷的用法">
+            <h3>细看棕刷</h3>
+            <dl>
+              <div><dt><img src="assets/nianhua/craft/tool-rubber-1.webp" width="180" height="180" loading="lazy" alt="">刷面</dt><dd>用平整的棕刷面贴住纸背，轻轻擦过线版，让粗线和细线都能受墨。</dd></div>
+              <div><dt><img src="assets/nianhua/craft/tool-rubber-2.webp" width="180" height="180" loading="lazy" alt="">印痕</dt><dd>先按住纸边，揭起一角看线条。若有一处偏淡，可把纸放回原位，在那一处补擦。</dd></div>
+            </dl>
+            <a class="kit-return" href="#step-3">看工序 · 印墨 <span aria-hidden="true">↗</span></a>
+          </aside>
+        </div>
+        <div class="kit-view" id="kit-view-brush">
+          <figure class="kit-plate">
+            <img src="assets/nianhua/craft/tool-brush.webp" width="1200" height="800" loading="lazy" alt="蘸朱红的竹杆毛笔、颜料碟和半着色的鲤鱼画稿">
+            <figcaption><h3>毛笔</h3><p>聚锋起线，铺毫着色。</p></figcaption>
+          </figure>
+          <aside class="kit-notes" aria-label="毛笔的用法">
+            <h3>细看毛笔</h3>
+            <dl>
+              <div><dt><img src="assets/nianhua/craft/tool-brush-1.webp" width="180" height="180" loading="lazy" alt="">笔锋</dt><dd>起稿时收拢笔锋，顺着手腕带出鱼须，到末端轻提，线就渐渐收细。</dd></div>
+              <div><dt><img src="assets/nianhua/craft/tool-brush-2.webp" width="180" height="180" loading="lazy" alt="">色碟</dt><dd>施彩时从碟中蘸取朱红，在碟沿理顺笔毫，再沿鱼身的墨线铺开颜色。</dd></div>
+            </dl>
+            <a class="kit-return" href="#step-4">看工序 · 施彩 <span aria-hidden="true">↗</span></a>
+          </aside>
+        </div>
+        <div class="kit-view" id="kit-view-stamp">
+          <figure class="kit-plate">
+            <img src="assets/nianhua/craft/tool-stamp.webp" width="1200" height="800" loading="lazy" alt="五瓣花印模与绿袖上的浅色花印">
+            <figcaption><h3>花印模</h3><p>一枚花模，给绿袖添上一排小花。</p></figcaption>
+          </figure>
+          <aside class="kit-notes" aria-label="花印模的用法">
+            <h3>细看花印模</h3>
+            <dl>
+              <div><dt><img src="assets/nianhua/craft/tool-stamp-1.webp" width="180" height="180" loading="lazy" alt="">花面</dt><dd>凸起的花瓣薄薄蘸色，平按衣袖，再垂直提起，使花形边缘清楚。</dd></div>
+              <div><dt><img src="assets/nianhua/craft/tool-stamp-2.webp" width="180" height="180" loading="lazy" alt="">花距</dt><dd>顺着袖弯移到下一处，照着上一朵的位置留出间隔，让花瓣之间透出绿底。</dd></div>
+            </dl>
+            <a class="kit-return" href="#step-5">看工序 · 盖花 <span aria-hidden="true">↗</span></a>
+          </aside>
+        </div>
+      </fieldset>
+    </section>
+    <section class="motifs" id="patterns" aria-labelledby="motifs-title">
+      <header class="motifs-head">
+        <h2 id="motifs-title">画纹解意</h2>
+        <p>从娃娃抱鲤到衣袖印花，细看绵竹年画里的形与色。</p>
+        <label class="motif-search"><span aria-hidden="true"></span><input type="search" aria-label="搜索绵竹年画纹样" placeholder="搜索纹样"></label>
+      </header>
+      <div class="motifs-layout">
+        <div class="motifs-library">
+          <div class="motif-filters" role="group" aria-label="按纹样题材与构图筛选">
+            <button type="button" data-intro="先看画中人，再沿鱼鳞、花瓣和袖口，细读墨线与手绘色块。" aria-pressed="true">全部</button>
+            <button type="button" data-intro="从眼神、衣饰和手势，读出娃娃与门神不同的神态。" aria-pressed="false">人物</button>
+            <button type="button" data-intro="沿牡丹的瓣缘看墨线，辨一辨花头、花苞和叶片。" aria-pressed="false">花卉</button>
+            <button type="button" data-intro="看鹊尾怎样接住梅枝的斜势，再看鱼尾怎样带动整条鱼。" aria-pressed="false">花鸟鱼纹</button>
+            <button type="button" data-intro="顺着袖边找出一朵花，再看同一个花形怎样排开。" aria-pressed="false">衣饰纹</button>
+          </div>
+          <p class="motif-intro">先看画中人，再沿鱼鳞、花瓣和袖口，细读墨线与手绘色块。</p>
+          <div class="motif-grid" role="group" aria-label="绵竹年画纹样教学图例">
+            <button class="motif-card" type="button" aria-pressed="true" aria-controls="motif-reading" data-type="人物" data-words="娃娃 儿童 鲤鱼 年年有余 鱼 余" data-note="娃娃两手环抱一尾大鲤鱼。顺着手指看，鱼鳞的弧线到了手边就停住，前后关系清清楚楚。“鱼”与“余”谐音，借来寄托生活富足的祝愿。">
+              <span class="motif-mat"><span class="motif-art" aria-hidden="true"><img loading="lazy" src="assets/nianhua/craft/motif-child-pastel.webp" alt=""></span></span><strong>娃娃抱鲤</strong>
+            </button>
+            <button class="motif-card" type="button" aria-pressed="false" aria-controls="motif-reading" data-type="花卉" data-words="花草 花瓣 富贵 牡丹" data-note="花瓣从黄色花心向外一层层张开，墨线分出瓣缘，绿叶托起朱红花头。民间常借牡丹寄托富贵吉祥的心愿。">
+              <span class="motif-mat"><span class="motif-art" aria-hidden="true"><img loading="lazy" src="assets/nianhua/craft/motif-peony-pastel.webp" alt=""></span></span><strong>折枝牡丹</strong>
+            </button>
+            <button class="motif-card" type="button" aria-pressed="false" aria-controls="motif-reading" data-type="花鸟鱼纹" data-words="鸟 禽鸟 喜上眉梢 梅花 喜鹊" data-note="鹊尾向下，梅枝向上，两道斜线在鸟足处相接。喜鹊和梅梢画在一起，借“梅梢”与“眉梢”的谐音说一声“喜上眉梢”。">
+              <span class="motif-mat"><span class="motif-art" aria-hidden="true"><img loading="lazy" src="assets/nianhua/craft/motif-magpie-pastel.webp" alt=""></span></span><strong>喜鹊登梅</strong>
+            </button>
+            <button class="motif-card" type="button" aria-pressed="false" aria-controls="motif-reading" data-type="花鸟鱼纹" data-words="动物 鲤鱼 鱼鳞 吉利 有余" data-note="鲤鱼仰头摆尾，鱼身弯成一道弧。细看一排排鳞片，墨线勾出边缘，红色和金黄交替，让鱼身显得圆鼓而有动势。">
+              <span class="motif-mat"><span class="motif-art" aria-hidden="true"><img loading="lazy" src="assets/nianhua/craft/motif-carp-pastel.webp" alt=""></span></span><strong>游鲤纹</strong>
+            </button>
+            <button class="motif-card" type="button" aria-pressed="false" aria-controls="motif-reading" data-type="人物" data-words="门画 武将 武士 护宅 门神" data-note="先看浓眉和长须，再沿两肩向外看旗与甲。正面的站姿、齐整的甲片让人物显得稳重威严，寄托着守门护宅的心愿。">
+              <span class="motif-mat"><span class="motif-art" aria-hidden="true"><img loading="lazy" src="assets/nianhua/craft/motif-guardian-pastel.webp" alt=""></span></span><strong>武门神</strong>
+            </button>
+            <button class="motif-card" type="button" aria-pressed="false" aria-controls="motif-reading" data-type="衣饰纹" data-words="服饰 纹饰 印花 小花 盖花 连续纹样" data-note="这段绿袖边上，浅色五瓣花沿弧线排开，朱红边线把花纹拢在袖口。回看盖花工序，就能找到同一朵小花反复出现的缘由。">
+              <span class="motif-mat"><span class="motif-art" aria-hidden="true"><img loading="lazy" src="assets/nianhua/craft/motif-sleeve-pastel.webp" alt=""></span></span><strong>五瓣袖花</strong>
+            </button>
+          </div>
+          <div class="motif-empty" hidden><p>没有找到匹配的纹样。</p><button type="button">查看全部纹样</button></div>
+        </div>
+        <aside class="motif-reading" id="motif-reading" aria-labelledby="motif-name">
+          <div class="motif-observe">
+            <div><p class="motif-kicker">纹样观察 <span>／ 人物</span></p><h3 id="motif-name" tabindex="-1">娃娃抱鲤</h3>
+              <p class="motif-note">娃娃两手环抱一尾大鲤鱼。顺着手指看，鱼鳞的弧线到了手边就停住，前后关系清清楚楚。“鱼”与“余”谐音，借来寄托生活富足的祝愿。</p></div>
+            <div class="motif-lens"><span class="motif-art" aria-hidden="true"><img src="assets/nianhua/craft/motif-child-pastel.webp" loading="lazy" alt=""></span></div>
+          </div>
+          <div class="motif-diagrams" aria-label="纹样排列示意">
+            <figure><div class="motif-seq seq-1"><img src="assets/nianhua/craft/motif-child-pastel.webp" loading="lazy" alt=""></div><figcaption>单元</figcaption></figure>
+            <figure><div class="motif-seq seq-2"><img src="assets/nianhua/craft/motif-child-pastel.webp" loading="lazy" alt=""><img src="assets/nianhua/craft/motif-child-pastel.webp" loading="lazy" alt=""></div><figcaption>镜像</figcaption></figure>
+            <figure><div class="motif-seq seq-3"><img src="assets/nianhua/craft/motif-child-pastel.webp" loading="lazy" alt=""><img src="assets/nianhua/craft/motif-child-pastel.webp" loading="lazy" alt=""><img src="assets/nianhua/craft/motif-child-pastel.webp" loading="lazy" alt=""></div><figcaption>连续</figcaption></figure>
+          </div>
+          <a class="motif-workshop" href="nianhua.html"><span>去年画习艺坊选画稿</span><span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+      <span class="kit-sr motif-status" role="status"></span>
+    </section>
+    <section class="lineage" id="heritage" aria-labelledby="lineage-title">
+      <header class="lineage-rail">
+        <h2 id="lineage-title">匠心传承</h2>
+        <img src="assets/nianhua/craft/motif-peony.webp" loading="lazy" alt="">
+      </header>
+      <figure class="lineage-film">
+        <div class="lineage-screen">
+          <button class="lineage-play" type="button" aria-controls="heritage-video" aria-label="播放《农广天地》绵竹年画专题">
+            <span class="lineage-playlabel"><b aria-hidden="true">▶</b>看年画印绘</span>
+          </button>
+          <video id="heritage-video" controls playsinline preload="none" hidden aria-label="《农广天地》绵竹年画专题"></video>
+          <span class="lineage-image-note">印墨场景示意</span>
+        </div>
+        <figcaption>
+          <span>央视《农广天地》· 绵竹年画 · 2011-02-03</span>
+          <button class="lineage-video-start" type="button" aria-controls="heritage-video">播放视频 ▷</button>
+        </figcaption>
+        <p class="lineage-video-status" role="status" hidden></p>
+      </figure>
+      <aside class="lineage-people" aria-labelledby="lineage-people-title">
+        <h3 id="lineage-people-title">绵竹年画传承人图鉴</h3>
+        <article>
+          <h4>陈兴才</h4>
+          <p>1933 年，陈兴才跟随大伯陈世金学做年画。他把传统画样重新刻成线版，又把刻版、彩绘的手艺教给孙辈，是绵竹木版年画首批国家级代表性传承人之一。</p>
+          <a href="https://www.ihchina.cn/ccr_detail/2607" target="_blank" rel="noopener">读陈兴才的人物档案 ↗</a>
+        </article>
+        <article>
+          <h4>陈刚</h4>
+          <p>陈刚十九岁起跟随爷爷陈兴才学刻版。刻《迎春图》时，他按原画大小分成四块梨木版，把街市里细小的人脸、衣褶和动作一刀刀留在木头上。</p>
+          <a href="https://mztoday.gov.cn/show/66693.html" target="_blank" rel="noopener">看《迎春图》刻版现场 ↗</a>
+        </article>
+      </aside>
+      <nav class="lineage-strip" aria-label="回看绵竹年画制作工序">
+        <a class="kit-return" href="#step-2"><img src="assets/nianhua/craft/detail-02.webp" loading="lazy" alt=""><span>刻出线版　↗</span></a>
+        <a class="kit-return" href="#step-3"><img src="assets/nianhua/craft/detail-03.webp" loading="lazy" alt=""><span>揭纸看墨　↗</span></a>
+        <a class="kit-return" href="#step-4"><img src="assets/nianhua/craft/detail-04.webp" loading="lazy" alt=""><span>手绘施彩　↗</span></a>
+      </nav>
+    </section>
+  </main>
+  <div class="paper-ending-story">
+    <p class="meaning-footnote">娃娃抱鲤，取个「年年有余」的好口彩</p>
+    <section class="paper-next" aria-labelledby="paper-next-title">
+      <h2 id="paper-next-title">画红一尾鲤，把年味带回家</h2>
+      <p>从娃娃怀里的红鲤到成对张贴的门神，看看绵竹人家怎样用年画迎新春</p>
+      <a class="paper-craft-link" href="nianhua-life.html">走进迎福 · 入日常</a>
+      <a class="project-home-button paper-observe-link" href="nianhua-intro.html">返回观微阁首页</a>
+    </section>
+  </div>
+  <footer class="paper-end-footer">
+    <strong>绵竹年画 · 四城五艺的材料之境</strong>
+    <button type="button" id="end-credits" aria-haspopup="dialog" aria-controls="credits-dialog">项目与出处</button>
+  </footer>
+  <dialog id="credits-dialog" class="craft-credits" aria-labelledby="credits-title">
+    <h2 id="credits-title">项目与出处</h2>
+    <p>绵竹年画 · 四城五艺的材料之境</p>
+    <p>本章以「娃娃抱鲤」演示起稿、刻版、印墨、施彩与盖花。<a href="#heritage">传承人图鉴</a>收录了陈兴才的人物档案与陈刚刻制《迎春图》线版的报道。</p>
+    <form method="dialog"><button>关闭</button></form>
+  </dialog>
+  <script>
+    const craftCredits = document.getElementById('credits-dialog');
+    document.getElementById('end-credits').addEventListener('click', () => craftCredits.showModal());
+    craftCredits.querySelector('a').addEventListener('click', () => craftCredits.close());
+  </script>
+  <script>
+    const stages = Array.from(document.querySelectorAll('.stage'));
+    const phases = Array.from(document.querySelectorAll('.phases a'));
+    function showStep() {
+      const current = stages.find(stage => '#' + stage.id === location.hash) || stages[0];
+      for (const stage of stages) stage.hidden = stage !== current;
+      for (const link of phases) {
+        if (link.hash === '#' + current.id) link.setAttribute('aria-current', 'step');
+        else link.removeAttribute('aria-current');
+      }
+    }
+    document.addEventListener('click', event => {
+      const link = event.target.closest('a[href^="#step-"]');
+      if (!link || event.button !== 0 || event.ctrlKey || event.shiftKey || event.metaKey || event.altKey) return;
+      event.preventDefault();
+      if (link.hash !== location.hash) history.pushState(null, '', link.hash);
+      showStep();
+      if (link.matches('.action, .kit-return')) {
+        const active = document.querySelector('.phases [aria-current]');
+        active.focus({ preventScroll: true });
+        if (link.classList.contains('kit-return')) active.scrollIntoView({ block: 'start' });
+      }
+    });
+    window.addEventListener('hashchange', showStep);
+    window.addEventListener('popstate', showStep);
+    showStep();
+  </script>
+  <script src="assets/nianhua/craft/motifs.js"></script>
+  <script>
+    (() => {
+      const video = document.getElementById('heritage-video');
+      const cover = document.querySelector('#heritage .lineage-play');
+      const startButton = document.querySelector('#heritage .lineage-video-start');
+      const imageNote = document.querySelector('#heritage .lineage-image-note');
+      const status = document.querySelector('#heritage .lineage-video-status');
+      const stream = 'https://newcntv.qcloudcdn.com/asp/hls/main/0303000a/3/default/5717fcc44dba4bd1bc0e2bb01aaac74e/main.m3u8?maxbr=2048';
+      let hls;
+      let library;
+
+      function showStatus(message) {
+        status.textContent = message;
+        status.hidden = !message;
+      }
+
+      function fail() {
+        if (hls) { hls.destroy(); hls = null; }
+        video.pause();
+        video.removeAttribute('src');
+        video.load();
+        video.hidden = true;
+        cover.hidden = false;
+        imageNote.hidden = false;
+        cover.disabled = false;
+        startButton.disabled = false;
+        startButton.textContent = '重新播放 ▷';
+        showStatus('视频暂时无法加载，请检查网络后点击重新播放。');
+      }
+
+      function loadLibrary() {
+        if (window.Hls) return Promise.resolve();
+        if (!library) {
+          library = new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/hls.js@1.6.13/dist/hls.min.js';
+            script.onload = resolve;
+            script.onerror = () => { script.remove(); library = null; reject(new Error('HLS library unavailable')); };
+            document.head.append(script);
+          });
+        }
+        return library;
+      }
+
+      function play() {
+        video.play().catch(error => {
+          if (error.name === 'NotAllowedError') showStatus('请点击播放器中的播放按钮。');
+          else if (error.name !== 'AbortError') fail();
+        });
+      }
+
+      async function start() {
+        if (!video.hidden) { play(); video.focus(); return; }
+        cover.disabled = true;
+        startButton.disabled = true;
+        showStatus('正在加载视频…');
+        try {
+          if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = stream;
+          } else {
+            await loadLibrary();
+            if (!window.Hls.isSupported()) throw new Error('HLS unsupported');
+            hls = new Hls();
+            hls.on(Hls.Events.MANIFEST_PARSED, play);
+            hls.on(Hls.Events.ERROR, (_event, data) => { if (data.fatal) fail(); });
+            hls.loadSource(stream);
+            hls.attachMedia(video);
+          }
+          video.hidden = false;
+          cover.hidden = true;
+          imageNote.hidden = true;
+          startButton.disabled = false;
+          startButton.textContent = '播放视频 ▷';
+          video.focus();
+          if (!hls) play();
+        } catch { fail(); }
+      }
+
+      cover.addEventListener('click', start);
+      startButton.addEventListener('click', start);
+      video.addEventListener('playing', () => showStatus(''));
+      video.addEventListener('error', fail);
+    })();
+  </script>
+  <script>
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add('print-entered');
+          observer.unobserve(entry.target);
+        }
+      }, { threshold: .08 });
+
+      const targets = [
+        '.heading', '.stages', '.kit-head', '.kit-view', '.motifs-head',
+        '.motif-card', '.motif-reading', '.lineage-rail', '.lineage-people',
+        '.lineage-strip', '.paper-next'
+      ];
+      document.querySelectorAll(targets.join(', ')).forEach(element => observer.observe(element));
+    }
+  </script>
+
+  
+</body>
+</html>

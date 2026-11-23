@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>琢华 · 识匠艺｜白花石刻</title>
+  <link rel="stylesheet" href="paper-cutting-craft.css">
+  <style>body { background-image: url("assets/stone-carving/intro/background.png"); }
+    #tool-sketch:checked ~ .kit-index label[for="tool-sketch"],
+    #tool-chisel:checked ~ .kit-index label[for="tool-chisel"],
+    #tool-graver:checked ~ .kit-index label[for="tool-graver"],
+    #tool-polish:checked ~ .kit-index label[for="tool-polish"] { background:#315e48; color:#fff8e9; border-color:#bbaa7e; border-radius:4px 16px 4px 16px; }
+    #tool-sketch:checked ~ .kit-index label[for="tool-sketch"] i,
+    #tool-chisel:checked ~ .kit-index label[for="tool-chisel"] i,
+    #tool-graver:checked ~ .kit-index label[for="tool-graver"] i,
+    #tool-polish:checked ~ .kit-index label[for="tool-polish"] i { color:#edce9d; }
+    #tool-sketch:focus-visible ~ .kit-index label[for="tool-sketch"],
+    #tool-chisel:focus-visible ~ .kit-index label[for="tool-chisel"],
+    #tool-graver:focus-visible ~ .kit-index label[for="tool-graver"],
+    #tool-polish:focus-visible ~ .kit-index label[for="tool-polish"] { outline:3px solid #ae583e; outline-offset:2px; }
+    #tool-sketch:checked ~ #view-sketch,
+    #tool-chisel:checked ~ #view-chisel,
+    #tool-graver:checked ~ #view-graver,
+    #tool-polish:checked ~ #view-polish { display:grid; }
+      #patterns .motif-art { inset: 0; }
+    #patterns .motif-mat { background: #e7e6d9; }
+    #patterns .motif-mat img { filter: none; }
+    #patterns .motif-lens img { object-fit: cover; filter: none; }
+    #patterns .motif-seq img { width: auto; border-radius: 50%; }
+  
+    #heritage .lineage-rail img { height: auto; aspect-ratio: 1 / 1; object-fit: contain; flex: none; border-radius: 50%; }
+    #heritage .lineage-screen { overflow: hidden; background: #27392f url("assets/stone-carving/craft/tool-graver.webp") center / cover; }
+    #stone-film { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+    #heritage .lineage-play { background: linear-gradient(0deg, #23362938, transparent 65%); cursor: pointer; font-family: inherit; }
+    #heritage .lineage-play:focus-visible { outline: 3px solid #dec99d; outline-offset: -5px; }
+    #heritage [hidden] { display: none; }
+    #heritage .film-status { font-size: 14px; color: var(--muted); }
+  </style>
+  <link rel="stylesheet" href="paper-meanings.css">
+  <link rel="stylesheet" href="paper-ending.css">
+  <style>
+    .paper-ending-story {
+      --paper: #f8f4eb; --ink: #39785c; --teal: #357f70; --rule: #a2c1b3; --gold: #ab8539;
+      --gutter: clamp(20px, 6vw, 100px); --content: min(1200px, calc(100% - 2 * var(--gutter)));
+      --heading-size: clamp(28px, 3vw, 46px); --copy-size: clamp(17px, 1.24vw, 20px);
+      max-width: none;
+      display: grid;
+      align-content: center;
+      min-height: calc(100vw / 3);
+      background: var(--paper) url("assets/paper-cutting/meanings/ending-landscape.webp") center bottom / 100% auto no-repeat;
+    }
+    .paper-ending-story::before { content: none; }
+    .paper-end-footer {--rule:#a2c1b3; border:0}
+    .paper-end-footer button,.craft-credits button {font:inherit; cursor:pointer}
+    .craft-credits {width:min(90%,460px); padding:28px; color:var(--ink); border:1px solid #a5b7a6; background:#faf7ef}
+    .craft-credits::backdrop {background:#273e3366}
+    .craft-credits p {margin:14px 0; line-height:1.75}
+    .craft-credits a {text-decoration:underline; text-underline-offset:3px}
+    .craft-credits button {background:#315e4d;color:#fff9eb;border:0;padding:8px 20px}
+  </style>
+  <style>
+    @media screen and (prefers-reduced-motion: no-preference) {
+      :root { --carving-ease: cubic-bezier(.18,.76,.23,1); --carving-rise: 26px; }
+      @keyframes carving-rise {
+        from { opacity: .15; transform: translateY(var(--carving-rise)); }
+        to { opacity: 1; transform: none; }
+      }
+      @keyframes carving-unroll {
+        from { clip-path: inset(0 94% 0 0); transform: scale(.97); }
+        to { clip-path: inset(0); transform: none; }
+      }
+      @keyframes carving-turn {
+        from { opacity: .2; transform: perspective(800px) rotateY(-28deg) rotateZ(-2deg) scale(.95); }
+        to { opacity: 1; transform: none; }
+      }
+
+      .heading.stone-entered .crumb, .heading.stone-entered h1, .heading.stone-entered > p,
+      .kit-head.stone-entered, .motifs-head.stone-entered, .lineage-rail.stone-entered,
+      .lineage-people.stone-entered, .paper-next.stone-entered > * {
+        animation: carving-rise .74s var(--carving-ease) backwards;
+      }
+      .heading.stone-entered h1, .paper-next.stone-entered p { animation-delay: .10s; }
+      .heading.stone-entered > p, .paper-next.stone-entered .paper-craft-link { animation-delay: .20s; }
+      .paper-next.stone-entered .paper-observe-link { animation-delay: .27s; }
+      .phases a { transition: color .16s, background-color .16s; }
+
+      .stages.stone-entered .stage:not([hidden]) .scene img,
+      .kit-view.stone-entered .kit-plate > img {
+        animation: carving-unroll .85s var(--carving-ease) backwards;
+      }
+      .stages.stone-entered .stage:not([hidden]) .method,
+      .kit-view.stone-entered .kit-plate figcaption {
+        animation: carving-rise .64s .10s var(--carving-ease) backwards;
+      }
+      .stages.stone-entered .stage:not([hidden]) .detail,
+      .kit-view.stone-entered .kit-notes {
+        animation: carving-rise .68s .20s var(--carving-ease) backwards;
+      }
+
+      .motif-card.stone-entered .motif-mat, .motif-reading.stone-entered .motif-lens .motif-art {
+        animation: carving-turn .76s var(--card-delay, 0s) var(--carving-ease) backwards;
+      }
+      .motif-card.stone-entered strong {
+        animation: carving-rise .50s calc(var(--card-delay, 0s) + .12s) var(--carving-ease) backwards;
+      }
+      .lineage-strip.stone-entered a { animation: carving-rise .58s var(--carving-ease) backwards; }
+      .lineage-strip.stone-entered a:nth-child(2) { animation-delay: .10s; }
+      .lineage-strip.stone-entered a:nth-child(3) { animation-delay: .20s; }
+      dialog[open] { --carving-rise: 12px; animation: carving-rise .26s var(--carving-ease); }
+
+      /* A single soft reflection follows the last polishing step. */
+      .stages.stone-entered #step-5 .scene { position: relative; overflow: hidden; }
+      .stages.stone-entered #step-5 .scene::after {
+        content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+        background: linear-gradient(112deg, transparent 37%, rgba(255,248,218,.23) 50%, transparent 63%);
+        animation: carving-polish 1.12s .42s var(--carving-ease);
+      }
+      @keyframes carving-polish {
+        from { opacity: 0; transform: translateX(-70%); }
+        30%, 65% { opacity: 1; }
+        to { opacity: 0; transform: translateX(70%); }
+      }
+      @media (hover: hover) and (pointer: fine) {
+        .motif-card .motif-art { transition: scale .3s var(--carving-ease); }
+        .motif-card:hover .motif-art { scale: 1.04; }
+      }
+
+      @media (min-width: 701px) {
+        .motif-card:nth-child(3n + 2) { --card-delay: .10s; }
+        .motif-card:nth-child(3n) { --card-delay: .20s; }
+      }
+      @supports (animation-timeline: view()) {
+        .paper-ending-story { view-timeline-name: --carving-ending; overflow: clip; background-image: none; }
+        .paper-ending-story::before {
+          content: ""; inset: -4% 0; height: auto; aspect-ratio: auto; mask-image: none;
+          background-size: 100% auto; pointer-events: none;
+          animation: carving-landscape auto linear both;
+          animation-timeline: --carving-ending;
+        }
+        @keyframes carving-landscape { from { transform: translateY(-2%); } to { transform: translateY(2%); } }
+      }
+      @media (max-width: 700px) {
+        :root { --carving-rise: 14px; }
+        .stages.stone-entered .stage:not([hidden]) .detail { animation-delay: .12s; }
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="project-typeface.css?v=20261119-1">
+  
+
+  <link rel="stylesheet" href="project-home-button.css?v=20261123-top-left-1">
+  <link rel="stylesheet" href="project-home-toolbar.css?v=20261123-top-left-1">
+</head>
+<body class="project-has-home-toolbar">
+  <div class="project-home-toolbar"><a class="project-home-button project-home-return" href="index.html" aria-label="返回蜀间拾艺主页"><svg class="project-home-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5M5.5 9v11h5v-6h3v6h5V9"/></svg><span>返回主页</span></a></div>
+
+  <main>
+    <div class="heading">
+      <div><nav class="crumb" aria-label="当前位置"><a href="stone-carving-intro.html">白花石刻</a>　/　制作工序</nav>
+      <h1>琢华<span>·</span>识匠艺</h1></div>
+      <p>顺着一脉白纹，刻出一枝梅花。</p>
+    </div>
+    <nav class="phases" aria-label="白花石刻的五道工序">
+      <a href="#step-1"><i>01</i><span>选石辨色</span></a>
+      <a href="#step-2"><i>02</i><span>依色勾样</span></a>
+      <a href="#step-3"><i>03</i><span>打坯取形</span></a>
+      <a href="#step-4"><i>04</i><span>细刻花瓣</span></a>
+      <a href="#step-5"><i>05</i><span>磨光成器</span></a>
+    </nav>
+    <div class="stages">
+      <article class="stage" id="step-1" aria-labelledby="title-1">
+        <section class="method">
+          <div class="chapter"><i>01</i><span>／ 05</span></div>
+          <h2 id="title-1">沿白纹找花位</h2>
+          <p class="tools">绿白相间的白花石</p>
+          <dl><dt>看色块</dt><dd>石料左端有一片宽阔的白色，往右逐渐收成细纹。先沿着它看一遍。</dd><dt>想花形</dt><dd>把开足的梅花留在宽处，枝梢伸向细处，让花和枝都落在天然白纹里。</dd></dl>
+        </section>
+        <figure class="scene"><img src="assets/stone-carving/craft/step-01.webp" width="1254" height="1254" alt="匠人用指尖沿着绿石上的白纹辨认色界"></figure>
+        <aside class="detail">
+          <h3>花头适合落在哪里？</h3>
+          <img src="assets/stone-carving/craft/detail-01.webp" width="672" height="324" alt="选石辨色时的石面局部">
+          <p>指尖下方的白色最宽，容得下五片花瓣。再往右看，白纹变细，恰好可以引出梅枝。</p>
+          <a class="action" href="#step-2">下一步 · 依色勾样 <span aria-hidden="true">→</span></a>
+        </aside>
+      </article>
+      <article class="stage" id="step-2" aria-labelledby="title-2">
+        <section class="method">
+          <div class="chapter"><i>02</i><span>／ 05</span></div>
+          <h2 id="title-2">顺着石纹画梅枝</h2>
+          <p class="tools">白花石、画稿笔</p>
+          <dl><dt>定花心</dt><dd>在白色宽处落下花心，向外勾出五瓣梅花，让瓣尖收在白色边界以内。</dd><dt>接枝梢</dt><dd>从花瓣下方引出一条细枝，顺着石纹转弯，在一侧添上花苞。</dd></dl>
+        </section>
+        <figure class="scene"><img src="assets/stone-carving/craft/step-02.webp" width="1254" height="1254" alt="匠人在白色石层上勾出一花一蕾的梅枝线稿"></figure>
+        <aside class="detail">
+          <h3>梅枝为什么向右伸？</h3>
+          <img src="assets/stone-carving/craft/detail-02.webp" width="672" height="324" alt="依色勾样时的石面局部">
+          <p>从花头往右看，笔下的枝条和石面白纹走向相近。勾好的线给下一步留料划出了范围。</p>
+          <a class="action" href="#step-3">下一步 · 打坯取形 <span aria-hidden="true">→</span></a>
+        </aside>
+      </article>
+      <article class="stage" id="step-3" aria-labelledby="title-3">
+        <section class="method">
+          <div class="chapter"><i>03</i><span>／ 05</span></div>
+          <h2 id="title-3">凿出梅花的高低</h2>
+          <p class="tools">石锤、平凿、已勾样的石料</p>
+          <dl><dt>留出花形</dt><dd>对照线稿，先留下花头、枝条和花苞所占的石料。花瓣此时只需分出大致形状。</dd><dt>落低底面</dt><dd>一手扶凿，一手持锤，逐步去掉花枝外围的石料。底面降低，花枝便从石面凸起。</dd></dl>
+        </section>
+        <figure class="scene"><img src="assets/stone-carving/craft/step-03.webp" width="1254" height="1254" alt="匠人持锤和凿打出梅枝粗坯，石面留有棱角与碎屑"></figure>
+        <aside class="detail">
+          <h3>粗坯上先看什么？</h3>
+          <img src="assets/stone-carving/craft/detail-03.webp" width="672" height="324" alt="打坯取形时的石面局部">
+          <p>看花瓣外缘与绿色底面之间的高度差。这时花瓣还有棱角，枝条也留得较厚，方便下一步细修。</p>
+          <a class="action" href="#step-4">下一步 · 细刻花瓣 <span aria-hidden="true">→</span></a>
+        </aside>
+      </article>
+      <article class="stage" id="step-4" aria-labelledby="title-4">
+        <section class="method">
+          <div class="chapter"><i>04</i><span>／ 05</span></div>
+          <h2 id="title-4">修出瓣缘与花蕊</h2>
+          <p class="tools">细刻刀、梅枝粗坯</p>
+          <dl><dt>分瓣</dt><dd>沿相邻花瓣之间的浅沟修整转折，让每片花瓣都有清楚的边缘。</dd><dt>理蕊</dt><dd>保留花心的高度，再细修放射状的花蕊和枝头的小苞。</dd></dl>
+        </section>
+        <figure class="scene"><img src="assets/stone-carving/craft/step-04.webp" width="1254" height="1254" alt="细刻刀沿白梅瓣缘修整，花心与花蕊已经显现"></figure>
+        <aside class="detail">
+          <h3>怎样看出花瓣有厚薄？</h3>
+          <img src="assets/stone-carving/craft/detail-04.webp" width="672" height="324" alt="细刻花瓣时的石面局部">
+          <p>看刀尖旁的瓣缘。边缘薄，向花心渐厚，侧光下便显出一圈柔和的明暗变化。</p>
+          <a class="action" href="#step-5">下一步 · 磨光成器 <span aria-hidden="true">→</span></a>
+        </aside>
+      </article>
+      <article class="stage" id="step-5" aria-labelledby="title-5">
+        <section class="method">
+          <div class="chapter"><i>05</i><span>／ 05</span></div>
+          <h2 id="title-5">擦亮一枝石上白梅</h2>
+          <p class="tools">细磨料、软布、梅花石刻</p>
+          <dl><dt>细磨</dt><dd>用细磨料收去底面和瓣缘的粗痕，在细小的花蕊处减轻力道。</dd><dt>拭净</dt><dd>用软布拭去残屑，转动石面看反光，检查花瓣、枝梢和底面的交界。</dd></dl>
+        </section>
+        <figure class="scene"><img src="assets/stone-carving/craft/step-05.webp" width="1254" height="1254" alt="匠人用软布擦拭绿石，完成的白梅与花苞浮在石面上"></figure>
+        <aside class="detail">
+          <h3>白梅的颜色从哪里来？</h3>
+          <img src="assets/stone-carving/craft/detail-05.webp" width="672" height="324" alt="磨光成器时的石面局部">
+          <p>回看第一步，花头对应宽阔的白色石层，细枝接着向右延伸的白纹。磨光后，天然色层和浮雕起伏都看得更清楚。</p>
+          <a class="action" href="#tools">认识石刻工具 <span aria-hidden="true">→</span></a>
+        </aside>
+      </article>
+    </div>
+    <section class="kit" id="tools" aria-labelledby="tools-title">
+      <header class="kit-head"><h2 id="tools-title">白花石刻的案头工具</h2><p>从石上的一道稿线，到梅花瓣缘的一线光。</p></header>
+      <fieldset class="kit-layout">
+        <legend class="kit-sr">选择白花石刻工具</legend>
+        <input class="kit-sr" id="tool-sketch" type="radio" name="stone-tool" aria-controls="view-sketch" checked>
+        <input class="kit-sr" id="tool-chisel" type="radio" name="stone-tool" aria-controls="view-chisel">
+        <input class="kit-sr" id="tool-graver" type="radio" name="stone-tool" aria-controls="view-graver">
+        <input class="kit-sr" id="tool-polish" type="radio" name="stone-tool" aria-controls="view-polish">
+        <div class="kit-index">
+          <label for="tool-sketch"><i>01</i>画稿笔</label>
+          <label for="tool-chisel"><i>02</i>石锤与平凿</label>
+          <label for="tool-graver"><i>03</i>细刻刀</label>
+          <label for="tool-polish"><i>04</i>磨石与软布</label>
+        </div>
+        <div class="kit-view" id="view-sketch">
+          <figure class="kit-plate">
+            <img src="assets/stone-carving/craft/tool-sketch.webp" loading="lazy" width="1200" height="800" alt="笔尖落在白色石层上的梅花轮廓旁">
+            <figcaption><h3>画稿笔</h3><p>顺着天然白纹，画出花枝的去向。</p></figcaption>
+          </figure>
+          <aside class="kit-notes" aria-label="画稿笔的用法">
+            <h3>细看画稿笔</h3>
+            <dl>
+              <div><dt><img src="assets/stone-carving/craft/tool-sketch-1.webp" width="144" height="144" loading="lazy" alt="">笔尖</dt><dd>先用细线圈定花心，再勾五片花瓣。线条画得轻，调整瓣缘时还能看清下面的石纹。</dd></div>
+              <div><dt><img src="assets/stone-carving/craft/tool-sketch-2.webp" width="144" height="144" loading="lazy" alt="">枝线</dt><dd>看花头右侧的细线。让枝梢顺着收窄的白纹伸展，便能把浅色石料留给花枝。</dd></div>
+            </dl>
+            <a class="kit-return" href="#step-2">看工序 · 依色勾样 <span aria-hidden="true">↗</span></a>
+          </aside>
+        </div>
+        <div class="kit-view" id="view-chisel">
+          <figure class="kit-plate">
+            <img src="assets/stone-carving/craft/tool-chisel.webp" loading="lazy" width="1200" height="800" alt="木柄石锤、宽刃平凿与刚打出轮廓的梅花石坯">
+            <figcaption><h3>石锤与平凿</h3><p>锤击凿尾，让花枝从底面浮出来。</p></figcaption>
+          </figure>
+          <aside class="kit-notes" aria-label="石锤与平凿的用法">
+            <h3>细看石锤与平凿</h3>
+            <dl>
+              <div><dt><img src="assets/stone-carving/craft/tool-chisel-1.webp" width="144" height="144" loading="lazy" alt="">锤面</dt><dd>锤面敲在凿尾，持凿的手掌握落点。沿花形外围一点点退去石料，留下花瓣的厚度。</dd></div>
+              <div><dt><img src="assets/stone-carving/craft/tool-chisel-2.webp" width="144" height="144" loading="lazy" alt="">凿刃</dt><dd>平凿的刃口较宽，适合修出底面的大块转折。粗坯上相接的小平面，就是这一阶段留下的凿痕。</dd></div>
+            </dl>
+            <a class="kit-return" href="#step-3">看工序 · 打坯取形 <span aria-hidden="true">↗</span></a>
+          </aside>
+        </div>
+        <div class="kit-view" id="view-graver">
+          <figure class="kit-plate">
+            <img src="assets/stone-carving/craft/tool-graver.webp" loading="lazy" width="1200" height="800" alt="细刻刀的尖端贴近绿底白梅的花瓣边缘">
+            <figcaption><h3>细刻刀</h3><p>顺着瓣缘修细，让花心与花瓣分出层次。</p></figcaption>
+          </figure>
+          <aside class="kit-notes" aria-label="细刻刀的用法">
+            <h3>细看细刻刀</h3>
+            <dl>
+              <div><dt><img src="assets/stone-carving/craft/tool-graver-1.webp" width="144" height="144" loading="lazy" alt="">刀尖</dt><dd>窄刀尖能伸进两瓣交会的浅沟。沿瓣缘慢慢转向，修清前一瓣压住后一瓣的边界。</dd></div>
+              <div><dt><img src="assets/stone-carving/craft/tool-graver-2.webp" width="144" height="144" loading="lazy" alt="">花蕊</dt><dd>在花心周围细细修低底面，留下细长的蕊丝。借侧光看，蕊丝根部和瓣面之间有一线阴影。</dd></div>
+            </dl>
+            <a class="kit-return" href="#step-4">看工序 · 细刻花瓣 <span aria-hidden="true">↗</span></a>
+          </aside>
+        </div>
+        <div class="kit-view" id="view-polish">
+          <figure class="kit-plate">
+            <img src="assets/stone-carving/craft/tool-polish.webp" loading="lazy" width="1200" height="800" alt="细磨石和折叠的棉布放在梅花浮雕旁">
+            <figcaption><h3>磨石与软布</h3><p>先收去粗痕，再拭净石面看光泽。</p></figcaption>
+          </figure>
+          <aside class="kit-notes" aria-label="磨石与软布的用法">
+            <h3>细看磨石与软布</h3>
+            <dl>
+              <div><dt><img src="assets/stone-carving/craft/tool-polish-1.webp" width="144" height="144" loading="lazy" alt="">磨面</dt><dd>用细磨石的平面修整开阔处，逐段查看粗凿留下的棱线。凸起的花蕊和薄瓣边缘要避开。</dd></div>
+              <div><dt><img src="assets/stone-carving/craft/tool-polish-2.webp" width="144" height="144" loading="lazy" alt="">布面</dt><dd>用洁净软布轻拭石粉，再迎着侧光转动石料。反光连贯处较平顺，粗痕处仍会显出暗线。</dd></div>
+            </dl>
+            <a class="kit-return" href="#step-5">看工序 · 磨光成器 <span aria-hidden="true">↗</span></a>
+          </aside>
+        </div>
+      </fieldset>
+    </section>
+    <section class="motifs" id="patterns" aria-labelledby="motifs-title">
+      <header class="motifs-head">
+        <h2 id="motifs-title">石纹解意</h2>
+        <p>从石色到刀痕，看一方浮雕里的花鸟与山水。</p>
+        <label class="motif-search"><span aria-hidden="true"></span><input type="search" aria-label="搜索白花石刻纹样" placeholder="搜索纹样"></label>
+      </header>
+      <div class="motifs-layout">
+        <div class="motifs-library">
+          <div class="motif-filters" role="group" aria-label="按石刻题材筛选">
+            <button type="button" data-intro="选择一幅纹样，先辨石色，再看刻痕怎样表现形体。" aria-pressed="true">全部</button>
+            <button type="button" data-intro="沿着枝干看花瓣、竹节与叶尖，辨认石层厚薄带来的变化。" aria-pressed="false">花木</button>
+            <button type="button" data-intro="看鱼鳍与翅羽的走向，也看纹样之间留出的绿地。" aria-pressed="false">鱼鸟</button>
+            <button type="button" data-intro="从近处的山石看到远山，比较不同深浅的起伏。" aria-pressed="false">山水</button>
+          </div>
+          <p class="motif-intro">选择一幅纹样，先辨石色，再看刻痕怎样表现形体。</p>
+          <div class="motif-grid" role="group" aria-label="石刻纹样教学示意图">
+            <button type="button" class="motif-card" aria-controls="motif-reading" aria-pressed="true" data-type="花木" data-words="梅花 花卉 枝梢 花蕾 俏色" data-note="一片宽白纹容下五片花瓣，向右收细的白纹接成一枝。花苞只占小小一块浅色，枝下的绿底把它托了出来。" data-details="花心|枝梗|花苞" data-workshop="">
+              <span class="motif-mat"><span class="motif-art"><img src="assets/stone-carving/craft/motif-plum.webp" loading="lazy" width="512" height="512" alt=""></span></span><strong>一枝白梅</strong>
+            </button>
+            <button type="button" class="motif-card" aria-controls="motif-reading" aria-pressed="false" data-type="花木" data-words="牡丹 花卉 花蕊 叶脉 花瓣" data-note="从紧密的花心向外看，内瓣卷起，外瓣逐层舒展。瓣缘下方的阴影交代前后，两片叶上的细脉则顺着叶尖分开。" data-details="花心|瓣缘|叶脉" data-workshop="peony">
+              <span class="motif-mat"><span class="motif-art"><img src="assets/stone-carving/craft/motif-peony.webp" loading="lazy" width="512" height="512" alt=""></span></span><strong>牡丹富贵</strong>
+            </button>
+            <button type="button" class="motif-card" aria-controls="motif-reading" aria-pressed="false" data-type="花木" data-words="兰花 竹节 竹叶 茎 并置" data-note="竹竿挺直，竹节处稍稍隆起。旁边的兰叶弯得更长，疏密不同的叶片之间露出绿底，细叶也能一根根辨认。" data-details="竹节|竹叶|兰花" data-workshop="bamboo">
+              <span class="motif-mat"><span class="motif-art"><img src="assets/stone-carving/craft/motif-bamboo.webp" loading="lazy" width="512" height="512" alt=""></span></span><strong>兰竹清韵</strong>
+            </button>
+            <button type="button" class="motif-card" aria-controls="motif-reading" aria-pressed="false" data-type="鱼鸟" data-words="鱼纹 鲤鱼 双鱼 对鱼 游鱼 鱼鳞" data-note="两尾鱼一上一下，鱼头朝向相反。视线顺着鱼背转向另一条鱼的尾巴，在中央留出的绿地周围绕成一圈。" data-details="鱼鳞|尾鳍|鱼须" data-workshop="fish">
+              <span class="motif-mat"><span class="motif-art"><img src="assets/stone-carving/craft/motif-fish.webp" loading="lazy" width="512" height="512" alt=""></span></span><strong>双鱼呈祥</strong>
+            </button>
+            <button type="button" class="motif-card" aria-controls="motif-reading" aria-pressed="false" data-type="鱼鸟" data-words="鸟纹 梅花 飞禽 羽毛 花枝 鸟爪" data-note="先沿喙尖找到鸟眼，再顺着层叠的翅羽看到长尾。鸟爪扣住花枝，花与鸟在这里连成一组。" data-details="鸟喙|翅羽|枝上鸟爪" data-workshop="">
+              <span class="motif-mat"><span class="motif-art"><img src="assets/stone-carving/craft/motif-bird.webp" loading="lazy" width="512" height="512" alt=""></span></span><strong>花鸟相依</strong>
+            </button>
+            <button type="button" class="motif-card" aria-controls="motif-reading" aria-pressed="false" data-type="山水" data-words="山峦 川流 松树 远山 溪流" data-note="近处的松树和山石棱线清楚，远山只浮起一层浅影。溪流从两岸之间弯过，把视线从前景引向山脚。" data-details="近松|溪流|远山" data-workshop="landscape">
+              <span class="motif-mat"><span class="motif-art"><img src="assets/stone-carving/craft/motif-landscape.webp" loading="lazy" width="512" height="512" alt=""></span></span><strong>山水清音</strong>
+            </button>
+          </div>
+          <div class="motif-empty" hidden><p>没有找到匹配的石刻纹样。</p><button type="button">查看全部纹样</button></div>
+        </div>
+        <aside class="motif-reading" id="motif-reading" aria-labelledby="motif-name">
+          <div class="motif-observe">
+            <div><p class="motif-kicker">纹样观察 <span>／ 花木</span></p><h3 id="motif-name" tabindex="-1">一枝白梅</h3><p class="motif-note">一片宽白纹容下五片花瓣，向右收细的白纹接成一枝。花苞只占小小一块浅色，枝下的绿底把它托了出来。</p></div>
+            <div class="motif-lens"><span class="motif-art"><img src="assets/stone-carving/craft/motif-plum.webp" width="512" height="512" loading="lazy" alt=""></span></div>
+          </div>
+          <div class="motif-diagrams" aria-label="石刻纹样的三处细节">
+            <figure><div class="motif-seq"><img src="assets/stone-carving/craft/motif-plum-1.webp" width="160" height="160" loading="lazy" alt=""></div><figcaption>花心</figcaption></figure>
+            <figure><div class="motif-seq"><img src="assets/stone-carving/craft/motif-plum-2.webp" width="160" height="160" loading="lazy" alt=""></div><figcaption>枝梗</figcaption></figure>
+            <figure><div class="motif-seq"><img src="assets/stone-carving/craft/motif-plum-3.webp" width="160" height="160" loading="lazy" alt=""></div><figcaption>花苞</figcaption></figure>
+          </div>
+          <a class="motif-workshop" href="stone-carving.html"><span>去习艺坊选石刻画稿</span><span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+      <span class="kit-sr motif-status" role="status"></span>
+    </section>
+
+    <section class="lineage" id="heritage" aria-labelledby="heritage-title">
+      <header class="lineage-rail">
+        <h2 id="heritage-title">匠心传承</h2>
+        <img src="assets/stone-carving/craft/motif-plum.webp" loading="lazy" width="512" height="512" alt="">
+      </header>
+      <figure class="lineage-film">
+        <div class="lineage-screen">
+          <video id="stone-film" controls playsinline preload="none" tabindex="0" poster="https://cbgccdn.thecover.cn/newscontent-74267214-86e7-4709-9b13-305f4989fe91-1716196519662.jpeg" aria-label="《灵感中国》唐骏的白花石刻制作实录">
+            <source src="https://imgcdn.scol.com.cn/media/2024/05/21/100633865821.mp4" type="video/mp4">
+            <source src="https://cbgccdn.thecover.cn/video1716196496006715782.mp4" type="video/mp4">
+            当前浏览器不支持网页视频播放。
+          </video>
+          <button class="lineage-play" type="button" hidden aria-controls="stone-film">
+            <span class="lineage-playlabel"><b aria-hidden="true">▶</b><span class="film-label">看唐骏刻梅</span></span>
+          </button>
+        </div>
+        <figcaption><span>《灵感中国》 · 看石上开花</span><span>四川国际传播中心　2024 年 5 月</span></figcaption>
+        <p class="film-status" role="status" hidden></p>
+      </figure>
+      <aside class="lineage-people" aria-labelledby="stone-people-title">
+        <h3 id="stone-people-title">广元白花石刻传承</h3>
+        <article>
+          <h4>唐骏与他的师承</h4>
+          <p>唐骏十六岁起师从刘玉琼，是广元白花石刻第五代传人、国家级代表性传承人。片中他顺着石料的赤白色层构思梅枝，让天然的白色落在花瓣上。</p>
+          <a href="https://www.ihchina.cn/ccr_detail/2913.html" target="_blank" rel="noopener">读中国非遗网传承人档案 ↗</a>
+        </article>
+        <article>
+          <h4>传习所里的石刻课</h4>
+          <p>在广元白花石刻传习所，唐骏把石料交到学生手中，让他们从选料、构思学到打坯、精雕。他也将这门手艺的历史整理成《广元白花石刻》，把作坊里的经验留给后来人。</p>
+          <a href="https://www.cppcc.gov.cn/zxww/2024/08/30/ARTI1724988584632450.shtml" target="_blank" rel="noopener">读传习所教学纪实 ↗</a>
+        </article>
+      </aside>
+      <nav class="lineage-strip" aria-label="回看白花石刻工序">
+        <a class="kit-return" href="#step-2"><img src="assets/stone-carving/craft/detail-02.webp" width="672" height="324" loading="lazy" alt=""><span>依色勾样　↗</span></a>
+        <a class="kit-return" href="#step-3"><img src="assets/stone-carving/craft/detail-03.webp" width="672" height="324" loading="lazy" alt=""><span>打坯取形　↗</span></a>
+        <a class="kit-return" href="#step-4"><img src="assets/stone-carving/craft/detail-04.webp" width="672" height="324" loading="lazy" alt=""><span>细刻花瓣　↗</span></a>
+      </nav>
+    </section>
+  </main>
+  <div class="paper-ending-story">
+    <p class="meaning-footnote">石纹宽处留作花瓣，细处刻成梅枝</p>
+    <section class="paper-next" aria-labelledby="paper-next-title">
+      <h2 id="paper-next-title">刻好一枝梅，把春意留在案头</h2>
+      <p>从笔筒上的白梅到砚边的竹叶，看看白花石刻怎样走进日常</p>
+      <a class="paper-craft-link" href="stone-carving-life.html">走进寄石 · 入日常</a>
+      <a class="project-home-button paper-observe-link" href="stone-carving-intro.html">返回观微阁首页</a>
+    </section>
+  </div>
+  <footer class="paper-end-footer">
+    <strong>广元白花石刻 · 四城五艺的材料之境</strong>
+    <button type="button" id="end-credits" aria-haspopup="dialog" aria-controls="credits-dialog">项目与出处</button>
+  </footer>
+  <dialog id="credits-dialog" class="craft-credits" aria-labelledby="credits-title">
+    <h2 id="credits-title">项目与出处</h2>
+    <p>广元白花石刻 · 四城五艺的材料之境</p>
+    <p>本章以石上刻梅演示五道工序。<a href="#heritage">匠心传承</a>收录了唐骏刻梅的视频、中国非遗网的传承人档案和传习所教学纪实。</p>
+    <form method="dialog"><button>关闭</button></form>
+  </dialog>
+  <script>
+    const craftCredits = document.getElementById('credits-dialog');
+    document.getElementById('end-credits').addEventListener('click', () => craftCredits.showModal());
+    craftCredits.querySelector('a').addEventListener('click', () => craftCredits.close());
+  </script>
+  <script>
+    const stages = Array.from(document.querySelectorAll('.stage'));
+    const phases = Array.from(document.querySelectorAll('.phases a'));
+    function showStep() {
+      const current = stages.find(stage => '#' + stage.id === location.hash) || (['#tools', '#patterns', '#heritage'].includes(location.hash) ? stages[4] : stages[0]);
+      for (const stage of stages) stage.hidden = stage !== current;
+      for (const link of phases) {
+        if (link.hash === '#' + current.id) link.setAttribute('aria-current', 'step');
+        else link.removeAttribute('aria-current');
+      }
+    }
+    document.addEventListener('click', event => {
+      const link = event.target.closest('a[href^="#step-"]');
+      if (!link || event.button !== 0 || event.ctrlKey || event.shiftKey || event.metaKey || event.altKey) return;
+      event.preventDefault();
+      if (link.hash !== location.hash) history.pushState(null, '', link.hash);
+      showStep();
+      if (link.matches('.action, .kit-return')) {
+        const active = document.querySelector('.phases [aria-current]');
+        active.focus({ preventScroll: true });
+        if (link.classList.contains('kit-return')) active.scrollIntoView({ block: 'start' });
+      }
+    });
+    window.addEventListener('hashchange', showStep);
+    window.addEventListener('popstate', showStep);
+    showStep();
+  </script>
+  <script src="assets/stone-carving/craft/motifs.js"></script>
+
+  <script>
+    (() => {
+      const section = document.getElementById('heritage');
+      const video = document.getElementById('stone-film');
+      const cover = section.querySelector('.lineage-play');
+      const label = cover.querySelector('.film-label');
+      const status = section.querySelector('.film-status');
+      let retry = false;
+      cover.hidden = false;
+
+      function showError() {
+        retry = true;
+        cover.hidden = false;
+        label.textContent = '重试播放';
+        status.textContent = '视频暂时无法加载，请检查网络后重试。';
+        status.hidden = false;
+      }
+
+      cover.addEventListener('click', () => {
+        if (retry) video.load();
+        retry = false;
+        status.hidden = true;
+        cover.hidden = true;
+        video.focus({ preventScroll: true });
+        video.play().catch(error => {
+          if (error.name === 'AbortError') return;
+          if (error.name === 'NotAllowedError') {
+            status.textContent = '请点击播放器内的播放键继续。';
+            status.hidden = false;
+          } else showError();
+        });
+      });
+
+      video.addEventListener('playing', () => {
+        status.hidden = true;
+        cover.hidden = true;
+      });
+      video.addEventListener('error', showError);
+      video.querySelector('source:last-of-type').addEventListener('error', showError);
+    })();
+  </script>
+  <script>
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add('stone-entered');
+          observer.unobserve(entry.target);
+        }
+      }, { threshold: .08 });
+
+      const targets = [
+        '.heading', '.stages', '.kit-head', '.kit-view', '.motifs-head',
+        '.motif-card', '.motif-reading', '.lineage-rail', '.lineage-people',
+        '.lineage-strip', '.paper-next'
+      ];
+      document.querySelectorAll(targets.join(', ')).forEach(element => observer.observe(element));
+    }
+  </script>
+
+  
+</body>
+</html>
